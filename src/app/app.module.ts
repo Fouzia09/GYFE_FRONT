@@ -6,15 +6,17 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { ForgetPasswordComponent } from './components/forget-password/forget-password.component';
-
+import { ChangePasswordComponent } from './components/change-password/change-password.component';
+import { FilterComponent } from './components/filter/filter.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     FooterComponent,
-    ForgetPasswordComponent
-    
+    ForgetPasswordComponent,
+    ChangePasswordComponent,
+    FilterComponent
   ],
   imports: [
     BrowserModule,
