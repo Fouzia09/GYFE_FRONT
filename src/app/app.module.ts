@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { ForgetPasswordComponent } from './components/forget-password/forget-password.component';
+import { ChangePasswordComponent } from './components/change-password/change-password.component';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { ForgetPasswordComponent } from './components/forget-password/forget-pas
     AppComponent,
     NavbarComponent,
     FooterComponent,
-    ForgetPasswordComponent
+    ForgetPasswordComponent,
+    ChangePasswordComponent 
     
   ],
   imports: [
