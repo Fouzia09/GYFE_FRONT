@@ -10,6 +10,7 @@ import { SignupComponent } from './components/signup/signup.component';
 import { DetailsComponent } from './components/details/details.component';
 import { ForgetPasswordComponent } from './components/forget-password/forget-password.component';
 import { ChangePasswordComponent } from './components/change-password/change-password.component';
+import { FilterComponent } from './components/filter/filter.component';
 
 @NgModule({
   declarations: [
@@ -21,8 +22,10 @@ import { ChangePasswordComponent } from './components/change-password/change-pas
     DetailsComponent,
     ForgetPasswordComponent,
     ForgetPasswordComponent,
-    ChangePasswordComponent 
-    
+    ChangePasswordComponent,
+    ForgetPasswordComponent,
+    ChangePasswordComponent,
+    FilterComponent
   ],
   imports: [
     BrowserModule,

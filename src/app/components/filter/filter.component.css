@@ -1,0 +1,44 @@
+.container {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+figure {
+    text-align: center;
+}
+
+figcaption{
+     position: absolute;
+     top: 35%;
+     font-size: 2em;
+     right: 0;
+     left: 0;
+
+}
+
+.filter_bar {
+    position: absolute;
+    top: 65%;
+    right: 0;
+    left: 0;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.filter_bar h4{
+    text-align: center;
+}
+.filter {
+    display: flex;
+ 
+}
+
+.button {
+    width: 120px;
+    margin: auto;
+}
+
+.btn { 
+    width: 100%;
+}
+
