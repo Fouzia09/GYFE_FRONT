@@ -11,6 +11,7 @@ import { DetailsComponent } from './components/details/details.component';
 import { ForgetPasswordComponent } from './components/forget-password/forget-password.component';
 import { ChangePasswordComponent } from './components/change-password/change-password.component';
 import { FilterComponent } from './components/filter/filter.component';
+import { CardsComponent } from './components/cards/cards.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { FilterComponent } from './components/filter/filter.component';
     ChangePasswordComponent,
     ForgetPasswordComponent,
     ChangePasswordComponent,
-    FilterComponent
+    FilterComponent,
+    CardsComponent
   ],
   imports: [
     BrowserModule,
