@@ -9,6 +9,7 @@ import { SigninComponent } from './components/signin/signin.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { DetailsComponent } from './components/details/details.component';
 import { ForgetPasswordComponent } from './components/forget-password/forget-password.component';
+import { ChangePasswordComponent } from './components/change-password/change-password.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,9 @@ import { ForgetPasswordComponent } from './components/forget-password/forget-pas
     SigninComponent,
     SignupComponent,
     DetailsComponent,
-    ForgetPasswordComponent
+    ForgetPasswordComponent,
+    ForgetPasswordComponent,
+    ChangePasswordComponent 
     
   ],
   imports: [
