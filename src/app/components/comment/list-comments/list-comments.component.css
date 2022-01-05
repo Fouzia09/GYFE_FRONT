@@ -1,0 +1,42 @@
+p {
+  color:#7d8285;
+}
+
+img {
+  max-width:160px;
+}
+
+hr {
+  margin: 0 30px 0 30px;
+  color: #7d828580
+}
+  
+.comment-card {
+  padding:25px 0;
+}
+
+.comment-content {
+  padding:30px;
+  background-color:#fff;
+}
+
+.author {
+  font-weight:bold;
+  margin-top:28px;
+  margin-bottom:8px;
+  color:inherit;
+}
+
+.title {
+  text-transform:uppercase;
+  font-weight:bold;
+  color:#d0d0d0;
+  letter-spacing:2px;
+  font-size:13px;
+}
+
+.description {
+  font-size:15px;
+  margin-top:15px;
+  margin-bottom:20px;
+}
