@@ -1,0 +1,12 @@
+#LogoBtn{
+  margin: auto;
+  padding: 10px, 70px, 20px;
+ }
+
+ Navbar{
+ font-size: smaller;
+ }
+ #AccueilBtn, #CatalogueBtn, #SinginBtn, #LoginBtn, #MyAccountBtn{
+ font-size: smaller;
+ font-style:inherit ;
+ }
