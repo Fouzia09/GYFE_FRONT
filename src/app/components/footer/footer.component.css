@@ -1,5 +1,7 @@
-.c{
+footer{
     background-color: black;
     color: white;
   }
-  
+aside{
+  margin: auto;
+}
