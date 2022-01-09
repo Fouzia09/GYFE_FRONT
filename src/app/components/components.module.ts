@@ -1,3 +1,4 @@
+import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ListCommentsComponent } from './comment/list-comments/list-comments.component';
@@ -23,7 +24,8 @@ import { FavoriteComponent } from './favorite/favorite.component';
     FavoriteComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    RouterModule
   ],
   exports: [
     NavbarComponent,

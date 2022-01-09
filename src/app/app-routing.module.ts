@@ -5,7 +5,7 @@ import { ProfileModule } from './pages/profile/profile.module';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'room',
+    redirectTo: '',
     pathMatch: 'full'
   },
   {
