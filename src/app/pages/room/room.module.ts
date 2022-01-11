@@ -4,11 +4,13 @@ import { ComponentsModule } from '../../components/components.module';
 
 import { RoomRoutingModule } from './room-routing.module';
 import { DetailRoomComponent } from './detail-room/detail-room.component';
+import { ListRoomComponent } from './list-room/list-room.component';
 
 
 @NgModule({
   declarations: [
-    DetailRoomComponent
+    DetailRoomComponent,
+    ListRoomComponent
   ],
   imports: [
     CommonModule,
