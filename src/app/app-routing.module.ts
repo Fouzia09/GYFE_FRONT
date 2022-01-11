@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ProfileModule } from './pages/profile/profile.module';
+import { RoomModule } from './pages/room/room.module';
 
 const routes: Routes = [
   {
@@ -19,7 +20,12 @@ const routes: Routes = [
   {
     path:'profile',
     loadChildren: () => import('./pages/profile/profile.module').then(m => m.ProfileModule)
+  },
+  {
+    path:'room',
+    loadChildren: () => import('./pages/room/room.module').then(m => m.RoomModule)
   }
+
 ];
 
 @NgModule({
