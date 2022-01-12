@@ -12,15 +12,14 @@ import { RoomService } from '../../../services/room.service';
 export class ListRoomComponent implements OnInit {
 
 
-  rooms!: Room[];
+  rooms: Room[] = [];
 
   constructor(private roomService: RoomService) {}
 
   ngOnInit() {
     this.roomService.getListRoom().subscribe((res: Room[]) => {
-      this.rooms = res 
+      this.rooms = res; 
       console.log(res)
     })
   }
-  
 }
