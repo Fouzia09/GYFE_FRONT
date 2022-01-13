@@ -2,30 +2,40 @@
     <div class="row">
       <div class="col-xs-12 p-3">
         <h4 class="tite-color text-center mb-5">INSCRIPTION</h4>
-            <form>
+            <form [formGroup]="signinForm" (ngSubmit)="onSubmit()">
                 <div class="mb-3">
-                  <label for="exampleInputEmail1" class="form-label">Username</label>
-                  <input type="text" class="form-control" id="exampleInputText1" aria-describedby="textHelp">
+                  <label class="form-label">Username</label>
+                  <input type="text" name="username" class="form-control" placeholder="Username" [formControl]="username">
                 </div>
                 <div class="mb-3">
-                  <label for="exampleInputEmail1" class="form-label">Email</label>
-                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                  <label class="form-label">Nom</label>
+                  <input type="text" name="name" class="form-control" placeholder="name" [formControl]="name">
                 </div>
                 <div class="mb-3">
-                  <label for="exampleInputEmail1" class="form-label">Téléphone</label>
-                  <input type="text" class="form-control" id="exampleInputText1" aria-describedby="textHelp">
+                  <label class="form-label">Email</label>
+                  <input class="form-control form-control-lg" type="email"  name="email" placeholder=""  [formControl]="email" pattern="[^@]+@[^@]+\.[a-zA-Z]{2,}" required />
                 </div>
                 <div class="mb-3">
-                  <label for="exampleInputEmail1" class="form-label">Adresse Postale</label>
-                  <input type="text" class="form-control" id="exampleInputText1" aria-describedby="textHelp">
+                  <label class="form-label">Role</label>
+                  <input type="text" name="roles" class="form-control" placeholder="Role" [formControl]="roles">
                 </div>
                 <div class="mb-3">
-                  <label for="exampleInputEmail1" class="form-label">Numéro de Siret</label>
-                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                  <label class="form-label">Mot de passe</label>
+                  <input class="form-control form-control-lg" type="password" name="plainPassword" placeholder=""  [formControl]="plainPassword"  required />
                 </div>
                 <div style="text-align: center">
-                    <button type="submit" style="background-color: #0c4bc0; color: white" class="text-left btn mt-3">Valider l'inscription</button>
-                </div>
+                  <button type="submit" [disabled]="!signinForm.valid" style="background-color: #0c4bc0; color: white" class="text-left btn mt-3">
+                    <img *ngIf="isLoading" src="../../../../assets/img/loading.gif" alt="Loading" class="img-fluid" width="20" height="20" />
+                    Valider l'inscription
+                  </button>
+              </div>
+              <div class="alert text-danger" *ngIf="errorApi">
+                  <strong>Cet E-mail est déjà utilisé.</strong><br>S'il s'agit de vous, nous vous prions de vous connecter. Merci!
+              </div>
+              <div class="alert text-success" *ngIf="success">
+                  <img src="../../../../assets/img/check-circle.gif" alt="Check" class="img-fluid" width="40" height="30" />
+                  <strong class="mt-3 ml-1 text-success">Vous avez bien été ajouté</strong>
+              </div>
             </form>
       </div>
     </div>

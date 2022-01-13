@@ -11,6 +11,8 @@ import { Router } from '@angular/router';
 export class SignupComponent implements OnInit {
 
   errorAuthentication: boolean = false;
+  isLoading: boolean = false;
+
  
   //@ts-ignore
   email: FormControl;
@@ -42,10 +44,13 @@ export class SignupComponent implements OnInit {
       password: this.loginForm.value.password
     }
 
+    this.isLoading = true;
+
     this.auth.logOn(body).subscribe(
       (data: any)=>{
         this.auth.seTtoken(data.token);
-        this.goHome();
+        this.goPageService();
+        this.isLoading = false;
       },
       (error: any)=>{
         this.errorAuthentication = true;
@@ -53,7 +58,7 @@ export class SignupComponent implements OnInit {
     );
   }
 
-  private goHome(): void{
+  private goPageService(): void{
     this.router.navigate(['authentication/sign-in']);
   }
 
