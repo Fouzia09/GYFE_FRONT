@@ -1,47 +1,34 @@
 <div class="container" style="position: relative;">
-        <figure>
-            <figcaption>
-                <span>GYFE</span>
-                <P>On a qu'une vie, profitons-on !</P>
-            </figcaption>
-             <img src="../../../assets/img/vacances.jpeg" alt="vacances" width="100%" />
-        </figure>
-        <div class="filter_bar">
-            <h4>Filtrez votre recherche</h4>
-            <div class="filter">
-                <select class="form-select" aria-label="Default select example">
-                    <option selected>Selectionner offre</option>
-                    <option value="1">Hotel</option>
-                    <option value="2">Restaurant</option>
-                </select>
-                <select class="form-select" aria-label="Default select example">
-                    <option selected>Selectionner ville</option>
-                    <option value="1">Paris</option>
-                    <option value="2">Marseille</option>
-                    <option value="2">Bordeaux</option>
-                </select>
-                <select class="form-select" aria-label="Default select example">
-                    <option selected>Selectionner pays</option>
-                    <option value="1">France</option>
-                    <option value="2">Mexique</option>
-                </select>
-                <select class="form-select" aria-label="Default select example">
-                    <option selected>Selectionner nombre de chambre</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="2">3</option>
-                    <option value="2">4</option>
-                </select>
-                <select class="form-select" aria-label="Default select example">
-                    <option selected>Selectionner prix</option>
-                    <option value="1">30</option>
-                    <option value="2">40</option>
-                    <option value="2">60</option>
-                    <option value="2">100</option>
-                </select>
-            </div>
-            <div class="button mt-4">
-                <button type="submit" class="btn btn-lg btn-primary">Valider</button>
-        </div>
-
+  <figure>
+    <figcaption>
+      <span>GYFE</span>
+      <P>On a qu'une vie, profitons-on !</P>
+    </figcaption>
+    <img src="../../../assets/img/vacances.jpeg" alt="vacances" width="100%" />
+  </figure>
+  <div class="filter_bar">
+    <h4>Filtrez votre recherche</h4>
+    <div class="filter">
+      <select class="form-select" aria-label="Default select example">
+        <option selected>Selectionner offre</option>
+        <option value="1">Hotel</option>
+        <option value="2">Restaurant</option>
+      </select>
+      <select class="form-select" aria-label="Default select example" [(ngModel)]="filterCountry">
+        <option selected>Selectionner pays</option>
+        <option *ngFor="let item of rooms">{{item.country}} </option>
+      </select>
+      <select class="form-select" aria-label="Default select example" [(ngModel)]="filterCity">
+        <option selected>Selectionner ville</option>
+        <option *ngFor="let item of rooms">{{item.city}} </option>
+      </select>
+      <select class="form-select" aria-label="Default select example" [(ngModel)]="filterPrice">
+        <option selected>Selectionner prix</option>
+        <option *ngFor="let item of rooms">{{item.price}} </option>
+      </select>
+    </div>
+    <div class="button mt-4">
+        <button type="submit" (click)="search($event)"class="btn btn-lg btn-primary">Valider</button>
+    </div>
+  </div>
 </div>

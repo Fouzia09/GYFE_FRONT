@@ -16,8 +16,21 @@ img {
 
 span {
     font-weight: 700;
+    text-align: center;
 }
 
 button {
     width: 100px;
+}
+
+.row {
+    width: 100%;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+}
+
+a {
+    color: white;
+    text-decoration: none;
 }

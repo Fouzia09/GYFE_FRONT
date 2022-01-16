@@ -10,6 +10,8 @@ import { CarouselComponent } from './carousel/carousel.component';
 import { DetailComponent } from './detail/detail.component';
 import { FilterComponent } from './filter/filter.component';
 import { FavoriteComponent } from './favorite/favorite.component';
+import { FormsModule } from '@angular/forms';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 @NgModule({
   declarations: [
@@ -21,11 +23,15 @@ import { FavoriteComponent } from './favorite/favorite.component';
     FilterComponent,
     CommentComponent,
     ListCommentsComponent,
-    FavoriteComponent
+    FavoriteComponent,
+
   ],
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    FormsModule,
+    Ng2SearchPipeModule,
+    
   ],
   exports: [
     NavbarComponent,
