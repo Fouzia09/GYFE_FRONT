@@ -1,17 +1,17 @@
+import { UserComponent } from './user/user.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AuthenticationRoutingModule } from './authentication-routing.module';
 
 import { ChangePasswordComponent } from './change-password/change-password.component';
-import { SigninComponent } from './signin/signin.component';
-import { SignupComponent } from './signup/signup.component';
+import { LoginComponent } from './login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
   declarations: [
-    SigninComponent,
-    SignupComponent,
+    UserComponent,
+    LoginComponent,
     ChangePasswordComponent
   ],
   imports: [

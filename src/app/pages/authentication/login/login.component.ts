@@ -1,14 +1,14 @@
-import { AuthenticationService } from './../../../services/authentication.service';
+import { AuthenticationService } from '../../../services/authentication.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-signup',
-  templateUrl: './signup.component.html',
-  styleUrls: ['./signup.component.css']
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.css']
 })
-export class SignupComponent implements OnInit {
+export class LoginComponent implements OnInit {
 
   errorAuthentication: boolean = false;
   isLoading: boolean = false;
@@ -59,7 +59,7 @@ export class SignupComponent implements OnInit {
   }
 
   private goPageService(): void{
-    this.router.navigate(['authentication/sign-in']);
+    this.router.navigate(['authentication/user']);
   }
 
 }

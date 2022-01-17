@@ -4,7 +4,7 @@ export const API_ROUTE = {
   LOGON: {
     URI: ROOT_URI+'/api/login',
   },
-  SIGNIN: {
+  USER: {
     URI: ROOT_URI+'/api/users',
   },
 };
