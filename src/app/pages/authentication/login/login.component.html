@@ -8,11 +8,11 @@
                 </div>
                 <div class="col-md-6">
                     <div>
-                        <label class="form-label">Identifiant</label>
-                        <input class="form-control form-control-lg" type="email" name="email" placeholder="" pattern="[^@]+@[^@]+\.[a-zA-Z]{2,}" formControlName="email" />
-                        <div *ngIf="!email.valid && (email.dirty || email.touched)"
+                        <label class="form-label">Username</label>
+                        <input class="form-control form-control-lg" type="text" name="username" placeholder="" formControlName="username" />
+                        <div *ngIf="!username.valid && (username.dirty || username.touched)"
                            class="alert alert-danger">
-                          Indiquez une adresse email valide !
+                          Indiquez au minimum 04 caractères !
                         </div>
                       </div>
                       <div class="mt-3">

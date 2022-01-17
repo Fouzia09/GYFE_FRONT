@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit {
 
  
   //@ts-ignore
-  email: FormControl;
+  username: FormControl;
   //@ts-ignore
   password: FormControl;
   //@ts-ignore
@@ -26,10 +26,10 @@ export class LoginComponent implements OnInit {
     private auth: AuthenticationService,
     private router: Router
     ) { 
-    this.email = this.fb.control('', [Validators.required, Validators.minLength(5)]);
+    this.username = this.fb.control('', [Validators.required, Validators.minLength(4)]);
     this.password = this.fb.control('', [Validators.required, Validators.minLength(4)]);
     this.loginForm = this.fb.group({
-      email: this.email,
+      username: this.username,
       password: this.password
     })
   }
@@ -40,7 +40,7 @@ export class LoginComponent implements OnInit {
 
   onSubmit(){
     const body = {
-      username: this.loginForm.value.email,
+      username: this.loginForm.value.username,
       password: this.loginForm.value.password
     }
 
