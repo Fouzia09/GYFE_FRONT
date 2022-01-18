@@ -1,21 +1,21 @@
-import { AuthenticationService } from './../../../services/authentication.service';
+import { AuthenticationService } from '../../../services/authentication.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-signup',
-  templateUrl: './signup.component.html',
-  styleUrls: ['./signup.component.css']
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.css']
 })
-export class SignupComponent implements OnInit {
+export class LoginComponent implements OnInit {
 
   errorAuthentication: boolean = false;
   isLoading: boolean = false;
 
  
   //@ts-ignore
-  email: FormControl;
+  username: FormControl;
   //@ts-ignore
   password: FormControl;
   //@ts-ignore
@@ -26,10 +26,10 @@ export class SignupComponent implements OnInit {
     private auth: AuthenticationService,
     private router: Router
     ) { 
-    this.email = this.fb.control('', [Validators.required, Validators.minLength(5)]);
+    this.username = this.fb.control('', [Validators.required, Validators.minLength(4)]);
     this.password = this.fb.control('', [Validators.required, Validators.minLength(4)]);
     this.loginForm = this.fb.group({
-      email: this.email,
+      username: this.username,
       password: this.password
     })
   }
@@ -40,7 +40,7 @@ export class SignupComponent implements OnInit {
 
   onSubmit(){
     const body = {
-      username: this.loginForm.value.email,
+      username: this.loginForm.value.username,
       password: this.loginForm.value.password
     }
 
@@ -59,7 +59,7 @@ export class SignupComponent implements OnInit {
   }
 
   private goPageService(): void{
-    this.router.navigate(['authentication/sign-in']);
+    this.router.navigate(['authentication/user']);
   }
 
 }

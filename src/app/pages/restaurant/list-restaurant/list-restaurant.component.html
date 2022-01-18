@@ -1,0 +1,23 @@
+<div class="card mb-3" *ngFor="let restaurant of listrestaurant" style="max-width: 1140px; margin: auto; height: 300px;">
+    <div class="row g-0">
+        <div class="col-md-4">
+            <img [src]="restaurant.image1" [alt]="" class="img-fluid rounded-start" alt="...">
+          </div>
+          <div class="col-md-8" style="display: flex;">
+            <div class="card-body">
+              <h5 class="card-title">{{ restaurant.name }}</h5>
+              <p class="card-text">{{ restaurant.descriptif }}</p>
+            </div>
+            <div class="underline">
+            </div>
+            <div class="col-md-4" style="width: 40%; margin: auto;">
+              <div class="row">
+                <span class="price">{{ restaurant.price | currency: 'EUR'}}</span>
+              </div>
+            <div class="row">
+              <button class="btn btn-lg btn-primary"><a routerLink="#">Detail</a></button>
+            </div>
+        </div>
+        </div>
+    </div>
+</div>

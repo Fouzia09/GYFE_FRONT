@@ -1,4 +1,4 @@
-export interface Signin{
+export interface User{
     id?: number,
     email: string,
     roles: [],
