@@ -18,19 +18,21 @@ figcaption{
 
 .filter_bar {
     position: absolute;
-    top: 65%;
+    top: 50%;
     right: 0;
     left: 0;
     margin-left: 15px;
     margin-right: 15px;
 }
 
-.filter_bar h4{
+.filter_bar h3{
     text-align: center;
+    font-size: 25px;
 }
 .filter {
     display: flex;
- 
+    background-color: white;
+    justify-content: space-evenly;
 }
 
 .button {
