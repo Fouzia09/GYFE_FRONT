@@ -15,7 +15,7 @@
                 <span class="price">{{ restaurant.price | currency: 'EUR'}}</span>
               </div>
             <div class="row">
-            <button class="btn btn-lg btn-primary"><a routerLink="#">Detail</a></button>
+            <button (click)="openDetail(restaurant)" class="btn btn-lg btn-primary">Detail</button>
             </div>
         </div>
         </div>

@@ -13,12 +13,6 @@ export class RestaurantService {
 
   getRestaurants():Observable<Restaurant[]>{
     return this.http.get<Restaurant[]>(API_ROUTE.RESTAURANTS.URI);
-    //Dans le cas où on souhaiterait retourner un Json LD afin de rendre nos données public et accessible aux navigateurs
-    /* .pipe(map(data=>{
-      //@ts-ignore
-      const transformedData = Object.keys(data).map(key => data[key]);
-      return transformedData[3];
-    })); */
   }
 
   getRestaurant(id: number){

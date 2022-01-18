@@ -29,4 +29,13 @@ export class ListRestaurantComponent implements OnInit {
     )
   }
 
+  openDetail(restaurant: Restaurant){
+    //@ts-ignore
+    /* this.restaurantService.getRestaurant(restaurant.id).subscribe(
+      ()=>{
+      }
+    ) */
+    console.log(restaurant)
+  }
+
 }
