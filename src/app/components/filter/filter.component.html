@@ -4,12 +4,12 @@
       <span>GYFE</span>
       <P>On a qu'une vie, profitons-on !</P>
     </figcaption>
-    <img src="../../../assets/img/vacances.jpeg" alt="vacances" width="100%" />
+    <img src="../../../assets/img/vacances.jpeg" alt="vacances" width="100%" height="600px" />
   </figure>
   <div class="filter_bar">
-    <h4>Filtrez votre recherche</h4>
+    <h3>Filtrez votre recherche</h3>
     <div class="filter">
-      <select class="form-select" aria-label="Default select example">
+      <!-- <select class="form-select" aria-label="Default select example">
         <option selected>Selectionner offre</option>
         <option value="1">Hotel</option>
         <option value="2">Restaurant</option>
@@ -25,10 +25,49 @@
       <select class="form-select" aria-label="Default select example" [(ngModel)]="filterPrice">
         <option selected>Selectionner prix</option>
         <option *ngFor="let item of rooms">{{item.price}} </option>
-      </select>
-    </div>
+      </select> -->
+    <mat-form-field>
+      <mat-label>Selectionner offre</mat-label>
+      <mat-select>
+        <mat-option>Hotel</mat-option>
+        <mat-option>Restaurant</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Selectionner pays</mat-label>
+      <mat-select>
+        <mat-option *ngFor="let item of rooms" [value]="item.country">
+          {{item.country}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Selectionner ville</mat-label>
+      <mat-select>
+        <mat-option *ngFor="let item of rooms" [value]="item.city">
+          {{ item.city }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Selectionner nombre de lit</mat-label>
+      <mat-select>
+        <mat-option *ngFor="let item of rooms" [value]="item.nbBed">
+          {{ item.nbBed }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Selectionner prix</mat-label>
+      <mat-select>
+        <mat-option *ngFor="let item of rooms" [value]="item.price">
+          {{ item.price }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div> 
     <div class="button mt-4">
-        <button type="submit" (click)="search($event)"class="btn btn-lg btn-primary">Valider</button>
+        <button type="submit" class="btn btn-lg btn-primary">Valider</button>
     </div>
   </div>
 </div>

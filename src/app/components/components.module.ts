@@ -12,6 +12,7 @@ import { FilterComponent } from './filter/filter.component';
 import { FavoriteComponent } from './favorite/favorite.component';
 import { FormsModule } from '@angular/forms';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -24,13 +25,14 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     CommentComponent,
     ListCommentsComponent,
     FavoriteComponent,
-
+    
   ],
   imports: [
     CommonModule,
     RouterModule,
     FormsModule,
     Ng2SearchPipeModule,
+    MatSelectModule
     
   ],
   exports: [
