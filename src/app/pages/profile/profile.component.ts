@@ -12,9 +12,18 @@ import { Router } from '@angular/router';
 })
 export class ProfileComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private auth: AuthenticationService,
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
+    //la déconnection
+    if(!this.auth.isLogged()){
+      this.router.navigate(['/authentication/login']);
+    }
+
+    //console.log(this.auth.)
   }
 
 }

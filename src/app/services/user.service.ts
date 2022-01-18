@@ -9,8 +9,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class UserService {
 
-  constructor() { }
-}
+
   constructor(private http: HttpClient) { }
 
   getUsers():Observable<User[]>{

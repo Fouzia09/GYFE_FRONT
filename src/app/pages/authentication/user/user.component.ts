@@ -43,10 +43,7 @@ export class UserComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    //la déconnection
-    if(!this.auth.isLogged()){
-      this.router.navigate(['/authentication/login']);
-    }
+    
   }
 
   onSubmit(){
