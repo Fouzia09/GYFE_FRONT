@@ -49,7 +49,7 @@ export class LoginComponent implements OnInit {
     this.auth.logOn(body).subscribe(
       (data: Object)=>{
         this.auth.seTtoken(data);
-        this.goPageService();
+        this.goPageProfil();
         this.isLoading = false;
       },
       (error: any)=>{
@@ -58,8 +58,8 @@ export class LoginComponent implements OnInit {
     );
   }
 
-  private goPageService(): void{
-    this.router.navigate(['authentication/user']);
+  private goPageProfil(): void{
+    this.router.navigate(['/profile']);
   }
 
 }
