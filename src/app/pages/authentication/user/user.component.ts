@@ -1,8 +1,13 @@
+import { AuthenticationService } from './../../../services/authentication.service';
 import { User } from '../../../interfaces/user';
 import { UserService } from '../../../services/user.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
+
+//Pour la redirection lorsque l'utilisateur isLogged
+// import { AuthenticationService } from './../../../services/authentication.service';
+
 
 @Component({
   selector: 'app-user',
@@ -30,12 +35,18 @@ export class UserComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private userService: UserService,
+    //auth
+    private auth: AuthenticationService,
+    private router: Router
   ) { 
     this.createForm();
    }
 
   ngOnInit(): void {
-    
+    //la déconnection
+    if(!this.auth.isLogged()){
+      this.router.navigate(['/authentication/login']);
+    }
   }
 
   onSubmit(){
