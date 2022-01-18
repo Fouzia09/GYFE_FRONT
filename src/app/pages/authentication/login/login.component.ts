@@ -47,8 +47,8 @@ export class LoginComponent implements OnInit {
     this.isLoading = true;
 
     this.auth.logOn(body).subscribe(
-      (data: any)=>{
-        this.auth.seTtoken(data.token);
+      (data: Object)=>{
+        this.auth.seTtoken(data);
         this.goPageService();
         this.isLoading = false;
       },
