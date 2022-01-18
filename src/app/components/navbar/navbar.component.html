@@ -19,6 +19,9 @@
       <div class="container-fluid" name="LoginBtn">
         <a class="navbar-brand" routerLink="/authentication/login">Se connecter</a>
       </div>
+      <div class="container-fluid" name="LoginBtn">
+        <a class="navbar-brand" (click)="logout()" routerLink="/authentication/login">Se déconnecter</a>
+      </div>
       <div class="container-fluid" name="MyAccountBtn">
         <i class="bi bi-person-circle"></i>
         <a class="navbar-brand" routerLink="/profile">Mon compte</a>

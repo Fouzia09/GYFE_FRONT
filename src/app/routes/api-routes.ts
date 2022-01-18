@@ -7,4 +7,7 @@ export const API_ROUTE = {
   USER: {
     URI: ROOT_URI+'/api/users',
   },
+  RESTAURANTS: {
+    URI: ROOT_URI+'/api/restaurants',
+  },
 };
