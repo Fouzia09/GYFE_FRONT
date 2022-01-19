@@ -18,7 +18,7 @@ export class FilterComponent implements OnInit {
   ngOnInit(): void {
       this.roomService.getListRoom().subscribe((data: Room[]) => {
         this.rooms = data; 
-        console.log(data)
+        
       })
   }
 
