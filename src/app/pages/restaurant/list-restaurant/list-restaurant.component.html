@@ -1,7 +1,7 @@
 <div class="card mb-3" *ngFor="let restaurant of listrestaurant" style="max-width: 1140px; margin: auto; height: 300px;">
     <div class="row g-0">
         <div class="col-md-4">
-            <img [src]="restaurant.image1" [alt]="" class="img-fluid rounded-start" alt="...">
+            <img [src]="restaurant.image1" class="img-fluid rounded-start" alt="...">
           </div>
           <div class="col-md-8" style="display: flex;">
             <div class="card-body">
@@ -15,7 +15,7 @@
                 <span class="price">{{ restaurant.price | currency: 'EUR'}}</span>
               </div>
             <div class="row">
-              <button class="btn btn-lg btn-primary"><a routerLink="#">Detail</a></button>
+              <button class="btn btn-lg btn-primary" [routerLink]="['/restaurant/detail', restaurant.id]">Detail</button>
             </div>
         </div>
         </div>

@@ -15,8 +15,8 @@ export class RestaurantService {
     return this.http.get<Restaurant[]>(API_ROUTE.RESTAURANTS.URI);
   }
 
-  getRestaurant(id: number){
-    return this.http.get(API_ROUTE.RESTAURANTS.URI+`/${id}`);
+  getRestaurant(id: number):Observable<Restaurant>{
+    return this.http.get<Restaurant>(API_ROUTE.RESTAURANTS.URI+`/${id}`);
   }
   
   postRestaurant(restaurant: Restaurant):Observable<Restaurant>{
