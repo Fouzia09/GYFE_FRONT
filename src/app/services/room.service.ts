@@ -29,14 +29,18 @@ export class RoomService {
     // Recuperer detail room par son id
     getRoom(id: number): Observable<Room> {
       return this.http.get<Room>(`${BASE_API}/rooms/${id}`)
-      
-      
+
     }
 
+    postRoom(room: Room):Observable<Room>{
+      return this.http.post<Room>(`${BASE_API}/rooms/`, room);
+    }
   
-    // getDestinationByPrice(id: number): Observable<any> {
-    //   return this.http.get(`${BASE_API}/rooms/filter/${id}`);
-    // }
-
-
+    deleteRoom(id: number){
+      return this.http.delete(`${BASE_API}/rooms/${id}`);
+    }
+  
+    updateRoom(room: Room, id: number):Observable<Room>{
+      return this.http.put<Room>(`${BASE_API}/rooms/${id}`, room);
+    }
 }

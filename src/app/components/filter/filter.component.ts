@@ -11,7 +11,7 @@ import { RoomService } from '../../services/room.service';
 export class FilterComponent implements OnInit {
 
   rooms!: Room[];
- 
+ term!: '';
 
   constructor(private roomService: RoomService) { }
 
