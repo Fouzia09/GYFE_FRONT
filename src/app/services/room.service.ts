@@ -26,4 +26,14 @@ export class RoomService {
     );
   }
 
+    // Recuperer detail room par son id
+    getRoom(id: number): Observable<any> {
+      return this.http.get(`${BASE_API}/rooms/${id}`);
+    }
+  
+    // getDestinationByPrice(id: number): Observable<any> {
+    //   return this.http.get(`${BASE_API}/rooms/filter/${id}`);
+    // }
+
+
 }

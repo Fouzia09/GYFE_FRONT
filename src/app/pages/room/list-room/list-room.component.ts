@@ -12,7 +12,8 @@ import { RoomService } from '../../../services/room.service';
 export class ListRoomComponent implements OnInit {
 
 
-  rooms: Room[] = [];
+  rooms!: Room[];
+  id!: number;
 
   constructor(private roomService: RoomService) {}
 
@@ -21,5 +22,16 @@ export class ListRoomComponent implements OnInit {
       this.rooms = res; 
       console.log(res)
     })
+  }
+
+  public getRoom() {
+    this.roomService.getRoom(this.id)
+      .subscribe(rooms => this.rooms = rooms);
+      console.log(this.rooms)
+  }
+
+  onSubmit() {
+    this.getRoom();
+ 
   }
 }
