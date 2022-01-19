@@ -18,6 +18,8 @@ export class ProfileComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.auth.userLogged();
+    this.auth.userLoggedRoles();
     //la déconnection
     if(!this.auth.isLogged()){
       this.router.navigate(['/authentication/login']);

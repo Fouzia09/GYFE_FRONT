@@ -7,7 +7,13 @@ import { AppComponent } from './app.component';
 import { LayoutComponent } from './layout/layout.component';
 import { ComponentsModule } from './components/components.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import { JwtModule } from '@auth0/angular-jwt';
+export function tokenGetter(): string {
+  let token;
+  const getToken = localStorage.getItem('token');
+  if (typeof getToken === 'string') token = JSON.parse(getToken);
+  return token;
+}
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,7 +25,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     HttpClientModule,
     ComponentsModule,
     MatDialogModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter,
+        allowedDomains: ['localhost:8000'],
+        disallowedRoutes: []
+      }
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -6,3 +6,9 @@ export interface User{
     plainPassword: string,
     username: string
   }
+  export interface UserToken{
+    roles: string[],
+    username: string,
+    exp: number,
+    iat: number
+  }
