@@ -12,6 +12,7 @@ export class DetailRoomComponent implements OnInit {
 
   ngOnInit(): void {
     this.id = +this.route.snapshot.url[1].path;
+    
   }
 
 }
