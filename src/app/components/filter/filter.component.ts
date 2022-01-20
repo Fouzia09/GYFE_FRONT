@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Room } from 'src/app/interfaces/room';
 import { RoomService } from '../../services/room.service';
 
@@ -11,7 +11,11 @@ import { RoomService } from '../../services/room.service';
 export class FilterComponent implements OnInit {
 
   rooms!: Room[];
- term!: '';
+  term!: '';
+  
+ @Input() page!: string;
+ //Cette variable va contenir les informations du restaurant ou de l'Hôtel
+ @Input() data!: any;
 
   constructor(private roomService: RoomService) { }
 

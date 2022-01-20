@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Input, } from '@angular/core';
 import { Room } from '../../../interfaces/room';
 import { RoomService } from '../../../services/room.service';
 import { Router } from '@angular/router';
@@ -12,9 +12,8 @@ import { Router } from '@angular/router';
 })
 export class ListRoomComponent implements OnInit {
 
-
+  @Input() pageId!: number;
   rooms!: Room[];
- 
   id!: number;
 
   constructor(private roomService: RoomService, private router: Router) {}

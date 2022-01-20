@@ -1,4 +1,6 @@
-<div class="card mb-3" *ngFor='let room of rooms ; let i = index;' style="max-width: 1140px; margin: auto; height: 300px;">
+<app-filter [page]="'room'" [data]="rooms"></app-filter>
+<div class="container">
+  <div class="card mb-3" *ngFor='let room of rooms ; let i = index;' style="max-width: 1140px; margin: auto; height: 300px;">
     <div class="row g-0">
       <div class="col-md-4">
         <img [src]="room.image1" [alt]="" class="img-fluid rounded-start" alt="...">
@@ -21,3 +23,5 @@
       </div>
     </div>
   </div>
+</div>
+
