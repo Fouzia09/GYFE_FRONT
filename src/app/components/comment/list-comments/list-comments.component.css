@@ -10,12 +10,8 @@ hr {
   margin: 0 30px 0 30px;
   color: #7d828580
 }
-  
-.comment-card {
-  padding:25px 0;
-}
 
-.comment-content {
+.list-container {
   padding:30px;
   background-color:#fff;
 }

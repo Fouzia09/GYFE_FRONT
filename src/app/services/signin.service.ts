@@ -31,6 +31,8 @@ export class SigninService {
   updateSignin(signin: Signin, id: number):Observable<Signin>{
     return this.http.put<Signin>(API_ROUTE.SIGNIN.URI+`/${id}`, signin);
   }
+
+  //getUserByUsername(username: string): Observable<
 }
 
 

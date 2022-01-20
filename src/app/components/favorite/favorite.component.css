@@ -1,0 +1,30 @@
+table {
+    width: 100%;
+    min-width: 500px;
+}
+
+thead th {
+    border-bottom: 1px solid #ebebeb;
+    font-size: 13px;
+    padding: 10px 12px;
+}
+
+tbody td, tbody th {
+    padding: 12px;
+}
+
+.favorite-container {
+    margin-top: 24px;
+    width: 100%;
+}
+
+.favorite-title {
+    padding: 0.75rem 12px;
+    background-color: rgba(0,0,0,.03);
+    border-bottom: 1px solid rgba(0,0,0,.13);
+}
+
+.divider {
+    height: 1px;
+    background: #ebebeb;
+}

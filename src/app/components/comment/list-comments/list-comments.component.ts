@@ -29,8 +29,22 @@ export class ListCommentsComponent implements OnInit {
       (error) => {
         console.log(error);
         this.loading = false;
-      }
-    );
+      });
+  }
+
+  showDeleteCommentBtn(): boolean {
+    return false;
+  }
+
+  deleteComment(commentId: number): void {
+    this.commentService.delete(commentId).subscribe(
+      () => {
+        this.ngOnInit();
+      },
+      (error) => {
+        console.log(error);
+        this.loading = false;
+      });
   }
 
 }

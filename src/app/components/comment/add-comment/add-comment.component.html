@@ -1,0 +1,18 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit(form)">
+    <div class="form-group">
+        <div class="bg-light p-2">
+            <input type="text" placeholder="Pseudo" class="form-control ml-1 mb-2 shadow-none"
+                [value]="pseudo ? pseudo : ''" formControlName="pseudo">
+            <textarea placeholder="Ecrire un commentaire" class="form-control ml-1 shadow-none textarea"
+                formControlName="content"></textarea>
+            <div class="mt-2 w-100 text-right">
+                <button type="submit" class="btn btn-primary btn-sm shadow-none">Envoyer</button>
+            </div>
+            <small *ngIf="(form.controls['pseudo'].errors?.['required'] && form.controls['pseudo'].touched)
+            || (form.controls['content'].errors?.['required'] && form.controls['content'].touched)"
+                class="text-danger font-14">
+                Veuillez renseigner un pseudo et écrire un commentaire
+            </small>
+        </div>
+    </div>
+</form>
