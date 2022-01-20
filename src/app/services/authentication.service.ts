@@ -62,6 +62,11 @@ export class AuthenticationService {
     const exp = token.exp;
     return exp;
   }
+  public userLoggedEmail(): string {
+    const token = this.tokenDecoded() as UserToken;
+    const email = token.email;
+    return email;
+  }
   private tokenDecoded(): UserToken | boolean {
     const token = this.getToken();
     if (token) {

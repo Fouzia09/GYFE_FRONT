@@ -9,6 +9,7 @@ export interface User{
   export interface UserToken{
     roles: string[],
     username: string,
+    email: string,
     exp: number,
     iat: number
   }
