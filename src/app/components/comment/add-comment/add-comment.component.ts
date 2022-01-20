@@ -44,8 +44,8 @@ export class AddCommentComponent implements OnInit {
       }
 
       if (this.userLoggedInfo) newComment.user = this.userLoggedInfo.id.toString();
-      if (this.page === 'restaurant') newComment.restaurant = this.pageId.toString();
-      else if (this.page === 'room') newComment.room = this.pageId.toString();
+      if (this.page === 'restaurant') newComment.restaurant = `api/restaurants/${this.pageId.toString()}`;
+      else if (this.page === 'room') newComment.room = `api/rooms/${this.pageId.toString()}`;
 
       this.commentService.addComment(newComment).subscribe(
         () => {
