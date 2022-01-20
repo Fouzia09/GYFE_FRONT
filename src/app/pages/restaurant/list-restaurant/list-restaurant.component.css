@@ -1,0 +1,36 @@
+img {
+    height: 300px;
+    width: 400px;
+}
+
+.card-body {
+    margin: auto;
+    text-align: center;
+    width: 50%;
+    
+}
+
+.underline {
+    border-right: 1px solid rgba(0,0,0,.125);
+}
+
+span {
+    font-weight: 700;
+    text-align: center;
+}
+
+button {
+    width: 100px;
+}
+
+.row {
+    width: 100%;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+}

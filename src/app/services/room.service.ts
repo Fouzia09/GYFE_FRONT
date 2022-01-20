@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
 import { Observable } from 'rxjs';
 import { map, catchError, retry } from 'rxjs/operators';
-import { BehaviorSubject } from 'rxjs';
 
 import { BASE_API } from '../constants/base-api';
 import { handleError } from '../constants/handle-http-errors';
@@ -13,7 +12,6 @@ import { Room } from '../interfaces/room';
 })
 export class RoomService {
 
-public search = new BehaviorSubject<string>("");
   constructor(private http: HttpClient) {}
 
   getListRoom(): Observable<Room[]> {
@@ -28,4 +26,21 @@ public search = new BehaviorSubject<string>("");
     );
   }
 
+    // Recuperer detail room par son id
+    getRoom(id: number): Observable<Room> {
+      return this.http.get<Room>(`${BASE_API}/rooms/${id}`)
+
+    }
+
+    postRoom(room: Room):Observable<Room>{
+      return this.http.post<Room>(`${BASE_API}/rooms/`, room);
+    }
+  
+    deleteRoom(id: number){
+      return this.http.delete(`${BASE_API}/rooms/${id}`);
+    }
+  
+    updateRoom(room: Room, id: number):Observable<Room>{
+      return this.http.put<Room>(`${BASE_API}/rooms/${id}`, room);
+    }
 }

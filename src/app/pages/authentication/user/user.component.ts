@@ -1,15 +1,20 @@
-import { Signin } from './../../../interfaces/signin';
-import { SigninService } from './../../../services/signin.service';
+import { AuthenticationService } from './../../../services/authentication.service';
+import { User } from '../../../interfaces/user';
+import { UserService } from '../../../services/user.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 
+//Pour la redirection lorsque l'utilisateur isLogged
+// import { AuthenticationService } from './../../../services/authentication.service';
+
+
 @Component({
-  selector: 'app-signin',
-  templateUrl: './signin.component.html',
-  styleUrls: ['./signin.component.css']
+  selector: 'app-user',
+  templateUrl: './user.component.html',
+  styleUrls: ['./user.component.css']
 })
-export class SigninComponent implements OnInit {
+export class UserComponent implements OnInit {
 
   isLoading: boolean = false;
   errorApi: boolean = false;
@@ -25,11 +30,14 @@ export class SigninComponent implements OnInit {
   //@ts-ignore
   username: FormControl;
   //@ts-ignore
-  signinForm: FormGroup;
+  userForm: FormGroup;
 
   constructor(
     private fb: FormBuilder,
-    private signinService: SigninService,
+    private userService: UserService,
+    //auth
+    private auth: AuthenticationService,
+    private router: Router
   ) { 
     this.createForm();
    }
@@ -39,22 +47,22 @@ export class SigninComponent implements OnInit {
   }
 
   onSubmit(){
-    const body: Signin = {
-      email : this.signinForm.value.email,
+    const body: User = {
+      email : this.userForm.value.email,
       //@ts-ignore
-      roles : [this.signinForm.value.roles],
-      name : this.signinForm.value.name,
-      plainPassword : this.signinForm.value.plainPassword,
-      username : this.signinForm.value.username,
+      roles : [this.userForm.value.roles],
+      name : this.userForm.value.name,
+      plainPassword : this.userForm.value.plainPassword,
+      username : this.userForm.value.username,
     }
     //@ts-ignore
-    //body.roles.push(this.signinForm.value.roles)
+    //body.roles.push(this.userForm.value.roles)
 
     //console.log(body);
 
     this.isLoading = true;
 
-    this.signinService.postSignin(body).subscribe(
+    this.userService.postUser(body).subscribe(
       (data: any)=>{
         this.success = true;
         this.isLoading = false;
@@ -84,7 +92,7 @@ export class SigninComponent implements OnInit {
     this.name = this.fb.control('', [Validators.required, Validators.minLength(4)]);
     this.plainPassword = this.fb.control('', [Validators.required, Validators.minLength(5)]);
     this.username = this.fb.control('', [Validators.required, Validators.minLength(4)]);
-    this.signinForm = this.fb.group({
+    this.userForm = this.fb.group({
       email: this.email,
       roles: this.roles,
       name: this.name,
@@ -94,7 +102,7 @@ export class SigninComponent implements OnInit {
   }
 
   private resetForm(): void{
-    this.signinForm.reset({
+    this.userForm.reset({
       email: '',
       roles: '',
       name: '',
