@@ -84,8 +84,8 @@ export class AuthenticationService {
     }
   }
 
-  resetPassword(token: string, password: string, confirmPassword: string) {
-    return this.http.post(`${BASE_API}/reset-password`, { token, password, confirmPassword });
+  resetPassword(password: string) {
+    return this.http.post(`${BASE_API}/reset-password`, {  password });
 }
 
 forgotPassword(email: string) {
