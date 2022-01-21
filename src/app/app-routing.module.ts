@@ -31,7 +31,13 @@ const routes: Routes = [
     path:'room',
     loadChildren: () => import('./pages/room/room.module').then(m => m.RoomModule)
   },
-  { path: 'accueil', component: FilterComponent },
+  { 
+    path: 'accueil', component: FilterComponent 
+  },
+  {
+    path:'admin',
+    loadChildren: () => import('./pages/admin/admin.module').then(m => m.AdminModule)
+  },
 
 ];
 
