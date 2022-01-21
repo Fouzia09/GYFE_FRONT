@@ -1,8 +1,10 @@
+import { catchError } from 'rxjs/operators';
 import { UserToken } from './../interfaces/user';
 import { API_ROUTE } from './../routes/api-routes';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { BASE_API } from '../constants/base-api';
 
 @Injectable({
   providedIn: 'root'
@@ -77,5 +79,12 @@ export class AuthenticationService {
     }
   }
 
+  resetPassword(token: string, password: string, confirmPassword: string) {
+    return this.http.post(`${BASE_API}/reset-password`, { token, password, confirmPassword });
+}
+
+forgotPassword(email: string) {
+  return this.http.post(`${BASE_API}/forgot-password`, { email });
+}
 
 }
