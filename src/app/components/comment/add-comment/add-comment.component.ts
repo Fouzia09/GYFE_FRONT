@@ -43,7 +43,7 @@ export class AddCommentComponent implements OnInit {
         content: form.value.content
       }
 
-      if (this.userLoggedInfo) newComment.user = this.userLoggedInfo.id.toString();
+      if (this.userLoggedInfo) newComment.user = `api/users/${this.userLoggedInfo.id.toString()}`;
       if (this.page === 'restaurant') newComment.restaurant = `api/restaurants/${this.pageId.toString()}`;
       else if (this.page === 'room') newComment.room = `api/rooms/${this.pageId.toString()}`;
 
