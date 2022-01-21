@@ -39,6 +39,8 @@ export class AuthenticationService {
   isLogged(){
     return this.getToken() !== null;
   }
+
+
   public userLogged(): string  {
     const token = this.tokenDecoded() as UserToken;
     const user = token.username;
@@ -67,6 +69,8 @@ export class AuthenticationService {
     const email = token.email;
     return email;
   }
+
+
   private tokenDecoded(): UserToken | boolean {
     const token = this.getToken();
     if (token) {

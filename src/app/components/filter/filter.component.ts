@@ -11,14 +11,14 @@ import { RoomService } from '../../services/room.service';
 export class FilterComponent implements OnInit {
 
   rooms!: Room[];
- 
+ term!: '';
 
   constructor(private roomService: RoomService) { }
 
   ngOnInit(): void {
       this.roomService.getListRoom().subscribe((data: Room[]) => {
         this.rooms = data; 
-        console.log(data)
+        
       })
   }
 

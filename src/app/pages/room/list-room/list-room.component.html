@@ -15,7 +15,7 @@
             <span class="price">{{ room.price | currency: 'EUR'}}</span>
           </div>
           <div class="row">
-            <button class="btn btn-lg btn-primary" type="submit" (click)="getRoom()"[routerLink]="['/list-room', room.id]">Detail</button>
+            <button class="btn btn-lg btn-primary" type="submit" [routerLink]="['/room/detail', room.id]">Detail</button>
           </div>
         </div>
       </div>

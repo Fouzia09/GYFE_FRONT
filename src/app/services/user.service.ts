@@ -32,6 +32,8 @@ export class UserService {
   updateUser(user: User, id: number):Observable<User>{
     return this.http.put<User>(API_ROUTE.USER.URI+`/${id}`, user);
   }
+
+  //getUserByUsername(username: string): Observable<
 }
 
 

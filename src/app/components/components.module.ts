@@ -1,6 +1,8 @@
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 import { ListCommentsComponent } from './comment/list-comments/list-comments.component';
 import { CommentComponent } from './comment/comment.component';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -10,7 +12,8 @@ import { CarouselComponent } from './carousel/carousel.component';
 import { DetailComponent } from './detail/detail.component';
 import { FilterComponent } from './filter/filter.component';
 import { FavoriteComponent } from './favorite/favorite.component';
-import { FormsModule } from '@angular/forms';
+import { AddCommentComponent } from './comment/add-comment/add-comment.component';
+
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { MatSelectModule } from '@angular/material/select';
 
@@ -25,15 +28,15 @@ import { MatSelectModule } from '@angular/material/select';
     CommentComponent,
     ListCommentsComponent,
     FavoriteComponent,
-    
+    AddCommentComponent,
   ],
   imports: [
     CommonModule,
     RouterModule,
     FormsModule,
+    ReactiveFormsModule,
     Ng2SearchPipeModule,
-    MatSelectModule
-    
+    MatSelectModule,
   ],
   exports: [
     NavbarComponent,
@@ -44,7 +47,8 @@ import { MatSelectModule } from '@angular/material/select';
     FilterComponent,
     CommentComponent,
     ListCommentsComponent,
-    FavoriteComponent
+    FavoriteComponent,
+    AddCommentComponent,
   ]
 })
 export class ComponentsModule { }
