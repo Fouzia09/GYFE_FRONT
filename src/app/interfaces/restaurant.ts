@@ -13,5 +13,7 @@ export interface Restaurant{
     descriptifPlat2: string,
     descriptifPlat3: string,
     rangePrice2: number,
-    rangePrice1: number
+    rangePrice1: number,
+    address: string,
+    zipcode: number
   }

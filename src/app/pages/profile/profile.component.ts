@@ -24,8 +24,11 @@ export class ProfileComponent implements OnInit {
     if(!this.auth.isLogged()){
       this.router.navigate(['/authentication/login']);
     }
+  }
 
-    //console.log(this.auth.)
+  //déconnexion
+  logout(){
+    this.auth.logout();
   }
 
 }
