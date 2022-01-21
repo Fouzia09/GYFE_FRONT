@@ -121,7 +121,40 @@
     </div>
 </div>
 
-  
+<div class="card mb-3" *ngFor='let room of rooms' style="max-width: 840px; margin: auto; height: 300px;">
+    <div class="row g-0">
+      <div class="col-md-4">
+        <img [src]="room.image1"  class="img-fluid rounded-start" alt="...">
+      </div>
+      <div class="col-md-8" style="display: flex;">
+        <div class="card-body">
+          <h2 class="card-title">Nom:{{room.name}}</h2>
+          <p class="card-text">Desscriptif:{{room.descriptif}}</p>
+          <div style="display: flex;">
+            <ul>
+                <li class="card-text">Adresse: {{ room.address }}</li>
+                <li class="card-text">Code Postal: {{ room.zipcode }} </li>
+                <li class="card-text">Ville: {{ room.city }} </li>
+                <li class="card-text">Room: {{ room.country }} </li>
+              </ul>
+              <ul>
+                <li class="card-text">Nombre de lits {{ room.nbBed}} </li>
+                <li class="card-text">Nombre de m2 {{ room.squarFeet }} </li>
+              </ul>
+          </div>
+
+
+        </div>
+        <div class="underline">
+        </div>
+        <div class="col-md-4" style="width: 40%; margin: auto;">
+          <div class="row">
+            <span class="price">{{room.price | currency: 'EUR'}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
 
 

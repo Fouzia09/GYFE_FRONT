@@ -86,10 +86,10 @@ export class AuthenticationService {
 
   resetPassword(password: string) {
     return this.http.post(`${BASE_API}/reset-password`, {  password });
-}
+  }
 
-forgotPassword(email: string) {
-  return this.http.post(`${BASE_API}/forgot-password`, { email });
-}
+  forgotPassword(email: string) {
+    return this.http.post(`${BASE_API}/forgot-password`, { email });
+  }
 
 }
