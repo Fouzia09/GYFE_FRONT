@@ -3,6 +3,10 @@ img {
     width: 400px;
 }
 
+.container {
+    margin-top: 145px;
+}
+
 .card-body {
     margin: auto;
     text-align: center;
