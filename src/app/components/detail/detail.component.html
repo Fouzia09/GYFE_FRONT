@@ -7,12 +7,16 @@
             </div>
             <div class="col-md-7">
               <div class="card-body">
-                <h5 class="card-title text-primary">{{ data.name }}</h5>
+                <h2 class="card-title fw-bold text-primary">{{ data.name }}</h2>
                 <p class="card-text">{{ data.descriptif }}</p>
-                <p class="card-text">Localisation: {{ data.city}}</p>
-                <p class="card-text" *ngIf="page == 'room'">Nombre de lits: {{ data.nbBed }}</p>
-                <p class="card-text" *ngIf="page == 'room'">Surface de la chambre: {{ data.squarFeet }} m2</p>
-                <p class="card-text"  >Prix : <small class="text-muted">{{ data.price | currency: 'EUR'}}</small></p>
+                <p class="card-text" *ngIf="page == 'restaurant'">Nos fourchettes de prix varient entre {{ data.rangePrice1 }} € à {{ data.rangePrice2 }} €</p>
+                <p class="card-text"><span class="detail-color">Localisation:</span> {{ data.address}} - {{ data.city}}, {{ data.zipcode}} | {{data.country}}</p>
+                <p class="card-text" *ngIf="page == 'room'"><span class="detail-color">Nombre de lits:</span> {{ data.nbBed }}</p>
+                <p class="card-text" *ngIf="page == 'room'"><span class="detail-color">Surface de la chambre:</span> {{ data.squarFeet }} m2</p>
+                <p class="card-text" *ngIf="page == 'restaurant'"><span class="detail-color">Nom du plat:</span> {{ data.namePlat }} m2</p>
+                <p class="card-text" *ngIf="page == 'restaurant'"><span class="detail-color">Description du plat:</span> {{ data.descriptifPlat }}</p>
+                <!-- <p class="card-text"  ><span class="detail-color">Prix:</span> {{ data.price | currency: 'EUR'}}</p> -->
+                <p class="card-text"  ><span class="detail-color">Prix:</span> {{ data.price }} €</p>
                 <button type="button" class="btn btn-success">Réserver</button>
               </div>
             </div>

@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light" name="Navbar">
+<!-- <nav class="navbar navbar-expand-lg navbar-light bg-light" name="Navbar">
     <div class="container-fluid" name="AccueilBtn">
       <a class="navbar-brand" routerLink="accueil">Accueil</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -10,7 +10,7 @@
       </div>
       <div class="container"name="LogoBtn">
         <a class="navbar-brand" routerLink="#" title="logo">
-          <img src="./assets/img/logo-GYFE-noir.png" alt="" width="30" height="24">
+          <img src="../../../assets/img/logo-GYFE-noir.png" alt="">
         </a>
       </div>
       <div class="container-fluid" name="SinginBtn">
@@ -26,5 +26,38 @@
         <i class="bi bi-person-circle"></i>
         <a class="navbar-brand" routerLink="/profile">Mon compte</a>
       </div>
-  </nav>
+  </nav> -->
+
+<nav class="bg-light mb-5">
+  <ul class="nav justify-content-center">
+    <li class="nav-item mt-3">
+      <a class="nav-link active navbar-brand color-link" aria-current="page" routerLink="accueil">Accueil</a>
+    </li>
+    <li class="nav-item dropdown mt-3">
+      <a class="nav-link dropdown-toggle navbar-brand color-link" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        Catalogues
+      </a>
+      <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+        <li><a class="dropdown-item navbar-brand" routerLink="room/list-room">Chambres</a>
+        <li><a class="dropdown-item navbar-brand" routerLink="restaurant/list-restaurant">Assiettes</a></li>
+      </ul>
+    </li>
+    <li class="nav-item">
+      <a class="navbar-brand nav-link color-link" routerLink="accueil"><img src="../../../assets/img/logo-GYFE-noir.png" alt=""></a>
+    </li>
+    <li class="nav-item mt-3">
+      <a class="navbar-brand nav-link color-link" href="/authentication/user">S'inscrire</a>
+    </li>
+    <li class="nav-item mt-3">
+      <a class="navbar-brand nav-link color-link" href="/authentication/login">Se connecter</a>
+    </li>
+    <li class="nav-item mt-3">
+      <a class="navbar-brand nav-link" routerLink="/profile"><img src="../../../assets/img/profil.png" alt="" width="15px" style="margin-bottom: 5px;">. Mon compte</a>
+    </li>
+  </ul>
+</nav>
+ 
+
+
+
 

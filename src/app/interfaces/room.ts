@@ -10,5 +10,7 @@ export interface Room {
     image3: string,
     isKingSize: boolean,
     nbBed: number,
-    squarFeet: number
+    squarFeet: number,
+    address: string,
+    zipcode: number
 }

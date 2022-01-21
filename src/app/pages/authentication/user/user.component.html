@@ -1,7 +1,7 @@
 <div class="container border border-3 rounded center-card">
     <div class="row">
       <div class="col-xs-12 p-3">
-        <h4 class="tite-color text-center mb-5">INSCRIPTION</h4>
+        <h4 class="title-auth-color text-center mb-5">INSCRIPTION</h4>
             <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
                 <div class="mb-3">
                   <label class="form-label">Username</label>
@@ -17,7 +17,13 @@
                 </div>
                 <div class="mb-3">
                   <label class="form-label">Role</label>
-                  <input type="text" name="roles" class="form-control" placeholder="Role" [formControl]="roles">
+                  <!--<input type="text" name="roles" class="form-control" placeholder="Role" [formControl]="roles"> -->
+                  <select name="roles" class="form-control" placeholder="Role" [formControl]="roles">
+                    <!-- <option value="" disabled selected></option> -->
+                    <option value="ROLE_CHEF">Restaurateur</option>
+                    <option value="ROLE_HOTELIER">Hôtelier</option>
+                    <option value="ROLE_ADMIN">Admin</option>
+                  </select>
                 </div>
                 <div class="mb-3">
                   <label class="form-label">Mot de passe</label>
