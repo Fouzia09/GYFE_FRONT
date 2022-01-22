@@ -1,16 +1,16 @@
-<div class="container border border-3 rounded mt-5" style="width: 800px">
+<div class="container">
     <div class="row">
       <div class="col-xs-12 p-3">
         <div class="mt-3 row g-0" *ngIf="data">
+          <h2 class="card-title fw-bold text-primary">{{ data.name }}</h2>
+          <p class="card-text"><span class="detail-color">Localisation:</span> {{ data.address}} - {{ data.city}}, {{ data.zipcode}} | {{data.country}}</p>
             <div class="row col-md-5">
                 <img [src]="data.image1" class="img-thumbnail" alt="Detail image" width="100%">
             </div>
             <div class="col-md-7">
               <div class="card-body">
-                <h2 class="card-title fw-bold text-primary">{{ data.name }}</h2>
                 <p class="card-text">{{ data.descriptif }}</p>
                 <p class="card-text" *ngIf="page == 'restaurant'">Nos fourchettes de prix varient entre {{ data.rangePrice1 }} € à {{ data.rangePrice2 }} €</p>
-                <p class="card-text"><span class="detail-color">Localisation:</span> {{ data.address}} - {{ data.city}}, {{ data.zipcode}} | {{data.country}}</p>
                 <p class="card-text" *ngIf="page == 'room'"><span class="detail-color">Nombre de lits:</span> {{ data.nbBed }}</p>
                 <p class="card-text" *ngIf="page == 'room'"><span class="detail-color">Surface de la chambre:</span> {{ data.squarFeet }} m2</p>
                 <p class="card-text" *ngIf="page == 'restaurant'"><span class="detail-color">Nom du plat:</span> {{ data.namePlat }} m2</p>

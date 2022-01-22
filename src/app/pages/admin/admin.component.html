@@ -1,204 +1,162 @@
 <div class="wrapper">
-    <div class="main">
-        <main class="content">
-            <div class="container-fluid p-0">
-                <div class="row mb-2 mb-xl-3 m-5">
-                    <div class="col-md-12 mt-3">
-                        <div class="col-auto d-none d-sm-block">
-                            <h2 class="title-color text-success font-weight-bold">Création d'un Restaurant</h2>
-                        </div>
-                        <div class="card">
-                            <div class="card-body">
-                                <form>
-                                    <div class="row">
-                                        <div class="mb-3 col-md-6">
-                                            <div class="row">
-                                                <div class="mb-3 col-md-12">
-                                                    <label class="form-label" for="inputText"></label>
-                                                    <input type="text" name="name" class="form-control" id="inputText" placeholder="Nom du Restaurant" formControlName="name">
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="mb-3 col-md-6">
-                                                    <label class="form-label" for="inputText"></label>
-                                                    <input type="text" name="name" class="form-control" id="inputText" placeholder="Adresse" formControlName="name">
-                                                </div>
-                                                <div class="mb-3 col-md-6">
-                                                    <label class="form-label" for="inputText"></label>
-                                                    <input type="text" name="name" class="form-control" id="inputText" placeholder="Postale" formControlName="name">
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="mb-3 col-md-6">
-                                                    <label class="form-label" for="inputText"></label>
-                                                    <input type="text" name="name" class="form-control" id="inputText" placeholder="Ville" formControlName="name">
-                                                </div>
-                                                <div class="mb-3 col-md-6">
-                                                    <label class="form-label" for="inputText"></label>
-                                                    <input type="text" name="name" class="form-control" id="inputText" placeholder="Pays" formControlName="name">
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="mb-3 col-md-6">
-                                                    <label class="form-label" for="inputText"></label>
-                                                    <input type="text" name="name" class="form-control" id="inputText" placeholder="Prix max" formControlName="name">
-                                                </div>
-                                                <div class="mb-3 col-md-6">
-                                                    <label class="form-label" for="inputText"></label>
-                                                    <input type="text" name="name" class="form-control" id="inputText" placeholder="Prix min" formControlName="name">
-                                                </div>
-                                            </div>
-                                            <div class="mb-3 col-md-12">
-                                                <label class="form-label" for="inputText">Descriptif du restaurant:</label>
-                                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                                            </div>
-                                            <div class="mt-3 col-md-12">
-                                                <label class="custom-file-label" for="customFile">Image du restaurant:</label>
-                                                <input type="file" class="form-control custom-file-input" id="customFile">
-                                            </div>
-                                        </div>
-                                        <div class="mb-3 col-md-6">
-                                            <div class="row">
-                                                <div class="mb-3 col-md-8">
-                                                    <label class="form-label" for="inputText"></label>
-                                                    <input type="text" name="name" class="form-control" id="inputText" placeholder="Nom du plat" formControlName="name">
-                                                </div>
-                                                <div class="mb-3 col-md-4">
-                                                    <label class="form-label" for="inputText"></label>
-                                                    <input type="text" name="name" class="form-control" id="inputText" placeholder="Prix" formControlName="name">
-                                                </div>
-                                            </div>
-                                            <div class="mb-3 col-md-12">
-                                                <label class="form-label" for="inputText"></label>
-                                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="4"></textarea>
-                                            </div>
-                                            <div class="col-md-12 mb-5" style="margin-top: 38px;">
-                                                <input type="file" class="form-control custom-file-input" id="customFile">
-                                            </div>
-                                            <div style="text-align: right">
-                                                <mat-accordion>
-                                                    <mat-expansion-panel hideToggle>
-                                                      <mat-expansion-panel-header>
-                                                        <mat-panel-title>
-                                                          Ajouter
-                                                        </mat-panel-title>
-                                                      </mat-expansion-panel-header>
-                                                        <div class="row">
-                                                            <div class="mb-3 col-md-8">
-                                                                <label class="form-label" for="inputText"></label>
-                                                                <input type="text" name="name" class="form-control" id="inputText" placeholder="Nom du plat" formControlName="name">
-                                                            </div>
-                                                            <div class="mb-3 col-md-4">
-                                                                <label class="form-label" for="inputText"></label>
-                                                                <input type="text" name="name" class="form-control" id="inputText" placeholder="Prix" formControlName="name">
-                                                            </div>
-                                                        </div>
-                                                        <div class="mb-3 col-md-12">
-                                                            <label class="form-label" for="inputText"></label>
-                                                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="4"></textarea>
-                                                        </div>
-                                                        <div class="col-md-12 mb-5" style="margin-top: 38px;">
-                                                            <input type="file" class="form-control custom-file-input" id="customFile">
-                                                        </div>
-                                                    </mat-expansion-panel>
-                                                    <mat-expansion-panel (opened)="panelOpenState = true"
-                                                                         (closed)="panelOpenState = false">
-                                                    </mat-expansion-panel>
-                                                </mat-accordion>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div style="text-align: center">
-                                        <button type="submit" style="background-color: #1C283E; color: white;" class="text-left btn">Valider</button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </main>
-    </div>
-</div>
-
-<div class="card mb-3" *ngFor='let room of rooms' style="max-width: 840px; margin: auto; height: 300px;">
-    <div class="row g-0">
-      <div class="col-md-4">
-        <img [src]="room.image1"  class="img-fluid rounded-start" alt="...">
-      </div>
-      <div class="col-md-8" style="display: flex;">
-        <div class="card-body">
-          <h2 class="card-title">Nom:{{room.name}}</h2>
-          <p class="card-text">Desscriptif:{{room.descriptif}}</p>
-          <div style="display: flex;">
-            <ul>
-                <li class="card-text">Adresse: {{ room.address }}</li>
-                <li class="card-text">Code Postal: {{ room.zipcode }} </li>
-                <li class="card-text">Ville: {{ room.city }} </li>
-                <li class="card-text">Room: {{ room.country }} </li>
-              </ul>
-              <ul>
-                <li class="card-text">Nombre de lits {{ room.nbBed}} </li>
-                <li class="card-text">Nombre de m2 {{ room.squarFeet }} </li>
-              </ul>
-          </div>
-
-
-        </div>
-        <div class="underline">
-        </div>
-        <div class="col-md-4" style="width: 40%; margin: auto;">
-          <div class="row">
-            <span class="price">{{room.price | currency: 'EUR'}}</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-
-
-<div class="container rounded center-card">
-    <div class="mb-2 mb-xl-3">
-        <div class="col-md-12 mt-3">
+  <div class="main">
+    <main class="content">
+      <div class="container-fluid p-0">
+        <div class="row mb-2 mb-xl-3 m-5">
+          <div class="col-md-12 mt-3">
             <div class="col-auto d-none d-sm-block">
-                <p class="title-color">Liste des tests</p>
+              <h2 class="title-color text-success font-weight-bold">Création d'un Restaurant</h2>
             </div>
-                <div class="card">
-                    <div class="card-body border border-3">
-                        <table id="datatables-dashboard-projects" class="table table-striped my-0">
-                            <thead>
-                                <tr>
-                                    <th>Nom</th>
-                                    <th>Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <!-- <tr *ngFor="let test of listtest"> -->
-                                <tr>
-                                    <td>Toto</td>
-                                    <!-- <td>
-                                        <button (click)="onOpenDialogClick(test)" class="btn btn-primary">Modifier</button>
-                                    </td> -->
-                                    <td>
-                                        <button class="btn btn-primary">Modifier</button>
-                                    </td>
-                                    <!-- <td>
-                                        <button (click)="onDeleteDialogClick(test)" class="btn btn-danger">Supprimer</button>
-                                    </td> -->
-                                    <td>
-                                        <button class="btn btn-danger">Supprimer</button>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
+            <div class="card">
+              <div class="card-body">
+                <form>
+                  <div class="row">
+                    <div class="mb-3 col-md-6">
+                      <div class="row">
+                        <div class="mb-3 col-md-12">
+                          <label class="form-label" for="inputText"></label>
+                          <input type="text" name="name" class="form-control" id="inputText"
+                            placeholder="Nom du Restaurant" formControlName="name">
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="mb-3 col-md-6">
+                          <label class="form-label" for="inputText"></label>
+                          <input type="text" name="name" class="form-control" id="inputText" placeholder="Adresse"
+                            formControlName="name">
+                        </div>
+                        <div class="mb-3 col-md-6">
+                          <label class="form-label" for="inputText"></label>
+                          <input type="text" name="name" class="form-control" id="inputText" placeholder="Postale"
+                            formControlName="name">
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="mb-3 col-md-6">
+                          <label class="form-label" for="inputText"></label>
+                          <input type="text" name="name" class="form-control" id="inputText" placeholder="Ville"
+                            formControlName="name">
+                        </div>
+                        <div class="mb-3 col-md-6">
+                          <label class="form-label" for="inputText"></label>
+                          <input type="text" name="name" class="form-control" id="inputText" placeholder="Pays"
+                            formControlName="name">
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="mb-3 col-md-6">
+                          <label class="form-label" for="inputText"></label>
+                          <input type="text" name="name" class="form-control" id="inputText" placeholder="Prix max"
+                            formControlName="name">
+                        </div>
+                        <div class="mb-3 col-md-6">
+                          <label class="form-label" for="inputText"></label>
+                          <input type="text" name="name" class="form-control" id="inputText" placeholder="Prix min"
+                            formControlName="name">
+                        </div>
+                      </div>
+                      <div class="mb-3 col-md-12">
+                        <label class="form-label" for="inputText">Descriptif du restaurant:</label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                      </div>
+                      <div class="mt-3 col-md-12">
+                        <label class="custom-file-label" for="customFile">Image du restaurant:</label>
+                        <input type="file" class="form-control custom-file-input" id="customFile">
+                      </div>
                     </div>
-                </div>
+                    <div class="mb-3 col-md-6">
+                      <div class="row">
+                        <div class="mb-3 col-md-8">
+                          <label class="form-label" for="inputText"></label>
+                          <input type="text" name="name" class="form-control" id="inputText" placeholder="Nom du plat"
+                            formControlName="name">
+                        </div>
+                        <div class="mb-3 col-md-4">
+                          <label class="form-label" for="inputText"></label>
+                          <input type="text" name="name" class="form-control" id="inputText" placeholder="Prix"
+                            formControlName="name">
+                        </div>
+                      </div>
+                      <div class="mb-3 col-md-12">
+                        <label class="form-label" for="inputText"></label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="4"></textarea>
+                      </div>
+                      <div class="col-md-12 mb-5" style="margin-top: 38px;">
+                        <input type="file" class="form-control custom-file-input" id="customFile">
+                      </div>
+                      <div style="text-align: right">
+                        <mat-accordion>
+                          <mat-expansion-panel hideToggle>
+                            <mat-expansion-panel-header>
+                              <mat-panel-title>
+                                Ajouter
+                              </mat-panel-title>
+                            </mat-expansion-panel-header>
+                            <div class="row">
+                              <div class="mb-3 col-md-8">
+                                <label class="form-label" for="inputText"></label>
+                                <input type="text" name="name" class="form-control" id="inputText"
+                                  placeholder="Nom du plat" formControlName="name">
+                              </div>
+                              <div class="mb-3 col-md-4">
+                                <label class="form-label" for="inputText"></label>
+                                <input type="text" name="name" class="form-control" id="inputText" placeholder="Prix"
+                                  formControlName="name">
+                              </div>
+                            </div>
+                            <div class="mb-3 col-md-12">
+                              <label class="form-label" for="inputText"></label>
+                              <textarea class="form-control" id="exampleFormControlTextarea1" rows="4"></textarea>
+                            </div>
+                            <div class="col-md-12 mb-5" style="margin-top: 38px;">
+                              <input type="file" class="form-control custom-file-input" id="customFile">
+                            </div>
+                          </mat-expansion-panel>
+                          <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                          </mat-expansion-panel>
+                        </mat-accordion>
+                      </div>
+                    </div>
+                  </div>
+                  <div style="text-align: center">
+                    <button type="submit" style="background-color: #1C283E; color: white;"
+                      class="text-left btn">Valider</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
         </div>
-    </div>
+      </div>
+    </main>
+  </div>
 </div>
 
+<div class="card mb-3" *ngFor='let room of rooms' style="width: 1000px; margin: auto;">
+  <div class="row g-0">
+    <div class="col-md-4">
+      <img [src]="room.image1" class="img-fluid rounded-start" alt="...">
+    </div>
+    <div class="col-md-8" style="display: flex;">
+      <div class="card-body">
+        <h2 class="card-title fw-bold text-primary">{{room.name}}</h2>
+        <p class="card-text"><span class="detail-color">Localisation:</span> {{ room.address}} - {{ room.city}},
+          {{ room.zipcode}} | {{room.country}}</p>
+        <p class="card-text"><span class="detail-color">Descriptif:</span> {{ room.descriptif}}</p>
+        <p class="card-text"><span class="detail-color">Prix:</span> {{ room.price }} €</p>
+        <div>
+          <ul>
+            <li class="detail-color">Nombre de lits: {{ room.nbBed}} lit(s) </li>
+            <li class="detail-color">Surface en m2: {{ room.squarFeet }} </li>
+          </ul>
+        </div>
+      </div>
+      <div class="underline">
+        <button type="button" class="btn btn-primary">Voir</button>
+        <button type="button" class="btn btn-success">Editer</button>
+        <button type="button" class="btn btn-danger">Supprimer</button>
+      </div>
+    </div>
 
-
-
-
+  </div>
+</div>

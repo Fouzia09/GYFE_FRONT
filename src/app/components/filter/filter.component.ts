@@ -12,7 +12,7 @@ export class FilterComponent implements OnInit {
 
   rooms!: Room[];
   term!: '';
-  
+
  @Input() page!: string;
  //Cette variable va contenir les informations du restaurant ou de l'Hôtel
  @Input() data!: any;
@@ -21,8 +21,8 @@ export class FilterComponent implements OnInit {
 
   ngOnInit(): void {
       this.roomService.getListRoom().subscribe((data: Room[]) => {
-        this.rooms = data; 
-        
+        this.rooms = data;
+
       })
   }
 

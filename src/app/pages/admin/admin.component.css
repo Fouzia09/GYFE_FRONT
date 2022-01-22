@@ -1,0 +1,26 @@
+img {
+    height: 300px;
+    margin-bottom: 1rem!important;
+}
+
+li {
+    list-style: none;
+}
+
+ul {
+    padding-left: 0;
+}
+.detail-color{
+    color: #198754;
+    font-weight: 500;
+}
+.underline {
+    border-left: 1px solid rgba(0,0,0,.125);
+    display: inline-flex;
+    display: flex;
+    align-items: end;
+}
+.btn {
+    height: 50px;
+
+}

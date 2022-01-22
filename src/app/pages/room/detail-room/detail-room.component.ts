@@ -17,7 +17,7 @@ export class DetailRoomComponent implements OnInit {
   ngOnInit(): void {
     this.id = +this.route.snapshot.url[1].path;
     this.getRoom(this.id);
-    
+
   }
   getRoom(roomId: number){
     this.roomService.getRoom(roomId).subscribe(
@@ -26,5 +26,6 @@ export class DetailRoomComponent implements OnInit {
       }
     )
   }
+
 
 }

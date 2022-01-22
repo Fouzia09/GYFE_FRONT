@@ -27,13 +27,6 @@
         <option *ngFor="let item of rooms">{{item.price}} </option>
       </select> -->
     <mat-form-field>
-      <mat-label>Selectionner offre</mat-label>
-      <mat-select>
-        <mat-option>Hotel</mat-option>
-        <mat-option>Restaurant</mat-option>
-      </mat-select>
-    </mat-form-field>
-    <mat-form-field>
       <mat-label>Selectionner pays</mat-label>
       <mat-select>
         <mat-option *ngFor="let item of rooms" [value]="item.country">
