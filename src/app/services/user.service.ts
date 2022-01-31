@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
-import { User } from '../interfaces/user';
-import { Observable } from 'rxjs';
-import { API_ROUTE } from '../routes/api-routes';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { map, catchError, retry } from 'rxjs/operators';
+import { handleError } from '../constants/handle-http-errors';
+import { API_ROUTE } from '../routes/api-routes';
+import { User, UserOUT } from '../interfaces/user';
 
 @Injectable({
   providedIn: 'root'
@@ -33,7 +35,17 @@ export class UserService {
     return this.http.put<User>(API_ROUTE.USER.URI+`/${id}`, user);
   }
 
-  //getUserByUsername(username: string): Observable<
+  getUserByUsername(username: string): Observable<UserOUT> {
+    return (
+      this.http
+        .get<UserOUT>(`${API_ROUTE.USER.URI}/findByUsername/${username}`)
+        .pipe(map((res) => {
+            retry(3),
+            catchError(handleError);
+            return res;
+          }))
+    );
+  }
 }
 
 

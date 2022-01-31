@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { CommentService } from '../../../services/comment.service';
 import { ListCommentsComponent } from '../list-comments/list-comments.component';
 import { CommentIN } from '../../../interfaces/comment';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 
 @Component({
   selector: 'app-add-comment',
@@ -17,21 +18,23 @@ export class AddCommentComponent implements OnInit {
   pseudo!: string;
   userLoggedInfo!: any;
 
-  constructor(private router: Router, private commentService: CommentService, private fb: FormBuilder) { }
+  constructor(
+    private router: Router,
+    private commentService: CommentService,
+    private fb: FormBuilder,
+    private authService: AuthenticationService
+    ) { }
 
   ngOnInit(): void {
-    // if (localStorage.getItem('username')) {
-    //   this.pseudo = localStorage.getItem('username');
-    // }
-    // else {
-    //   this.pseudo = 'user_' + (Math.random() + 1).toString(36).substring(7);
-    // }
-    this.initAddCommentForm();
+    this.pseudo = this.authService.userLoggedUsername();
+    if (!this.pseudo) this.pseudo = 'user_' + (Math.random() + 1).toString(36).substring(7);
+
+    this.initAddCommentForm(this.pseudo);
   }
 
-  initAddCommentForm(): void {
+  initAddCommentForm(pseudo: string): void {
     this.form = this.fb.group({
-      pseudo: ['', Validators.required],
+      pseudo: [pseudo, Validators.required],
       content: ['', Validators.required],
     });
   }

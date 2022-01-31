@@ -5,5 +5,6 @@
         <p class="title mt-3">{{ comment.createdAt }}</p>
         <p class="description">{{ comment.content }}</p>
     </div>
+    <button *ngIf="showDeleteCommentBtn(comment)">test</button>
     <hr>
 </div>

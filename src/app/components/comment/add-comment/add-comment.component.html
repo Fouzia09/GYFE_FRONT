@@ -1,8 +1,7 @@
 <form [formGroup]="form" (ngSubmit)="onSubmit(form)">
     <div class="form-group">
         <div class="bg-light p-2">
-            <input type="text" placeholder="Pseudo" class="form-control ml-1 mb-2 shadow-none"
-                [value]="pseudo ? pseudo : ''" formControlName="pseudo">
+            <input type="text" placeholder="Pseudo" class="form-control ml-1 mb-2 shadow-none" formControlName="pseudo">
             <textarea placeholder="Ecrire un commentaire" class="form-control ml-1 shadow-none textarea"
                 formControlName="content"></textarea>
             <div class="mt-2 w-100 text-right">

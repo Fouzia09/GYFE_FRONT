@@ -43,10 +43,10 @@ export class AuthenticationService {
   }
 
 
-  public userLogged(): string  {
+  public userLoggedUsername(): string  {
     const token = this.tokenDecoded() as UserToken;
-    const user = token.username;
-    return user;
+    const username = token.username;
+    return username;
   }
 
   public userLoggedRoles(): string[] {
