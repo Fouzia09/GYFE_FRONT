@@ -10,10 +10,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { JwtModule } from '@auth0/angular-jwt';
 
 export function tokenGetter(): string {
-  let token;
-  const getToken = localStorage.getItem('token');
-  if (typeof getToken === 'string') token = JSON.parse(getToken);
-  return token;
+  const token = localStorage.getItem('token');
+  return token as string;
 }
 
 @NgModule({
@@ -31,7 +29,7 @@ export function tokenGetter(): string {
     JwtModule.forRoot({
       config: {
         tokenGetter,
-        allowedDomains: ['localhost:8000'],
+        allowedDomains: ['127.0.0.1:8000'],
         disallowedRoutes: []
       }
     }),

@@ -55,9 +55,10 @@ export class AuthenticationService {
     return roles;
   }
 
-  /* public tokenGetter(): string {
-    return localStorage.getItem('token');
-  } */
+  // public tokenGetter(): string {
+  //   const token = localStorage.getItem('token');
+  //   return token as string;
+  // }
 
 
 

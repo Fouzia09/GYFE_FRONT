@@ -14,4 +14,5 @@ export interface CommentOUT {
     restaurantId?: number;
     roomId?: number;
     userId?: number;
+    canBeDeleted?: boolean;
 }
