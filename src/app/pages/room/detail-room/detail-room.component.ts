@@ -22,7 +22,7 @@ export class DetailRoomComponent implements OnInit {
   getRoom(roomId: number){
     this.roomService.getRoom(roomId).subscribe(
       data=>{
-        this.room = data;console.log(this.room)
+        this.room = data;
       }
     )
   }

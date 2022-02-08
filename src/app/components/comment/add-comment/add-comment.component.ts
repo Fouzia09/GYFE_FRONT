@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { CommentService } from '../../../services/comment.service';
 import { ListCommentsComponent } from '../list-comments/list-comments.component';
 import { CommentIN } from '../../../interfaces/comment';
+import { AuthenticationService } from 'src/app/services/authentication.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-add-comment',
@@ -17,21 +19,25 @@ export class AddCommentComponent implements OnInit {
   pseudo!: string;
   userLoggedInfo!: any;
 
-  constructor(private router: Router, private commentService: CommentService, private fb: FormBuilder) { }
+  constructor(
+    private router: Router,
+    private commentService: CommentService,
+    private fb: FormBuilder,
+    private authService: AuthenticationService,
+    private userService: UserService
+    ) { }
 
   ngOnInit(): void {
-    // if (localStorage.getItem('username')) {
-    //   this.pseudo = localStorage.getItem('username');
-    // }
-    // else {
-    //   this.pseudo = 'user_' + (Math.random() + 1).toString(36).substring(7);
-    // }
-    this.initAddCommentForm();
+    this.pseudo = this.authService.userLoggedUsername();
+    if (!this.pseudo) this.pseudo = 'user_' + (Math.random() + 1).toString(36).substring(7);
+    else this.getUserLoggedInfo(this.pseudo);
+
+    this.initAddCommentForm(this.pseudo);
   }
 
-  initAddCommentForm(): void {
+  initAddCommentForm(pseudo: string): void {
     this.form = this.fb.group({
-      pseudo: ['', Validators.required],
+      pseudo: [pseudo, Validators.required],
       content: ['', Validators.required],
     });
   }
@@ -46,22 +52,26 @@ export class AddCommentComponent implements OnInit {
       if (this.userLoggedInfo) newComment.user = `api/users/${this.userLoggedInfo.id.toString()}`;
       if (this.page === 'restaurant') newComment.restaurant = `api/restaurants/${this.pageId.toString()}`;
       else if (this.page === 'room') newComment.room = `api/rooms/${this.pageId.toString()}`;
+      console.log(newComment);
 
       this.commentService.addComment(newComment).subscribe(
         () => {
           this.reload(`/room/detail/${this.pageId}`);
-          // const snackBarRef = this.snackBar.open(`Menu ajouté au panier`, '', {
-          //   duration: 2000,
-          //   verticalPosition: 'bottom'
-          // });
-          // snackBarRef.afterDismissed().subscribe(() => {
-          //   this.reload(`/room/detail/${this.pageId}`);
-          // });
         },
         (error) => {
           console.log(error);
         });
     }
+  }
+
+  getUserLoggedInfo(username: string): void {
+    this.userService.getUserByUsername(username).subscribe(
+      (userLoggedInfo) => {
+        this.userLoggedInfo = userLoggedInfo;
+      },
+      error => {
+        console.log(error);
+      });
   }
 
   async reload(url: string): Promise<boolean> {

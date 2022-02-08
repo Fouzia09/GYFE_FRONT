@@ -21,7 +21,7 @@ export class ProfileComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-     this.name =this.auth.userLogged();
+     this.name =this.auth.userLoggedUsername();
      this.roles =this.auth.userLoggedRoles();
     this.email = this.auth.userLoggedEmail();
 

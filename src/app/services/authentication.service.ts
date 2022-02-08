@@ -43,10 +43,10 @@ export class AuthenticationService {
   }
 
 
-  public userLogged(): string  {
+  public userLoggedUsername(): string  {
     const token = this.tokenDecoded() as UserToken;
-    const user = token.username;
-    return user;
+    const username = token.username;
+    return username;
   }
 
   public userLoggedRoles(): string[] {
@@ -55,9 +55,10 @@ export class AuthenticationService {
     return roles;
   }
 
-  /* public tokenGetter(): string {
-    return localStorage.getItem('token');
-  } */
+  // public tokenGetter(): string {
+  //   const token = localStorage.getItem('token');
+  //   return token as string;
+  // }
 
 
 

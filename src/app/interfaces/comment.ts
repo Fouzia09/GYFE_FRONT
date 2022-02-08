@@ -11,4 +11,8 @@ export interface CommentOUT {
     author: string;
     content: string;
     createdAt: Date;
+    restaurantId?: number;
+    roomId?: number;
+    userId?: number;
+    canBeDeleted?: boolean;
 }
