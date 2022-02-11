@@ -5,15 +5,15 @@
             <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
                 <div class="mb-3">
                   <label class="form-label">Username</label>
-                  <input type="text" name="username" class="form-control" placeholder="Username" [formControl]="username">
+                  <input type="text" name="username" class="form-control" placeholder="Saisissez votre username" [formControl]="username">
                 </div>
                 <div class="mb-3">
                   <label class="form-label">Nom</label>
-                  <input type="text" name="name" class="form-control" placeholder="name" [formControl]="name">
+                  <input type="text" name="name" class="form-control" placeholder="Saisissez votre nom" [formControl]="name">
                 </div>
                 <div class="mb-3">
                   <label class="form-label">Email</label>
-                  <input class="form-control form-control-lg" type="email"  name="email" placeholder=""  [formControl]="email" pattern="[^@]+@[^@]+\.[a-zA-Z]{2,}" required />
+                  <input class="form-control form-control-lg" type="email"  name="email" placeholder="Saisissez votre email"  [formControl]="email" pattern="[^@]+@[^@]+\.[a-zA-Z]{2,}" required />
                 </div>
                 <div class="mb-3">
                   <label class="form-label">Role</label>
