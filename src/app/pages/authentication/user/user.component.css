@@ -2,3 +2,16 @@
     font-size: 20px;
     color: navy;
 }
+
+.center-card-user {
+    width: 800px;
+    margin-top: 10px;
+}
+
+@media (max-width: 1000px) {
+  .center-card-user {
+      width: 90%;
+      margin-bottom: 100px;
+      margin-top: 5px;
+  }
+}

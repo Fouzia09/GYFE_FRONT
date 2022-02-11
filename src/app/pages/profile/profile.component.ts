@@ -1,3 +1,4 @@
+import { UserService } from './../../services/user.service';
 import { User, UserToken } from './../../interfaces/user';
 import { AuthenticationService } from './../../services/authentication.service';
 import { Component, OnInit } from '@angular/core';
@@ -12,24 +13,39 @@ import { Router } from '@angular/router';
 })
 export class ProfileComponent implements OnInit {
 
-  name!: string;
+  //@ts-ignore
+  currentuser : User;
+
+  username!: string;
   roles!: string[];
   email!: string;
   constructor(
     private auth: AuthenticationService,
-    private router: Router
+    private router: Router,
+    private currentuserService: UserService,
   ) { }
 
   ngOnInit(): void {
-     this.name =this.auth.userLoggedUsername();
+     this.username =this.auth.userLoggedUsername();
      this.roles =this.auth.userLoggedRoles();
     this.email = this.auth.userLoggedEmail();
-
 
     //la déconnection
     if(!this.auth.isLogged()){
       this.router.navigate(['/authentication/login']);
     }
+
+    this.getCurrentUser();
+  }
+
+  getCurrentUser(){
+    this.currentuserService.getCurrentUser().subscribe(
+      (data)=>{
+        //@ts-ignore
+        this.currentuser = data;
+        console.log(data)
+      }
+    )
   }
 
   //déconnexion

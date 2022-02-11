@@ -1,8 +1,8 @@
+import { Restaurant } from './../../interfaces/restaurant';
+import { RestaurantService } from './../../services/restaurant.service';
 import { Component, OnInit } from '@angular/core';
 import { RoomService } from '../../services/room.service';
 import { Room } from '../../interfaces/room';
-import { RestaurantService } from './../../../services/restaurant.service';
-import { Restaurant } from './../../../interfaces/restaurant';
 
 @Component({
   selector: 'app-admin',
@@ -13,7 +13,7 @@ export class AdminComponent implements OnInit {
 
   panelOpenState = false;
   rooms!: Room[];
-  listrestaurant : Restaurant[];
+  listrestaurant!: Restaurant[];
 
 
   constructor(private roomService: RoomService,  private restaurantService: RestaurantService) {
