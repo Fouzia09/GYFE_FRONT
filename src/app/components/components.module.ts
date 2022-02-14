@@ -2,6 +2,9 @@ import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatCardModule } from '@angular/material/card';
+import { MatSliderModule } from '@angular/material/slider';
+
 
 import { ListCommentsComponent } from './comment/list-comments/list-comments.component';
 import { CommentComponent } from './comment/comment.component';
@@ -39,6 +42,8 @@ import { AddFavoriteComponent } from './favorite/add-favorite/add-favorite.compo
     ReactiveFormsModule,
     Ng2SearchPipeModule,
     MatSelectModule,
+    MatCardModule,
+    MatSliderModule
   ],
   exports: [
     NavbarComponent,

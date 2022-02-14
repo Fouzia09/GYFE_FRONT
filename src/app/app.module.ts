@@ -9,6 +9,7 @@ import { ComponentsModule } from './components/components.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { JwtModule } from '@auth0/angular-jwt';
 
+
 export function tokenGetter(): string {
   const token = localStorage.getItem('token');
   return token as string;
@@ -33,6 +34,7 @@ export function tokenGetter(): string {
         disallowedRoutes: []
       }
     }),
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
