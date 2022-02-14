@@ -18,11 +18,10 @@ export class ListCommentsComponent implements OnInit {
   canShowDeleteCommentBtn = false;
   loading!: boolean;
 
-  constructor(
-    private commentService: CommentService,
-    private userService: UserService,
-    private authService: AuthenticationService
-    ) { }
+  constructor(private commentService: CommentService) {
+    const userLoggedInfo = localStorage.getItem('userLoggedInfo') as string;
+    this.userLoggedInfo = JSON.parse(userLoggedInfo);
+  }
 
   ngOnInit(): void {
     this.getComments(this.page, this.pageId);
@@ -46,36 +45,29 @@ export class ListCommentsComponent implements OnInit {
 
   showDeleteCommentBtn(comment: CommentOUT): void {
     // Si l'utilisateur est connecté
-    const username: string = this.authService.userLoggedUsername();
-    if (username) {
-      this.userService.getUserByUsername(username).subscribe(
-        userLoggedInfo => {
-          // Si c'est un hôtelier
-          if (userLoggedInfo.rooms && userLoggedInfo.rooms.length > 0) {
-            // Si la chambre (page courante) est la chambre gérée par l'hôtelier ; si le commentaire
-            // se trouve dans une page géré par l'hôtelier connecté
-            if (userLoggedInfo.rooms.find(room => room.id == comment.roomId)) {
-              // On affiche le bouton
-              comment.canBeDeleted = true;
-            }
-          }
-          // Si c'est un restaurateur
-          else if (userLoggedInfo.restaurants && userLoggedInfo.restaurants.length > 0) {
-            // Si le restaurant (page courante) est le restaurant géré par le restaurateur ; si le commentaire
-            // se trouve dans une page géré par le restaurateur connecté
-            if (userLoggedInfo.restaurants.find(restaurant => restaurant.id == comment.restaurantId)) {
-              // On affiche le bouton
-              comment.canBeDeleted = true;
-            }
-          }
-          // Si le commentaire a été écrit par un utilisateur connecté et que c'est un utilisateur lembda
-          else if (comment.userId && comment.userId == userLoggedInfo.id) {
-            comment.canBeDeleted = true;
-          }
-        },
-        error => {
-          console.log(error);
-        });
+    if (this.userLoggedInfo) {
+      // Si c'est un hôtelier
+      if (this.userLoggedInfo.rooms && this.userLoggedInfo.rooms.length > 0) {
+        // Si la chambre (page courante) est la chambre gérée par l'hôtelier ; si le commentaire
+        // se trouve dans une page géré par l'hôtelier connecté
+        if (this.userLoggedInfo.rooms.find(room => room.id == comment.roomId)) {
+          // On affiche le bouton
+          comment.canBeDeleted = true;
+        }
+      }
+      // Si c'est un restaurateur
+      else if (this.userLoggedInfo.restaurants && this.userLoggedInfo.restaurants.length > 0) {
+        // Si le restaurant (page courante) est le restaurant géré par le restaurateur ; si le commentaire
+        // se trouve dans une page géré par le restaurateur connecté
+        if (this.userLoggedInfo.restaurants.find(restaurant => restaurant.id == comment.restaurantId)) {
+          // On affiche le bouton
+          comment.canBeDeleted = true;
+        }
+      }
+      // Si le commentaire a été écrit par un utilisateur connecté et que c'est un utilisateur lembda
+      else if (comment.userId && comment.userId == this.userLoggedInfo.id) {
+        comment.canBeDeleted = true;
+      }
     }
     else {
       comment.canBeDeleted = false;

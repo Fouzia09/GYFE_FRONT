@@ -21,6 +21,7 @@ export interface UserToken{
 
 export interface UserOUT {
   id: number;
+  username: string;
   name: string;
   email: string;
   siret: string;

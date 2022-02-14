@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FavoriteOUTFromUserOUT } from 'src/app/interfaces/favorite';
 import { FavoriteService } from 'src/app/services/favorite.service';
 import { UserService } from 'src/app/services/user.service';
+import { UserOUT } from '../../interfaces/user';
 
 @Component({
   selector: 'app-favorite',
@@ -9,28 +10,19 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./favorite.component.css']
 })
 export class FavoriteComponent implements OnInit {
-  @Input() username!: string;
   favorites!: FavoriteOUTFromUserOUT[];
-  loading!: boolean;
 
-  constructor(private userService: UserService) { }
+  constructor() { }
 
   ngOnInit(): void {
-    this.getFavorites(this.username);
+    this.getFavorites();
   }
 
-  getFavorites(username: string): void {
-    this.loading = true;
-    this.userService.getUserByUsername(username).subscribe(
-      userLoggedInfo => {
-        this.favorites = userLoggedInfo.favorites!;
-        this.loading = false;
-      },
-      error => {
-        console.log(error);
-        this.loading = false;
-      }
-    );
+  getFavorites(): void {
+    let userLoggedInfo: UserOUT | string;
+    userLoggedInfo = localStorage.getItem('userLoggedInfo') as string;
+    userLoggedInfo = JSON.parse(userLoggedInfo) as UserOUT;
+    this.favorites = userLoggedInfo.favorites as FavoriteOUTFromUserOUT[];
   }
 
 }

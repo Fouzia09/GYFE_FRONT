@@ -24,11 +24,6 @@
       </div>
   </div>
 </div>
-<<<<<<< HEAD
-</aside>
-
-<app-favorite *ngIf="name" [username]="name"></app-favorite>
-=======
 </aside> -->
 
 
@@ -49,9 +44,9 @@
       <section>
         <div class="card" style="width: 20rem;" name="cardProfile">
           <div class="card-body">
-            <h3 class="card-title"><span class="text-success font-weight-bold">Nom:</span> {{currentuser.name}}</h3>
+            <h3 class="card-title"><span class="text-success font-weight-bold">Nom:</span> {{currentuser?.name}}</h3>
             <h3 class="card-title"><span class="text-success font-weight-bold">Username:</span> {{username}}</h3>
-            <h3 class="card-title"><span class="text-success font-weight-bold">Email:</span> {{currentuser.email}}</h3>
+            <h3 class="card-title"><span class="text-success font-weight-bold">Email:</span> {{currentuser?.email}}</h3>
             <a routerLink="/authentification/change-password" class="btn btn-primary">Modifier mon mot de passe</a>
           </div>
         </div>
@@ -71,4 +66,5 @@
     </div>
   </div>
 </div>
->>>>>>> 0131e33d39336b38040a857e7b87c1e51ad0ce27
+
+<app-favorite></app-favorite>
