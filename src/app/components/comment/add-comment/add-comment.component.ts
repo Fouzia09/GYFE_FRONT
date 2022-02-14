@@ -6,6 +6,7 @@ import { ListCommentsComponent } from '../list-comments/list-comments.component'
 import { CommentIN } from '../../../interfaces/comment';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { UserService } from 'src/app/services/user.service';
+import { UserOUT } from '../../../interfaces/user';
 
 @Component({
   selector: 'app-add-comment',
@@ -17,20 +18,21 @@ export class AddCommentComponent implements OnInit {
   @Input() pageId!: number;
   form!: FormGroup;
   pseudo!: string;
-  userLoggedInfo!: any;
+  userLoggedInfo!: UserOUT;
 
   constructor(
     private router: Router,
     private commentService: CommentService,
-    private fb: FormBuilder,
-    private authService: AuthenticationService,
-    private userService: UserService
-    ) { }
+    private fb: FormBuilder
+    ) {
+      const userLoggedInfo = localStorage.getItem('userLoggedInfo') as string;
+      this.userLoggedInfo = JSON.parse(userLoggedInfo);
+    }
 
   ngOnInit(): void {
-    this.pseudo = this.authService.userLoggedUsername();
+    console.log(this.userLoggedInfo);
+    this.pseudo = this.userLoggedInfo.username;
     if (!this.pseudo) this.pseudo = 'user_' + (Math.random() + 1).toString(36).substring(7);
-    else this.getUserLoggedInfo(this.pseudo);
 
     this.initAddCommentForm(this.pseudo);
   }
@@ -62,16 +64,6 @@ export class AddCommentComponent implements OnInit {
           console.log(error);
         });
     }
-  }
-
-  getUserLoggedInfo(username: string): void {
-    this.userService.getUserByUsername(username).subscribe(
-      userLoggedInfo => {
-        this.userLoggedInfo = userLoggedInfo;
-      },
-      error => {
-        console.log(error);
-      });
   }
 
   async reload(url: string): Promise<boolean> {

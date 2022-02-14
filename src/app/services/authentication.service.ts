@@ -32,8 +32,12 @@ export class AuthenticationService {
     data.hasOwnProperty('token') ? localStorage.setItem(this.tokenName,data.token) : this.logout();
   }
 
+  setInLocalStorage(key: string, value: any): void {
+    localStorage.setItem(key, value);
+  }
+
   logout(){
-    localStorage.removeItem(this.tokenName);
+    localStorage.clear();
     //déconnection
     this.router.navigate(['/authentication/login']);
   }
@@ -41,7 +45,6 @@ export class AuthenticationService {
   isLogged(){
     return this.getToken() !== null;
   }
-
 
   public userLoggedUsername(): string  {
     const token = this.tokenDecoded() as UserToken;
@@ -55,24 +58,17 @@ export class AuthenticationService {
     return roles;
   }
 
-  // public tokenGetter(): string {
-  //   const token = localStorage.getItem('token');
-  //   return token as string;
-  // }
-
-
-
   public tokenExpiration(): number {
     const token = this.tokenDecoded() as UserToken;
     const exp = token.exp;
     return exp;
   }
+
   public userLoggedEmail(): string {
     const token = this.tokenDecoded() as UserToken;
     const email = token.email;
     return email;
   }
-
 
   private tokenDecoded(): UserToken | boolean {
     const token = this.getToken();

@@ -2,6 +2,7 @@ import { AuthenticationService } from '../../../services/authentication.service'
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { UserService } from '../../../services/user.service';
 
 @Component({
   selector: 'app-login',
@@ -24,6 +25,7 @@ export class LoginComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private auth: AuthenticationService,
+    private userService: UserService,
     private router: Router
     ) { 
     this.username = this.fb.control('', [Validators.required, Validators.minLength(4)]);
@@ -35,7 +37,6 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    
   }
 
   onSubmit(){
@@ -49,13 +50,25 @@ export class LoginComponent implements OnInit {
     this.auth.logOn(body).subscribe(
       (data: Object)=>{
         this.auth.seTtoken(data);
-        this.goPageProfil();
+        this.setUserInLocalStorage();
         this.isLoading = false;
       },
       (error: any)=>{
         this.errorAuthentication = true;
       }
     );
+  }
+
+  setUserInLocalStorage(): void {
+    this.userService.getUserByUsername(this.auth.userLoggedUsername()).subscribe(
+      userLoggedInfo => {
+        this.auth.setInLocalStorage('userLoggedInfo', JSON.stringify(userLoggedInfo));
+        this.auth.setInLocalStorage('userString', `api/users/${userLoggedInfo.id.toString()}`);
+        this.goPageProfil();
+      },
+      error => {
+        console.log(error);
+      });
   }
 
   private goPageProfil(): void{

@@ -12,22 +12,20 @@ import { FavoriteService } from '../../../services/favorite.service';
 export class AddFavoriteComponent implements OnInit {
   @Input() item: any;
   @Input() itemUrl!: string;
-  user!: string;
+  user: string;
   favorite!: FavoriteOUT;
   isFavorite!: boolean;
 
-  constructor(
-    private favoriteService: FavoriteService,
-    private authService: AuthenticationService,
-    private userService: UserService) { }
+  constructor(private favoriteService: FavoriteService) {
+    this.user = localStorage.getItem('userString') as string;
+  }
 
   ngOnInit(): void {
-    this.getUser();
     this.getFav();
   }
 
   getFav(): void {
-    this.favoriteService.getFavoriteByItemUrl(this.item.itemUrl).subscribe(
+    this.favoriteService.getFavoriteByItemUrl(this.itemUrl).subscribe(
       data => {
         this.favorite = data;
         const userFounded = this.favorite.users.find(user => user == this.user);
@@ -72,15 +70,4 @@ export class AddFavoriteComponent implements OnInit {
         });
     }
   }
-
-  getUser(): void {
-    this.userService.getUserByUsername(this.authService.userLoggedUsername()).subscribe(
-      userLoggedInfo => {
-        this.user = `api/users/${userLoggedInfo.id.toString()}`;
-      },
-      error => {
-        console.log(error);
-      });
-  }
-
 }
