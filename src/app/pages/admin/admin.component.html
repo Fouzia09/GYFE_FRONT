@@ -154,7 +154,7 @@
       <div class="underline">
         <button type="button" class="btn btn-primary">Voir</button>
         <button type="button" class="btn btn-success">Editer</button>
-        <button type="button" class="btn btn-danger">Supprimer</button>
+        <!-- <button type="button" class="btn btn-danger" (click)="onDeleteDialogClick(room)">Supprimer</button> -->
       </div>
     </div>
 
@@ -179,6 +179,11 @@
           <div class="row">
             <button class="btn btn-lg btn-primary" [routerLink]="['/restaurant/detail', restaurant.id]">Detail</button>
           </div>
+      </div>
+      <div class="underline">
+        <button type="button" class="btn btn-primary">Voir</button>
+        <button type="button" class="btn btn-success">Editer</button>
+        <button type="button" class="btn btn-danger" (click)="onDeleteRestaurantDialogClick(restaurant)">Supprimer</button>
       </div>
       </div>
   </div>

@@ -1,8 +1,10 @@
+import { AdminDeleteComponent } from './../../pages/admin/dialog/admin-delete/admin-delete.component';
 import { Restaurant } from './../../interfaces/restaurant';
 import { RestaurantService } from './../../services/restaurant.service';
 import { Component, OnInit } from '@angular/core';
 import { RoomService } from '../../services/room.service';
 import { Room } from '../../interfaces/room';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-admin',
@@ -16,7 +18,7 @@ export class AdminComponent implements OnInit {
   listrestaurant!: Restaurant[];
 
 
-  constructor(private roomService: RoomService,  private restaurantService: RestaurantService) {
+  constructor(private roomService: RoomService,  private restaurantService: RestaurantService, private matDialog: MatDialog) {
     this.getRestaurants();
    }
 
@@ -33,6 +35,42 @@ export class AdminComponent implements OnInit {
         this.listrestaurant = data;
       }
     )
+  }
+
+  /* onDeleteDialogClick(room: Room){
+    let dialogDeleteRef = this.matDialog.open(AdminDeleteComponent,
+      {
+        data: {
+          id: room.id,
+          name: room.name,
+          descriptif: room.descriptif,
+          country: room.country,
+          city: room.city,
+          price: room.price,
+          image1: room.image1,
+          image2: room.image2,
+          image3: room.image3,
+          isKingSize: room.isKingSize,
+          nbBed: room.nbBed,
+          squarFeet: room.squarFeet,
+          address: room.address,
+          zipcode: room.zipcode,
+        },
+        width: "500px",
+        height: "275px",
+      })
+  } */
+
+  onDeleteRestaurantDialogClick(restaurant: Restaurant){
+    let dialogRef = this.matDialog.open(AdminDeleteComponent,
+      {
+        data: {
+          id: restaurant.id,
+          name: restaurant.name,
+        },
+        width: "500px",
+        height: "275px",
+      })
   }
 
 }

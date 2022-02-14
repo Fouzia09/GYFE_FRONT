@@ -3,11 +3,13 @@ import { CommonModule } from '@angular/common';
 import {MatExpansionModule} from '@angular/material/expansion';
 import { AdminRoutingModule } from './admin-routing.module';
 import { AdminComponent } from './admin.component';
+import { AdminDeleteComponent } from './dialog/admin-delete/admin-delete.component';
 
 
 @NgModule({
   declarations: [
-    AdminComponent
+    AdminComponent,
+    AdminDeleteComponent
   ],
   imports: [
     CommonModule,

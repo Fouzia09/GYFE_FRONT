@@ -33,6 +33,7 @@ export function tokenGetter(): string {
         disallowedRoutes: []
       }
     }),
+    MatDialogModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
