@@ -2,3 +2,8 @@
     font-size: 20px;
     color: navy;
 }
+
+.login-container {
+    width: 100%;
+    height: calc(100vh - 100px);
+}
