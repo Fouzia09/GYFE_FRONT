@@ -66,7 +66,7 @@ export class AddCommentComponent implements OnInit {
 
   getUserLoggedInfo(username: string): void {
     this.userService.getUserByUsername(username).subscribe(
-      (userLoggedInfo) => {
+      userLoggedInfo => {
         this.userLoggedInfo = userLoggedInfo;
       },
       error => {

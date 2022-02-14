@@ -16,6 +16,7 @@ import { AddCommentComponent } from './comment/add-comment/add-comment.component
 
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { MatSelectModule } from '@angular/material/select';
+import { AddFavoriteComponent } from './favorite/add-favorite/add-favorite.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { MatSelectModule } from '@angular/material/select';
     ListCommentsComponent,
     FavoriteComponent,
     AddCommentComponent,
+    AddFavoriteComponent,
   ],
   imports: [
     CommonModule,

@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { FavoriteOUT } from 'src/app/interfaces/favorite';
+import { Component, Input, OnInit } from '@angular/core';
+import { FavoriteOUTFromUserOUT } from 'src/app/interfaces/favorite';
 import { FavoriteService } from 'src/app/services/favorite.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-favorite',
@@ -8,23 +9,24 @@ import { FavoriteService } from 'src/app/services/favorite.service';
   styleUrls: ['./favorite.component.css']
 })
 export class FavoriteComponent implements OnInit {
-  favorites!: FavoriteOUT[];
+  @Input() username!: string;
+  favorites!: FavoriteOUTFromUserOUT[];
   loading!: boolean;
 
-  constructor(private favoriteService: FavoriteService) { }
+  constructor(private userService: UserService) { }
 
   ngOnInit(): void {
-    this.getFavorites(1);
+    this.getFavorites(this.username);
   }
 
-  getFavorites(userId: number): void {
+  getFavorites(username: string): void {
     this.loading = true;
-    this.favoriteService.getFavByUser(userId).subscribe(
-      (favorites) => {
-        this.favorites = favorites;
+    this.userService.getUserByUsername(username).subscribe(
+      userLoggedInfo => {
+        this.favorites = userLoggedInfo.favorites!;
         this.loading = false;
       },
-      (error) => {
+      error => {
         console.log(error);
         this.loading = false;
       }

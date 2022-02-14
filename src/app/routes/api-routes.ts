@@ -10,4 +10,7 @@ export const API_ROUTE = {
   RESTAURANTS: {
     URI: ROOT_URI+'/api/restaurants',
   },
+  FAVORITES: {
+    URI: ROOT_URI+'/api/favorites',
+  },
 };
