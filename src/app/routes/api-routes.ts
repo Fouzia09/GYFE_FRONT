@@ -13,4 +13,7 @@ export const API_ROUTE = {
   FAVORITES: {
     URI: ROOT_URI+'/api/favorites',
   },
+  CURRENT_USER: {
+    URI: ROOT_URI+'/api/currentuser',
+  }
 };

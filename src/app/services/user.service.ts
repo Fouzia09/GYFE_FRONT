@@ -35,6 +35,10 @@ export class UserService {
     return this.http.put<User>(API_ROUTE.USER.URI+`/${id}`, user);
   }
 
+  getCurrentUser():Observable<User[]>{
+    return this.http.get<User[]>(API_ROUTE.CURRENT_USER.URI);
+  }
+
   getUserByUsername(username: string): Observable<UserOUT> {
     return (
       this.http
