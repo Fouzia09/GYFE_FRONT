@@ -9,82 +9,82 @@
             </div>
             <div class="card">
               <div class="card-body">
-                <form>
+                <form [formGroup]="adminForm" (ngSubmit)="onSubmit()">
                   <div class="row">
                     <div class="mb-3 col-md-6">
                       <div class="row">
                         <div class="mb-3 col-md-12">
-                          <label class="form-label" for="inputText"></label>
-                          <input type="text" name="name" class="form-control" id="inputText"
-                            placeholder="Nom du Restaurant" formControlName="name">
+                          <label class="form-label"></label>
+                          <input type="text" name="name" class="form-control"
+                            placeholder="Nom du Restaurant" [formControl]="name">
                         </div>
                       </div>
                       <div class="row">
                         <div class="mb-3 col-md-6">
-                          <label class="form-label" for="inputText"></label>
-                          <input type="text" name="name" class="form-control" id="inputText" placeholder="Adresse"
-                            formControlName="name">
+                          <label class="form-label"></label>
+                          <input type="text" name="adresse" class="form-control" placeholder="Adresse"
+                          [formControl]="adresse">
                         </div>
                         <div class="mb-3 col-md-6">
-                          <label class="form-label" for="inputText"></label>
-                          <input type="text" name="name" class="form-control" id="inputText" placeholder="Postale"
-                            formControlName="name">
-                        </div>
-                      </div>
-                      <div class="row">
-                        <div class="mb-3 col-md-6">
-                          <label class="form-label" for="inputText"></label>
-                          <input type="text" name="name" class="form-control" id="inputText" placeholder="Ville"
-                            formControlName="name">
-                        </div>
-                        <div class="mb-3 col-md-6">
-                          <label class="form-label" for="inputText"></label>
-                          <input type="text" name="name" class="form-control" id="inputText" placeholder="Pays"
-                            formControlName="name">
+                          <label class="form-label"></label>
+                          <input type="text" name="zipcode" class="form-control" placeholder="Code postale"
+                          [formControl]="zipcode">
                         </div>
                       </div>
                       <div class="row">
                         <div class="mb-3 col-md-6">
-                          <label class="form-label" for="inputText"></label>
-                          <input type="text" name="name" class="form-control" id="inputText" placeholder="Prix max"
-                            formControlName="name">
+                          <label class="form-label"></label>
+                          <input type="text" name="city" class="form-control" placeholder="Ville"
+                          [formControl]="city">
                         </div>
                         <div class="mb-3 col-md-6">
-                          <label class="form-label" for="inputText"></label>
-                          <input type="text" name="name" class="form-control" id="inputText" placeholder="Prix min"
-                            formControlName="name">
+                          <label class="form-label"></label>
+                          <input type="text" name="country" class="form-control" placeholder="Pays"
+                          [formControl]="country">
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="mb-3 col-md-6">
+                          <label class="form-label"></label>
+                          <input type="text" name="rangePrice1" class="form-control" placeholder="Prix max"
+                          [formControl]="rangePrice1">
+                        </div>
+                        <div class="mb-3 col-md-6">
+                          <label class="form-label"></label>
+                          <input type="text" name="rangePrice2" class="form-control" placeholder="Prix min"
+                          [formControl]="rangePrice2">
                         </div>
                       </div>
                       <div class="mb-3 col-md-12">
-                        <label class="form-label" for="inputText">Descriptif du restaurant:</label>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                        <label class="form-label">Descriptif du restaurant:</label>
+                        <textarea class="form-control" rows="3" [formControl]="descriptif"></textarea>
                       </div>
                       <div class="mt-3 col-md-12">
-                        <label class="custom-file-label" for="customFile">Image du restaurant:</label>
-                        <input type="file" class="form-control custom-file-input" id="customFile">
+                        <label class="custom-file-label">Image du restaurant:</label>
+                        <input type="file" class="form-control custom-file-input" [formControl]="image1">
                       </div>
                     </div>
                     <div class="mb-3 col-md-6">
                       <div class="row">
                         <div class="mb-3 col-md-8">
-                          <label class="form-label" for="inputText"></label>
-                          <input type="text" name="name" class="form-control" id="inputText" placeholder="Nom du plat"
-                            formControlName="name">
+                          <label class="form-label"></label>
+                          <input type="text" name="namePlat" class="form-control" placeholder="Nom du plat"
+                          [formControl]="namePlat">
                         </div>
                         <div class="mb-3 col-md-4">
-                          <label class="form-label" for="inputText"></label>
-                          <input type="text" name="name" class="form-control" id="inputText" placeholder="Prix"
-                            formControlName="name">
+                          <label class="form-label"></label>
+                          <input type="text" name="price" class="form-control" placeholder="Prix"
+                          [formControl]="price">
                         </div>
                       </div>
                       <div class="mb-3 col-md-12">
-                        <label class="form-label" for="inputText"></label>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="4"></textarea>
+                        <label class="form-label"></label>
+                        <textarea class="form-control" rows="4"></textarea>
                       </div>
                       <div class="col-md-12 mb-5" style="margin-top: 38px;">
-                        <input type="file" class="form-control custom-file-input" id="customFile">
+                        <input type="file" class="form-control custom-file-input" >
                       </div>
-                      <div style="text-align: right">
+                      <!-- <div style="text-align: right">
                         <mat-accordion>
                           <mat-expansion-panel hideToggle>
                             <mat-expansion-panel-header>
@@ -115,7 +115,7 @@
                           <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
                           </mat-expansion-panel>
                         </mat-accordion>
-                      </div>
+                      </div> -->
                     </div>
                   </div>
                   <div style="text-align: center">
@@ -140,13 +140,13 @@
     <div class="col-md-8" style="display: flex;">
       <div class="card-body">
         <h2 class="card-title fw-bold text-primary">{{room.name}}</h2>
-        <p class="card-text"><span class="detail-color">Localisation:</span> {{ room.address}} - {{ room.city}},
-          {{ room.zipcode}} | {{room.country}}</p>
-        <p class="card-text"><span class="detail-color">Descriptif:</span> {{ room.descriptif}}</p>
+        <p class="card-text"><span class="detail-color">Localisation:</span> {{ room.address }} - {{ room.city }},
+          {{ room.zipcode }} | {{ room.country }}</p>
+        <p class="card-text"><span class="detail-color">Descriptif:</span> {{ room.descriptif }}</p>
         <p class="card-text"><span class="detail-color">Prix:</span> {{ room.price }} €</p>
         <div>
           <ul>
-            <li class="detail-color">Nombre de lits: {{ room.nbBed}} lit(s) </li>
+            <li class="detail-color">Nombre de lits: {{ room.nbBed }} lit(s) </li>
             <li class="detail-color">Surface en m2: {{ room.squarFeet }} </li>
           </ul>
         </div>
