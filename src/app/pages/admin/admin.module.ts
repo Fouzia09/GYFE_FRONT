@@ -5,11 +5,13 @@ import { AdminRoutingModule } from './admin-routing.module';
 import { AdminComponent } from './admin.component';
 import { AdminDeleteComponent } from './dialog/admin-delete/admin-delete.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { AdminEditComponent } from './dialog/admin-edit/admin-edit.component';
 
 @NgModule({
   declarations: [
     AdminComponent,
-    AdminDeleteComponent
+    AdminDeleteComponent,
+    AdminEditComponent
   ],
   imports: [
     CommonModule,
