@@ -1,5 +1,5 @@
 import { CommentOUT } from "./comment";
-import { FavoriteOUTFromUserOUT } from "./favorite";
+import { FavoriteOUT } from './favorite';
 import { RestaurantOUT } from "./restaurant";
 import { RoomOUT } from "./room";
 
@@ -27,7 +27,7 @@ export interface UserOUT {
   siret: string;
   roles: string[];
   createdAt: Date;
-  favorites?: FavoriteOUTFromUserOUT[];
+  favorites?: FavoriteOUT[];
   comments?: CommentOUT[];
   restaurants?: RestaurantOUT[];
   rooms?: RoomOUT[];

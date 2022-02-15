@@ -43,7 +43,6 @@ export class ProfileComponent implements OnInit {
       (data)=>{
         //@ts-ignore
         this.currentuser = data;
-        console.log(data)
       }
     )
   }
