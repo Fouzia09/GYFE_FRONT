@@ -1,11 +1,5 @@
-export interface FavoriteOUTFromUserOUT {
-    id: number;
-    itemName: string;
-    itemUrl: string;
-    itemImage: string;
-}
-
 export interface FavoriteOUT {
+    status: number;
     id: number;
     itemName: string;
     itemUrl: string;

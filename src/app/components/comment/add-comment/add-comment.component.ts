@@ -30,7 +30,6 @@ export class AddCommentComponent implements OnInit {
     }
 
   ngOnInit(): void {
-    console.log(this.userLoggedInfo);
     this.pseudo = this.userLoggedInfo.username;
     if (!this.pseudo) this.pseudo = 'user_' + (Math.random() + 1).toString(36).substring(7);
 

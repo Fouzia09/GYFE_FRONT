@@ -1,0 +1,103 @@
+<div class="wrapper">
+    <div class="main">
+      <main class="content">
+        <div class="container-fluid p-0">
+          <div class="row mb-2 mb-xl-3 m-5">
+            <div class="col-md-12 mt-3">
+              <div class="col-auto d-none d-sm-block">
+                <h2 class="title-color text-success font-weight-bold">Création d'un Restaurant</h2>
+              </div>
+              <div class="card">
+                <div class="card-body">
+                  <form [formGroup]="adminForm">
+                    <div class="row">
+                      <div class="mb-3 col-md-6">
+                        <div class="row">
+                          <div class="mb-3 col-md-12">
+                            <label class="form-label"></label>
+                            <input type="text" name="name" class="form-control"
+                              placeholder="Nom du Restaurant" [formControl]="name">
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="mb-3 col-md-6">
+                            <label class="form-label"></label>
+                            <input type="text" name="address" class="form-control" placeholder="Adresse"
+                            [formControl]="address">
+                          </div>
+                          <div class="mb-3 col-md-6">
+                            <label class="form-label"></label>
+                            <input type="number" name="zipcode" class="form-control" placeholder="Code postale"
+                            [formControl]="zipcode">
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="mb-3 col-md-6">
+                            <label class="form-label"></label>
+                            <input type="text" name="city" class="form-control" placeholder="Ville"
+                            [formControl]="city">
+                          </div>
+                          <div class="mb-3 col-md-6">
+                            <label class="form-label"></label>
+                            <input type="text" name="country" class="form-control" placeholder="Pays"
+                            [formControl]="country">
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="mb-3 col-md-6">
+                            <label class="form-label"></label>
+                            <input type="number" name="rangePrice1" class="form-control" placeholder="Prix max"
+                            [formControl]="rangePrice1">
+                          </div>
+                          <div class="mb-3 col-md-6">
+                            <label class="form-label"></label>
+                            <input type="number" name="rangePrice2" class="form-control" placeholder="Prix min"
+                            [formControl]="rangePrice2">
+                          </div>
+                        </div>
+                        <div class="mb-3 col-md-12">
+                          <label class="form-label">Descriptif du restaurant:</label>
+                          <textarea class="form-control" rows="3" [formControl]="descriptif"></textarea>
+                        </div>
+                        <div class="mt-3 col-md-12">
+                          <label class="custom-file-label">Image du restaurant:</label>
+                          <input type="file" class="form-control custom-file-input" name="image1" [formControl]="image1">
+                        </div>
+                      </div>
+                      <div class="mb-3 col-md-6">
+                        <div class="row">
+                          <div class="mb-3 col-md-8">
+                            <label class="form-label"></label>
+                            <input type="text" name="namePlat" class="form-control" placeholder="Nom du plat"
+                            [formControl]="namePlat">
+                          </div>
+                          <div class="mb-3 col-md-4">
+                            <label class="form-label"></label>
+                            <input type="number" name="price" class="form-control" placeholder="Prix"
+                            [formControl]="price">
+                          </div>
+                        </div>
+                        <div class="mb-3 col-md-12">
+                          <label class="form-label"></label>
+                          <textarea class="form-control" rows="4" name="descriptifPlat" [formControl]="descriptifPlat"></textarea>
+                        </div>
+                        <div class="col-md-12 mb-5" style="margin-top: 38px;">
+                          <input type="file" class="form-control custom-file-input" name="image2" [formControl]="image2">
+                        </div>
+                      </div>
+                    </div>
+                    <div style="text-align: center">
+                      <button type="submit" style="background-color: #1C283E; color: white;"
+                        class="text-left btn" (click)="editRestaurantAdmin()">Modifier</button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+  
+  

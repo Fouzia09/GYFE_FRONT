@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map, catchError, retry } from 'rxjs/operators';
 
@@ -41,14 +41,29 @@ export class FavoriteService {
   }
 
   updateFavorite(id:number, fav: UpdateFavorite): Observable<FavoriteOUT> {
+    const headers = new HttpHeaders({'Content-Type':'application/merge-patch+json; charset=utf-8'});
     return (
       this.http
-        .patch<FavoriteOUT>(`${API_ROUTE.FAVORITES.URI}/${id}`, fav)
+        .patch<FavoriteOUT>(`${API_ROUTE.FAVORITES.URI}/${id}`, fav, {headers})
         .pipe(
           map((res) => {
             retry(3),
             catchError(handleError);
             return res;
+          })
+        )
+    );
+  }
+
+  deleteFavorite(id: number): Observable<undefined> {
+    return (
+      this.http
+        .delete<undefined>(`${API_ROUTE.FAVORITES.URI}/${id}`)
+        .pipe(
+          map(() => {
+            retry(3),
+            catchError(handleError);
+            return undefined;
           })
         )
     );

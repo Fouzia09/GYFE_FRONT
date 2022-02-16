@@ -36,6 +36,10 @@ export class AuthenticationService {
     localStorage.setItem(key, value);
   }
 
+  removeInLocalStorage(key: string): void {
+    localStorage.removeItem(key);
+  }
+
   logout(){
     localStorage.clear();
     //déconnection

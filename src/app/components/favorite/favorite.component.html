@@ -1,4 +1,4 @@
-<div class="favorite-container" *ngIf="favorites">
+<div class="favorite-container" *ngIf="favorites.length > 0">
     <div class="favorite-title">
         <h5>Favoris</h5>
     </div>
@@ -15,16 +15,11 @@
             </thead>
             <tbody>
                 <tr *ngFor="let favorite of favorites">
+                    <!-- src="../../../assets/img/detail-exemple.jpg" -->
                     <td><img [src]="favorite.itemImage" class="img-thumbnail" alt="Image article" width="90"></td>
                     <td>{{ favorite.itemName }}</td>
                     <td><span [routerLink]="favorite.itemUrl">Voir plus</span></td>
-                    <td><i class="bi bi-trash"></i></td>
-                </tr>
-                <tr>
-                    <td><img src="../../../assets/img/detail-exemple.jpg" class="img-thumbnail" alt="Image article" width="90"></td>
-                    <td>Restaurant de luxe</td>
-                    <td><a href="/themes/red/account/orders/1"> Voir plus </a></td>
-                    <td><i class="bi bi-trash"></i></td>
+                    <td><i class="bi bi-trash text-danger" (click)="removeFav(favorite)"></i></td>
                 </tr>
             </tbody>
         </table>

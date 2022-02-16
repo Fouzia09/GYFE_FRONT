@@ -1,3 +1,4 @@
+import { Restaurant } from './../../../../interfaces/restaurant';
 import { RestaurantService } from './../../../../services/restaurant.service';
 import { Room } from './../../../../interfaces/room';
 import { RoomService } from './../../../../services/room.service';

@@ -1,2 +1,2 @@
-<i *ngIf="!isFavorite" class="bi bi-heart" (click)="addFav()"></i>
-<i *ngIf="isFavorite" class="bi bi-heart-fill"></i>
+<i *ngIf="!isFavorite" class="bi bi-heart text-danger" (click)="addFav(); isFavorite = !isFavorite;"></i>
+<i *ngIf="isFavorite" class="bi bi-heart-fill text-danger" (click)="removeFav(); isFavorite = !isFavorite;"></i>

@@ -1,8 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { AuthenticationService } from 'src/app/services/authentication.service';
-import { UserService } from 'src/app/services/user.service';
-import { FavoriteOUTFromUserOUT, NewFavorite, UpdateFavorite, FavoriteOUT } from '../../../interfaces/favorite';
+import { NewFavorite, UpdateFavorite, FavoriteOUT } from '../../../interfaces/favorite';
 import { FavoriteService } from '../../../services/favorite.service';
+import { UserService } from '../../../services/user.service';
 
 @Component({
   selector: 'app-add-favorite',
@@ -16,7 +16,11 @@ export class AddFavoriteComponent implements OnInit {
   favorite!: FavoriteOUT;
   isFavorite!: boolean;
 
-  constructor(private favoriteService: FavoriteService) {
+  constructor(
+    private favoriteService: FavoriteService,
+    private userService: UserService,
+    private authenticationService: AuthenticationService,
+    ) {
     this.user = localStorage.getItem('userString') as string;
   }
 
@@ -27,32 +31,31 @@ export class AddFavoriteComponent implements OnInit {
   getFav(): void {
     this.favoriteService.getFavoriteByItemUrl(this.itemUrl).subscribe(
       data => {
-        this.favorite = data;
-        const userFounded = this.favorite.users.find(user => user == this.user);
-        this.isFavorite = userFounded != null;
+        if (data.status !== 404) {
+          this.favorite = data;
+          const userFounded = this.favorite.users.find(user => user == this.user);
+          this.isFavorite = userFounded != null;
+        }
+        else {
+          this.isFavorite = false;
+        }
       },
-      error => {
-        console.log(error);
-      });
+      error => { console.log(error); });
   }
 
   addFav(): void {
     if (this.favorite == null) {
       const fav: NewFavorite = {
         itemName: this.item.name,
-        itemUrl: this.itemUrl,
+        itemUrl: `/${this.itemUrl.split('_').join('/')}`,
         itemImage: this.item.image1,
         users : [this.user]
-      }
+      };
 
       this.favoriteService.addFavorite(fav).subscribe(
-        data => {
-          const userFounded = data.users.find(user => user == this.user);
-          this.isFavorite = userFounded != null;
-        },
-        error => {
-          console.log(error);
-        });
+        () => {
+          this.updateUserInfoInLocalStorage();
+        }, error => { console.log(error); });
     }
     else {
       this.favorite.users.push(this.user)
@@ -61,13 +64,32 @@ export class AddFavoriteComponent implements OnInit {
       }
 
       this.favoriteService.updateFavorite(this.favorite.id, fav).subscribe(
-        data => {
-          const userFounded = data.users.find(user => user == this.user);
-          this.isFavorite = userFounded != null;
-        },
-        error => {
-          console.log(error);
-        });
+        () => { this.updateUserInfoInLocalStorage(); },
+        error => { console.log(error); });
     }
+  }
+
+  removeFav(): void {
+    this.favorite.users = this.favorite.users.filter(user => user !== this.user);
+
+    if (this.favorite.users.length < 1) {
+      this.favoriteService.deleteFavorite(this.favorite.id).subscribe(
+        () => { this.updateUserInfoInLocalStorage(); }, error => { console.log(error); });
+    }
+    else {
+      const fav: UpdateFavorite = {
+        users: this.favorite.users
+      }
+      this.favoriteService.updateFavorite(this.favorite.id, fav).subscribe(
+        () => { this.updateUserInfoInLocalStorage(); }, error => { console.log(error); });
+    }
+  }
+
+  updateUserInfoInLocalStorage(): void {
+    this.userService.getUserByUsername(this.authenticationService.userLoggedUsername()).subscribe(
+      userLoggedInfo => {
+        this.authenticationService.setInLocalStorage('userLoggedInfo', JSON.stringify(userLoggedInfo));
+        this.ngOnInit();
+      });
   }
 }
