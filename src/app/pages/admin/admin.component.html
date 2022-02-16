@@ -27,7 +27,7 @@
                         </div>
                         <div class="mb-3 col-md-6">
                           <label class="form-label"></label>
-                          <input type="number" name="zipcode" class="form-control" placeholder="Code postale"
+                          <input type="text" name="zipcode" class="form-control" placeholder="Code postale"
                           [formControl]="zipcode">
                         </div>
                       </div>
@@ -73,7 +73,7 @@
                         </div>
                         <div class="mb-3 col-md-4">
                           <label class="form-label"></label>
-                          <input type="number" name="price" class="form-control" placeholder="Prix"
+                          <input type="text" name="price" class="form-control" placeholder="Prix"
                           [formControl]="price">
                         </div>
                       </div>
@@ -127,6 +127,97 @@
             </div>
           </div>
 
+          <!-- ROOMS POST -->
+         <!--  <div class="col-md-12 mt-3">
+            <div class="col-auto d-none d-sm-block">
+              <h2 class="title-color text-success font-weight-bold">Création d'un Room</h2>
+            </div>
+            <div class="card">
+              <div class="card-body">
+                <form [formGroup]="adminRoomForm" (ngSubmit)="onSubmitRoom()">
+                  <div class="row">
+                    <div class="mb-3 col-md-6">
+                      <div class="row">
+                        <div class="mb-3 col-md-12">
+                          <label class="form-label"></label>
+                          <input type="text" name="name" class="form-control"
+                            placeholder="Nom du Room" [formControl]="name">
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="mb-3 col-md-6">
+                          <label class="form-label"></label>
+                          <input type="text" name="address" class="form-control" placeholder="Adresse"
+                          [formControl]="address">
+                        </div>
+                        <div class="mb-3 col-md-6">
+                          <label class="form-label"></label>
+                          <input type="number" name="zipcode" class="form-control" placeholder="Code postale"
+                          [formControl]="zipcode">
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="mb-3 col-md-6">
+                          <label class="form-label"></label>
+                          <input type="text" name="city" class="form-control" placeholder="Ville"
+                          [formControl]="city">
+                        </div>
+                        <div class="mb-3 col-md-6">
+                          <label class="form-label"></label>
+                          <input type="text" name="country" class="form-control" placeholder="Pays"
+                          [formControl]="country">
+                        </div>
+                      </div>
+                      <div class="mb-3 col-md-12">
+                        <label class="form-label">Descriptif de l'Hotel:</label>
+                        <textarea class="form-control" rows="3" [formControl]="descriptif"></textarea>
+                      </div>
+                      <div class="mt-3 col-md-12">
+                        <label class="custom-file-label">Image de la chambre:</label>
+                        <input type="file" class="form-control custom-file-input" name="image1" [formControl]="image1">
+                      </div>
+                    </div>
+                    <div class="mb-3 col-md-6">
+                      <div class="row">
+                        <div class="mb-3 col-md-8">
+                          <label class="form-label"></label>
+                          <input type="text" name="isKingSize" class="form-control" placeholder="Taille du lit"
+                          [formControl]="isKingSize">
+                        </div>
+                        <div class="mb-3 col-md-4">
+                          <label class="form-label"></label>
+                          <input type="number" name="price" class="form-control" placeholder="Prix"
+                          [formControl]="price">
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="mb-3 col-md-8">
+                          <label class="form-label"></label>
+                          <input type="number" name="nbBed" class="form-control" placeholder="Nombre de lit"
+                          [formControl]="nbBed">
+                        </div>
+                        <div class="mb-3 col-md-4">
+                          <label class="form-label"></label>
+                          <input type="number" name="squarFeet" class="form-control" placeholder="Nombre de m2"
+                          [formControl]="squarFeet">
+                        </div>
+                      </div>
+                      <div class="col-md-12 mb-5" style="margin-top: 38px;">
+                        <input type="file" class="form-control custom-file-input" name="image2" [formControl]="image2">
+                      </div>
+                    </div>
+                  </div>
+                  <div style="text-align: center">
+                    <button type="submit" style="background-color: #1C283E; color: white;"
+                      class="text-left btn">Valider</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div> -->
+
+          <!-- ROOMS POST END -->
+
           <div class="col-xs-12 p-3" *ngFor="let restaurant of listrestaurant">
             <div class="mt-3 row g-0">
               
@@ -146,7 +237,7 @@
                     <!-- <p class="card-text"  ><span class="detail-color">Prix:</span> {{ data.price | currency: 'EUR'}}</p> -->
                     <p class="card-text"  ><span class="detail-color">Prix:</span> {{ restaurant.price }} €</p>
                     <button type="button" class="btn btn-danger" (click)="onDeleteRestaurantDialogClick(restaurant)">Supprimer</button>
-                    <button type="button" class="btn btn-primary" (click)="onOpenRestaurantDialogClick(restaurant)">Modifier</button>
+                    <button type="button" class="btn btn-primary" (click)="onOpenRestaurantDialogClick(restaurant)" style="margin-left: 15px;">Modifier</button>
                   </div>
                 </div>
                 <!-- <div class="row col-md-4">
@@ -156,64 +247,30 @@
                 </div> -->
               </div>
           </div>
+          <!-- <div class="col-xs-12 p-3" *ngFor="let room of listroom">
+            <div class="mt-3 row g-0">
+              
+              <h2 class="card-title fw-bold text-primary">{{ room.name }}</h2>
+              <p class="card-text"><span class="detail-color">Localisation:</span> {{ room.address}} - {{ room.city}}, {{ room.zipcode}} | {{room.country}}</p>
+                <div class="row col-md-5">
+                    <img [src]="room.image1" class="img-thumbnail" alt="Detail image" width="100%">
+                </div>
+                <div class="col-md-7">
+                  <div class="card-body">
+                    <p class="card-text">{{ room.descriptif }}</p>
+                    <p class="card-text"><span class="detail-color">Nombre de lits:</span> {{ room.nbBed }}</p>
+                    <p class="card-text"><span class="detail-color">Surface de la chambre:</span> {{ room.squarFeet }} m2</p>
+                             <p class="card-text" *ngIf="page == 'room'"><span class="detail-color">Nombre de lits:</span> {{ data.nbBed }}</p>
+                    <p class="card-text"  ><span class="detail-color">Prix:</span> {{ room.price | currency: 'EUR'}}</p>
+                    <button type="button" class="btn btn-danger" (click)="onDeleteRoomDialogClick(room)">Supprimer</button>
+                    <button type="button" class="btn btn-primary" (click)="onOpenRoomDialogClick(room)" style="margin-left: 15px;">Modifier</button>
+                  </div>
+                </div>
+              </div>
+          </div> -->
         </div>
       </div>
     </main>
   </div>
 </div>
-
-<!-- <div class="card mb-3" *ngFor='let room of rooms' style="width: 1000px; margin: auto;">
-  <div class="row g-0">
-    <div class="col-md-4">
-      <img [src]="room.image1" class="img-fluid rounded-start" alt="...">
-    </div>
-    <div class="col-md-8" style="display: flex;">
-      <div class="card-body">
-        <h2 class="card-title fw-bold text-primary">{{room.name}}</h2>
-        <p class="card-text"><span class="detail-color">Localisation:</span> {{ room.address }} - {{ room.city }},
-          {{ room.zipcode }} | {{ room.country }}</p>
-        <p class="card-text"><span class="detail-color">Descriptif:</span> {{ room.descriptif }}</p>
-        <p class="card-text"><span class="detail-color">Prix:</span> {{ room.price }} €</p>
-        <div>
-          <ul>
-            <li class="detail-color">Nombre de lits: {{ room.nbBed }} lit(s) </li>
-            <li class="detail-color">Surface en m2: {{ room.squarFeet }} </li>
-          </ul>
-        </div>
-      </div>
-      <div class="underline">
-        <button type="button" class="btn btn-primary">Voir</button>
-        <button type="button" class="btn btn-success">Editer</button>
-        <button type="button" class="btn btn-danger" (click)="onDeleteDialogClick(room)">Supprimer</button>
-      </div>
-    </div>
-
-  </div>
-</div> -->
-<!-- <div class="card mb-3" *ngFor="let restaurant of listrestaurant" style="max-width: 1140px; margin: auto; height: 300px;">
-  <div class="row g-0">
-      <div class="col-md-4">
-          <img [src]="restaurant.image1" class="img-fluid rounded-start" alt="...">
-        </div>
-        <div class="col-md-8" style="display: flex;">
-          <div class="card-body">
-            <h2 class="card-title">{{ restaurant.name }}</h2>
-            <p class="card-text">{{ restaurant.descriptif }}</p>
-          </div>
-          <div class="underline">
-          </div>
-          <div class="col-md-4" style="width: 40%; margin: auto;">
-            <div class="row">
-              <span class="price">{{ restaurant.price | currency: 'EUR'}}</span>
-            </div>
-            <div class="underline">
-              <button type="button" class="btn btn-success">Editer</button>
-              <button type="button" class="btn btn-danger" (click)="onDeleteRestaurantDialogClick(restaurant)">Supprimer</button>
-            </div>
-          
-      </div>
-      
-      </div>
-  </div>
-</div> -->
 

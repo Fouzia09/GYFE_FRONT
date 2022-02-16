@@ -1,3 +1,5 @@
+import { AdminRoomDeleteComponent } from './dialog/admin-room-delete/admin-room-delete.component';
+import { AdminRoomEditComponent } from './dialog/admin-room-edit/admin-room-edit.component';
 import { AdminEditComponent } from './dialog/admin-edit/admin-edit.component';
 import { AdminDeleteComponent } from './../../pages/admin/dialog/admin-delete/admin-delete.component';
 import { Restaurant } from '../../interfaces/restaurant';
@@ -16,7 +18,7 @@ import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms'
 export class AdminComponent implements OnInit {
 
   panelOpenState = false;
-  rooms!: Room[];
+  listroom!: Room[];
   listrestaurant!: Restaurant[];
   isLoading: boolean = false;
   errorApi: boolean = false;
@@ -41,6 +43,8 @@ export class AdminComponent implements OnInit {
   //@ts-ignore
   image2: FormControl;
   //@ts-ignore
+  image3: FormControl;
+  //@ts-ignore
   rangePrice2: FormControl;
   //@ts-ignore
   rangePrice1: FormControl;
@@ -51,6 +55,15 @@ export class AdminComponent implements OnInit {
   //@ts-ignore
   adminForm: FormGroup;
 
+  //@ts-ignore
+  isKingSize: FormControl;
+  //@ts-ignore
+  nbBed: FormControl;
+  //@ts-ignore
+  squarFeet: FormControl;
+  //@ts-ignore
+  adminRoomForm: FormGroup;
+
 
   constructor(
     private roomService: RoomService,  
@@ -58,14 +71,16 @@ export class AdminComponent implements OnInit {
     private matDialog: MatDialog, 
     private fb: FormBuilder) {
     this.getRestaurants();
+    this.getRooms();
    }
 
   ngOnInit(): void {
-    this.roomService.getListRoom().subscribe((res: Room[]) => {
-      this.rooms = res;
+    /* this.roomService.getListRoom().subscribe((res: Room[]) => {
+      this.listroom = res;
 
-    })
+    }) */
     this.createForm();
+    //this.createRoomForm();
   }
   getRestaurants(){
     this.restaurantService.getRestaurants().subscribe(
@@ -75,29 +90,13 @@ export class AdminComponent implements OnInit {
     )
   }
 
-  /* onDeleteDialogClick(room: Room){
-    let dialogDeleteRef = this.matDialog.open(AdminDeleteComponent,
-      {
-        data: {
-          id: room.id,
-          name: room.name,
-          descriptif: room.descriptif,
-          country: room.country,
-          city: room.city,
-          price: room.price,
-          image1: room.image1,
-          image2: room.image2,
-          image3: room.image3,
-          isKingSize: room.isKingSize,
-          nbBed: room.nbBed,
-          squarFeet: room.squarFeet,
-          address: room.address,
-          zipcode: room.zipcode,
-        },
-        width: "500px",
-        height: "275px",
-      })
-  } */
+  getRooms(){
+    this.roomService.getListRoom().subscribe(
+      (      data: Room[])=>{
+        this.listroom = data;
+      }
+    )
+  }
 
   onDeleteRestaurantDialogClick(restaurant: Restaurant){
     let dialogRestaurantRef = this.matDialog.open(AdminDeleteComponent,
@@ -110,6 +109,18 @@ export class AdminComponent implements OnInit {
         height: "275px",
       })
   }
+
+  /* onDeleteRoomDialogClick(room: Room){
+    let dialogRoomRef = this.matDialog.open(AdminRoomDeleteComponent,
+      {
+        data: {
+          id: room.id,
+          name: room.name,
+        },
+        width: "500px",
+        height: "275px",
+      })
+  } */
 
   onOpenRestaurantDialogClick(restaurant: Restaurant){
     let dialogRef = this.matDialog.open(AdminEditComponent,
@@ -135,8 +146,33 @@ export class AdminComponent implements OnInit {
       })
   }
 
+  /* onOpenRoomDialogClick(room: Room){
+    let dialogRef = this.matDialog.open(AdminRoomEditComponent,
+      {
+        data: {
+          id: room.id,
+          name: room.name,
+          descriptif: room.descriptif,
+          country: room.country,
+          city: room.city,
+          price: room.price,
+          image1: room.image1,
+          image2: room.image2,
+          image3: room.image3,
+          isKingSize: room.isKingSize,
+          nbBed: room.nbBed,
+          squarFeet: room.squarFeet,
+          address: room.address,
+          zipcode: room.zipcode,
+        },
+        width: "1000px",
+        height: "800px",
+      })
+  } */
+
   onSubmit(){
     const body: Restaurant = {
+      id: this.adminForm.value.id,
       name: this.adminForm.value.name,
       descriptif: this.adminForm.value.descriptif,
       country: this.adminForm.value.country,
@@ -178,6 +214,50 @@ export class AdminComponent implements OnInit {
     );
   }
 
+  /* onSubmitRoom(){
+    const body: Room = {
+      id: this.adminRoomForm.value.id,
+      name: this.adminRoomForm.value.name,
+      descriptif: this.adminRoomForm.value.descriptif,
+      country: this.adminRoomForm.value.country,
+      city: this.adminRoomForm.value.city,
+      price: this.adminRoomForm.value.price,
+      image1: this.adminRoomForm.value.image1,
+      image2: this.adminRoomForm.value.image2,
+      image3: this.adminRoomForm.value.image3,
+      isKingSize: this.adminRoomForm.value.isKingSize,
+      nbBed: this.adminRoomForm.value.nbBed,
+      squarFeet: this.adminRoomForm.value.squarFeet,
+      address: this.adminRoomForm.value.address,
+      zipcode: this.adminRoomForm.value.zipcode
+    }
+    this.isLoading = true;
+
+    this.roomService.postRoom(body).subscribe(
+      (data: any)=>{
+        this.success = true;
+        this.isLoading = false;
+        setTimeout(()=>{
+          this.success = false;
+        }, 5000)
+        console.log(body);
+        //Nettoie le champs après l'envoie
+        this.resetRoomForm();
+        this.getRooms();
+      },
+      (error: any)=>{
+        this.errorApi = true;
+        this.isLoading = false;
+        setTimeout(()=>{
+          this.errorApi = false;
+        }, 15000)
+        //console.log('PAS ENVOYE');
+        //Nettoie le champs après l'envoie
+        
+      }
+    );
+  } */
+
   private createForm(): void{
     this.name = this.fb.control('', [Validators.required, Validators.minLength(2)]);
     this.descriptif = this.fb.control('', [Validators.required, Validators.minLength(4)]);
@@ -209,6 +289,38 @@ export class AdminComponent implements OnInit {
     });
   }
 
+
+  /* private createRoomForm(): void{
+    this.name = this.fb.control('', [Validators.required, Validators.minLength(2)]);
+    this.descriptif = this.fb.control('', [Validators.required, Validators.minLength(4)]);
+    this.country = this.fb.control('', [Validators.required]);
+    this.city = this.fb.control('', [Validators.required]);
+    this.price = this.fb.control('', [Validators.required]);
+    this.image1 = this.fb.control('', [Validators.required]);
+    this.image2 = this.fb.control('', [Validators.required]);
+    this.image3 = this.fb.control('', [Validators.required]);
+    this.isKingSize = this.fb.control('', [Validators.required]);
+    this.nbBed = this.fb.control('', [Validators.required]);
+    this.squarFeet = this.fb.control('', [Validators.required]);
+    this.address = this.fb.control('', [Validators.required]);
+    this.zipcode = this.fb.control('', [Validators.required]);
+    this.adminRoomForm = this.fb.group({
+      name: this.name,
+      descriptif: this.descriptif,
+      country: this.country,
+      city: this.city,
+      price: this.price,
+      image1: this.image1,
+      image2: this.image2,
+      image3: this.image3,
+      isKingSize: this.isKingSize,
+      nbBed: this.nbBed,
+      squarFeet: this.squarFeet,
+      address: this.address,
+      zipcode: this.zipcode,
+    });
+  } */
+
   private resetForm(): void{
     this.adminForm.reset({
       name: '',
@@ -226,5 +338,23 @@ export class AdminComponent implements OnInit {
       zipcode: '',
     });
   }
+
+  /* private resetRoomForm(): void{
+    this.adminRoomForm.reset({
+      name: '',
+      descriptif: '',
+      country: '',
+      city: '',
+      price: '',
+      image1: '',
+      image2: '',
+      image3: '',
+      isKingSize: '',
+      nbBed: '',
+      squarFeet: '',
+      address: '',
+      zipcode: '',
+    });
+  } */
 
 }

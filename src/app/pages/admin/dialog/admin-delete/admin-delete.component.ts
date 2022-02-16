@@ -15,7 +15,7 @@ export class AdminDeleteComponent implements OnInit {
   success: boolean = false;
 
   constructor(
-    @Inject(MAT_DIALOG_DATA) public data: Room,
+    @Inject(MAT_DIALOG_DATA) public data: Restaurant,
     private matDialogRef: MatDialogRef<AdminDeleteComponent>,
     private restaurantService: RestaurantService,
   ) { }
