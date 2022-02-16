@@ -1,3 +1,4 @@
+import { API_ROUTE } from './../routes/api-routes';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
 import { Observable } from 'rxjs';
@@ -33,7 +34,7 @@ export class RoomService {
     }
 
     postRoom(room: Room):Observable<Room>{
-      return this.http.post<Room>(`${BASE_API}/rooms/`, room);
+      return this.http.post<Room>(API_ROUTE.ROOMS.URI, room);
     }
   
     deleteRoom(id: number){

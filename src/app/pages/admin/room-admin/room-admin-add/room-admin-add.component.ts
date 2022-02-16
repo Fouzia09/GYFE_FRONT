@@ -1,8 +1,7 @@
+import { Room } from 'src/app/interfaces/room';
 import { RoomAdminEditComponent } from './../../dialog/room-admin-edit/room-admin-edit.component';
 import { RoomService } from './../../../../services/room.service';
 import { RoomAdminDeleteComponent } from './../../dialog/room-admin-delete/room-admin-delete.component';
-import { Room } from 'src/app/interfaces/room';
-
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
@@ -39,7 +38,6 @@ export class RoomAdminAddComponent implements OnInit {
   address: FormControl;
   //@ts-ignore
   zipcode: FormControl;
-
   //@ts-ignore
   isKingSize: FormControl;
   //@ts-ignore
@@ -54,7 +52,6 @@ export class RoomAdminAddComponent implements OnInit {
     private roomService: RoomService,  
     private matDialog: MatDialog, 
     private fb: FormBuilder) {
-    this.getRooms();
    }
 
   ngOnInit(): void {
@@ -105,7 +102,7 @@ export class RoomAdminAddComponent implements OnInit {
       })
   }
 
-  onSubmit(){
+  onSubmitRoom(){
     const body: Room = {
       id: this.adminRoomForm.value.id,
       name: this.adminRoomForm.value.name,
@@ -134,7 +131,6 @@ export class RoomAdminAddComponent implements OnInit {
         console.log(body);
         //Nettoie le champs après l'envoie
         this.resetForm();
-        this.getRooms();
       },
       (error: any)=>{
         this.errorApi = true;

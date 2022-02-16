@@ -2,6 +2,7 @@ import { RoomAdminListComponent } from './room-admin/room-admin-list/room-admin-
 import { RoomAdminAddComponent } from './room-admin/room-admin-add/room-admin-add.component';
 import { RestaurantAdminListComponent } from './restaurant-admin/restaurant-admin-list/restaurant-admin-list.component';
 import { RestaurantAdminAddComponent } from './restaurant-admin/restaurant-admin-add/restaurant-admin-add.component';
+import { SuperAdminComponent } from './super-admin/super-admin.component';
 import { AdminComponent } from './admin.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -12,6 +13,7 @@ const routes: Routes = [
   {path: 'restaurant-admin-list', component: RestaurantAdminListComponent},
   {path: 'room-admin-add', component: RoomAdminAddComponent},
   {path: 'room-admin-list', component: RoomAdminListComponent},
+  {path: 'super-admin', component: SuperAdminComponent}
 ];
 
 @NgModule({

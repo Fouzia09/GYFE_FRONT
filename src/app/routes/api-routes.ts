@@ -15,5 +15,8 @@ export const API_ROUTE = {
   },
   CURRENT_USER: {
     URI: ROOT_URI+'/api/currentuser',
-  }
+  },
+  ROOMS: {
+    URI: ROOT_URI+'/api/rooms',
+  },
 };
