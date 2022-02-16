@@ -23,6 +23,7 @@ export class ListRoomComponent implements OnInit {
       this.rooms = res; 
      
     })
+    
   }
 
 }
