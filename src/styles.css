@@ -24,4 +24,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   padding-bottom: 150px;
 }
 
-
+.space-container {
+  width: 100%;
+  height: calc(100vh - 100px);
+}
