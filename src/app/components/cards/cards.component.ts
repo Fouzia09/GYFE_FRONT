@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Room } from 'src/app/interfaces/room';
+import { RoomService } from 'src/app/services/room.service';
 
 
 @Component({
@@ -10,9 +13,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CardsComponent implements OnInit {
 
-  constructor() {}
+  
+  constructor(private roomService: RoomService) {}
 
-  ngOnInit() {}
-
+  ngOnInit() {
+    
+  }
   
 }
