@@ -110,7 +110,7 @@ export class AdminComponent implements OnInit {
       namePlat: this.adminForm.value.namePlat,
       descriptifPlat: '',
       price: this.adminForm.value.price,
-      image1: this.adminForm.value.image1,
+      image1: '',
       image2: '',
       image3: '',
       descriptifPlat2: '',
