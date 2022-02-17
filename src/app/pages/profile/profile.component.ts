@@ -63,7 +63,7 @@ export class ProfileComponent implements OnInit {
           plainPassword: currentuser.plainPassword,
         },
         width: "500px",
-        height: "400px",
+        height: "450px",
       })
   }
 
