@@ -19,7 +19,6 @@ export function tokenGetter(): string {
   declarations: [
     AppComponent,
     LayoutComponent,
-
   ],
   imports: [
     BrowserModule,

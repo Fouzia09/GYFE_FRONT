@@ -13,7 +13,7 @@ import { User } from 'src/app/interfaces/user';
 export class AdminEditComponent implements OnInit {
 
   success: boolean = false;
-  listrestaurant!: Restaurant[];
+
 
   //@ts-ignore
   name: FormControl;
