@@ -57,8 +57,10 @@
         <aside>
         <div class="card"  style="width: 20rem;" name="cardAdmin">
           <div class="card-body row"><br>
-              <div class="col-md-6">
-                <button routerLink="/admin/admin" class="btn btn-primary">Administration</button>
+              <div class="col-md-6" *ngFor="let role of roles">
+                <button routerLink="/admin/super-admin" class="btn btn-primary" *ngIf="role=='ROLE_ADMIN'">Administration</button>
+                <button routerLink="/admin/restaurant-admin-list" class="btn btn-primary" *ngIf="role=='ROLE_CHEF'">Gestion restaurants</button>
+                <button routerLink="/admin/room-admin-list" class="btn btn-primary" *ngIf="role=='ROLE_HOTELIER'">Gestion hotels</button>
               </div>
               <div class="col-md-6">
                 <button href="/authentication/login" (click)="logout()" class="btn btn-danger">Déconnexion</button>
