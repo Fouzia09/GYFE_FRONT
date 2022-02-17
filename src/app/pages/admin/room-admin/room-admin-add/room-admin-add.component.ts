@@ -45,13 +45,15 @@ export class RoomAdminAddComponent implements OnInit {
   //@ts-ignore
   squarFeet: FormControl;
   //@ts-ignore
-  adminRoomForm: FormGroup;
+  adminForm: FormGroup;
 
 
   constructor(
     private roomService: RoomService,  
     private matDialog: MatDialog, 
-    private fb: FormBuilder) {
+    private fb: FormBuilder
+    ) {
+      this.getRooms();
    }
 
   ngOnInit(): void {
@@ -102,35 +104,36 @@ export class RoomAdminAddComponent implements OnInit {
       })
   }
 
-  onSubmitRoom(){
+  onSubmit(){
     const body: Room = {
-      id: this.adminRoomForm.value.id,
-      name: this.adminRoomForm.value.name,
-      descriptif: this.adminRoomForm.value.descriptif,
-      country: this.adminRoomForm.value.country,
-      city: this.adminRoomForm.value.city,
-      price: this.adminRoomForm.value.price,
-      image1: this.adminRoomForm.value.image1,
-      image2: this.adminRoomForm.value.image2,
-      image3: this.adminRoomForm.value.image3,
-      isKingSize: this.adminRoomForm.value.isKingSize,
-      nbBed: this.adminRoomForm.value.nbBed,
-      squarFeet: this.adminRoomForm.value.squarFeet,
-      address: this.adminRoomForm.value.address,
-      zipcode: this.adminRoomForm.value.zipcode
+      id: this.adminForm.value.id,
+      name: this.adminForm.value.name,
+      descriptif: this.adminForm.value.descriptif,
+      country: this.adminForm.value.country,
+      city: this.adminForm.value.city,
+      price: this.adminForm.value.price,
+      image1: this.adminForm.value.image1,
+      image2: this.adminForm.value.image2,
+      image3: this.adminForm.value.image3,
+      isKingSize: this.adminForm.value.isKingSize,
+      nbBed: this.adminForm.value.nbBed,
+      squarFeet: this.adminForm.value.squarFeet,
+      address: this.adminForm.value.address,
+      zipcode: this.adminForm.value.zipcode
     }
     this.isLoading = true;
 
+
     this.roomService.postRoom(body).subscribe(
       (data: any)=>{
-        this.success = true;
+        /* this.success = true;
         this.isLoading = false;
         setTimeout(()=>{
           this.success = false;
-        }, 5000)
-        console.log(body);
+        }, 5000) */
+        console.log(body.price);
         //Nettoie le champs après l'envoie
-        this.resetForm();
+        //this.resetForm();
       },
       (error: any)=>{
         this.errorApi = true;
@@ -160,7 +163,7 @@ export class RoomAdminAddComponent implements OnInit {
     this.squarFeet = this.fb.control('', [Validators.required]);
     this.address = this.fb.control('', [Validators.required]);
     this.zipcode = this.fb.control('', [Validators.required]);
-    this.adminRoomForm = this.fb.group({
+    this.adminForm = this.fb.group({
       name: this.name,
       descriptif: this.descriptif,
       country: this.country,
@@ -178,7 +181,7 @@ export class RoomAdminAddComponent implements OnInit {
   }
 
   private resetForm(): void{
-    this.adminRoomForm.reset({
+    this.adminForm.reset({
       name: '',
       descriptif: '',
       country: '',

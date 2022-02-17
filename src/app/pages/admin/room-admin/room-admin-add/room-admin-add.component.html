@@ -9,7 +9,7 @@
               </div>
               <div class="card">
                 <div class="card-body">
-                  <form [formGroup]="adminRoomForm" (ngSubmit)="onSubmitRoom()">
+                  <form [formGroup]="adminForm" (ngSubmit)="onSubmit()">
                     <div class="row">
                       <div class="mb-3 col-md-6">
                         <div class="row">
@@ -59,7 +59,7 @@
                             <select name="isKingSize" class="form-control form-select" [formControl]="isKingSize" required>
                               <option [ngValue]="true">Grand</option>
                               <option [ngValue]="false">Petit</option>
-                          </select>
+                            </select>
                           </div>
                           <div class="mb-3 col-md-4">
                             <label class="form-label"></label>
