@@ -46,8 +46,10 @@ export class ForgetPasswordComponent implements OnInit {
       email: this.resetPasswordForm.value.email,
       plainPassword: this.generatePassword(),
     }
+    console.log(body.plainPassword)
+
       //@ts-ignore
-      this.userService.patchResetPasswordUser(body, this.email).subscribe(
+      this.userService.patchResetPasswordUser(body, body.email).subscribe(
         ()=>{
           console.log(body.plainPassword)
           /* this.success = true;
