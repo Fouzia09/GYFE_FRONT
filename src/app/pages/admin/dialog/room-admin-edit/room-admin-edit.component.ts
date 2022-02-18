@@ -12,7 +12,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 export class RoomAdminEditComponent implements OnInit {
 
   success: boolean = false;
-  listrestaurant!: Room[];
+  listroom!: Room[];
 
   //@ts-ignore
   name: FormControl;
@@ -48,7 +48,7 @@ export class RoomAdminEditComponent implements OnInit {
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: Room,
     private matDialogRef: MatDialogRef<RoomAdminEditComponent>,
-    private restaurantService: RoomService,
+    private roomService: RoomService,
     private fb: FormBuilder,
   ) { }
 
@@ -108,13 +108,13 @@ export class RoomAdminEditComponent implements OnInit {
       zipcode: this.adminRoomForm.value.zipcode
     }
     //@ts-ignore
-    this.restaurantService.updateRestaurant(body, this.data.id).subscribe(
+    this.roomService.updateRoom(body, this.data.id).subscribe(
       ()=>{
         this.success = true;
         setTimeout(()=>{
           this.success = false;
           location.reload();
-        }, 5000)
+        }, 3000)
       }
     )
   }
