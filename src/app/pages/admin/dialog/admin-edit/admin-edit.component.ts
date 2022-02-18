@@ -69,7 +69,7 @@ export class AdminEditComponent implements OnInit {
         setTimeout(()=>{
           this.success = false;
           location.reload();
-        }, 5000)
+        }, 3000)
       }
     )
   }
