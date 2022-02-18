@@ -1,4 +1,3 @@
-import { UserService } from 'src/app/services/user.service';
 import { RoomAdminEditComponent } from './../../dialog/room-admin-edit/room-admin-edit.component';
 import { RoomAdminDeleteComponent } from './../../dialog/room-admin-delete/room-admin-delete.component';
 import { RoomService } from './../../../../services/room.service';
@@ -13,9 +12,6 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class RoomAdminListComponent implements OnInit {
 
-  //@ts-ignore
-  currentuser : User;
-
   listroom!: Room[];
   isLoading: boolean = false;
   errorApi: boolean = false;
@@ -25,28 +21,17 @@ export class RoomAdminListComponent implements OnInit {
   constructor(
     private roomService: RoomService,  
     private matDialog: MatDialog, 
-    private currentuserService: UserService,
     ) {
     this.getRooms();
    }
 
   ngOnInit(): void {
-    this.getCurrentUser();
   }
 
   getRooms(){
     this.roomService.getListRoom().subscribe(
       (      data: Room[])=>{
         this.listroom = data;
-      }
-    )
-  }
-
-  getCurrentUser(){
-    this.currentuserService.getCurrentUser().subscribe(
-      (data)=>{
-        //@ts-ignore
-        this.currentuser = data;
       }
     )
   }
