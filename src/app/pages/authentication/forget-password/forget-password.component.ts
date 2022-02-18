@@ -1,4 +1,7 @@
-import { Component,OnInit } from '@angular/core';
+import { User } from 'src/app/interfaces/user';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { UserService } from 'src/app/services/user.service';
+import { Component, OnInit, Inject } from '@angular/core';
 import { FormBuilder,FormGroup,Validators } from '@angular/forms';
 import { first,finalize } from 'rxjs/operators';
 import { AuthenticationService } from './../../../services/authentication.service';
@@ -10,37 +13,61 @@ import { AuthenticationService } from './../../../services/authentication.servic
   styleUrls: ['./forget-password.component.css']
 })
 export class ForgetPasswordComponent implements OnInit {
-  form!: FormGroup;
   loading = false;
   submitted = false;
+  success: boolean = false;
 
 
-  constructor(private formBuilder: FormBuilder,
-    private authenticationService: AuthenticationService) {}
+  //@ts-ignore
+  email: FormControl;
+  //@ts-ignore
+  resetPasswordForm: FormGroup;
+
+
+  constructor(
+    private fb: FormBuilder,
+    private userService: UserService,
+  ) {
+    this.createForm();
+  }
 
   ngOnInit(): void {
-    this.form = this.formBuilder.group({
-      email: ['', [Validators.required, Validators.email]]
+  }
+
+  private createForm(): void{
+    this.email = this.fb.control('', [Validators.required]);
+    this.resetPasswordForm = this.fb.group({
+      email: this.email,
     });
   }
 
-  // convenience getter for easy access to form fields
-  get f() {
-    return this.form.controls;
-  }
-  onSubmit() {
-    this.submitted = true;
-
-    // stop here if form is invalid
-    if (this.form.invalid) {
-      return;
+  resetPasswordUser(){
+    const body = {
+      email: this.resetPasswordForm.value.email,
+      plainPassword: this.generatePassword(),
     }
+      //@ts-ignore
+      this.userService.patchResetPasswordUser(body, this.email).subscribe(
+        ()=>{
+          console.log(body.plainPassword)
+          /* this.success = true;
+          setTimeout(()=>{
+            this.success = false;
+            location.reload();
+          }, 5000) */
+          //this.resetForm();
+        }
+      )
+  }
 
-    this.loading = true;
-    this.authenticationService.forgotPassword(this.f['email'].value)
-      .pipe(first())
-      .pipe(finalize(() => this.loading = false))
-      .subscribe({});
+  generatePassword() {
+    var length = 8,
+        charset = "aaabbbcccdddeeeafffggghhhiiijjj!%@&;$+=?kkklllmmmnnnooopppaqqqrrrssstttuuuvvvawww!%@&;$+=?xxxyyyzzz000111222333444555666777888999!%@&;$+=?AAAaBBBCCCDDDEEEFFFGGG!%@&;$+=?HHHIIIJJJKKKLLLMMMNNNOOOPPPQQQRRRSSST!%@&;$+=?TTUUUVVVWWWXXXYYYZZZ",
+        retVal = "";
+    for (var i = 0, n = charset.length; i < length; ++i) {
+        retVal += charset.charAt(Math.floor(Math.random() * n));
+    }
+    return retVal;
   }
 
 }

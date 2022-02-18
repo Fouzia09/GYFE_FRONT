@@ -39,6 +39,10 @@ export class UserService {
     return this.http.get<User[]>(API_ROUTE.CURRENT_USER.URI);
   }
 
+  patchResetPasswordUser(user: User, email: string):Observable<User>{
+    return this.http.patch<User>(API_ROUTE.USER.URI+`/${email}`+`reset-password`, user);
+  }
+
   getUserByUsername(username: string): Observable<UserOUT> {
     return (
       this.http
