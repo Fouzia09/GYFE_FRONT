@@ -1,7 +1,9 @@
+import { AuthenticationService } from 'src/app/services/authentication.service';
+import { UserService } from 'src/app/services/user.service';
 import { FormBuilder, Validators } from '@angular/forms';
 import { RoomService } from './../../../../services/room.service';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { Room } from './../../../../interfaces/room';
+import { Room, RoomOUT } from './../../../../interfaces/room';
 import { Component, OnInit, Inject } from '@angular/core';
 
 @Component({
@@ -12,7 +14,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 export class RoomAdminEditComponent implements OnInit {
 
   success: boolean = false;
-  listroom!: Room[];
+  listroom!: RoomOUT[];
 
   //@ts-ignore
   name: FormControl;
@@ -46,10 +48,12 @@ export class RoomAdminEditComponent implements OnInit {
 
 
   constructor(
-    @Inject(MAT_DIALOG_DATA) public data: Room,
+    @Inject(MAT_DIALOG_DATA) public data: any,
     private matDialogRef: MatDialogRef<RoomAdminEditComponent>,
     private roomService: RoomService,
     private fb: FormBuilder,
+    private userService: UserService,
+    private authenticationService: AuthenticationService
   ) { }
 
   ngOnInit(): void {
@@ -97,7 +101,7 @@ export class RoomAdminEditComponent implements OnInit {
       descriptif: this.adminRoomForm.value.descriptif,
       country: this.adminRoomForm.value.country,
       city: this.adminRoomForm.value.city,
-      price: this.adminRoomForm.value.price,
+      price: this.adminRoomForm.value.price.toString(),
       image1: this.adminRoomForm.value.image1,
       image2: this.adminRoomForm.value.image2,
       image3: this.adminRoomForm.value.image3,
@@ -105,7 +109,7 @@ export class RoomAdminEditComponent implements OnInit {
       nbBed: this.adminRoomForm.value.nbBed,
       squarFeet: this.adminRoomForm.value.squarFeet,
       address: this.adminRoomForm.value.address,
-      zipcode: this.adminRoomForm.value.zipcode
+      zipcode: this.adminRoomForm.value.zipcode.toString()
     }
     //@ts-ignore
     this.roomService.updateRoom(body, this.data.id).subscribe(
@@ -113,10 +117,18 @@ export class RoomAdminEditComponent implements OnInit {
         this.success = true;
         setTimeout(()=>{
           this.success = false;
-          location.reload();
+          this.updateUserInfoInLocalStorage();
         }, 3000)
       }
     )
+  }
+
+  updateUserInfoInLocalStorage(): void {
+    this.userService.getUserByUsername(this.authenticationService.userLoggedUsername()).subscribe(
+      userLoggedInfo => {
+        this.authenticationService.setInLocalStorage('userLoggedInfo', JSON.stringify(userLoggedInfo));
+        location.reload();
+      });
   }
 
 }

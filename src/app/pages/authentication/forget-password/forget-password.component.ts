@@ -49,7 +49,7 @@ export class ForgetPasswordComponent implements OnInit {
     console.log(body.plainPassword)
 
       //@ts-ignore
-      this.userService.patchResetPasswordUser(body, body.email).subscribe(
+      this.userService.resetPassword(body, body.email).subscribe(
         ()=>{
           console.log(body.plainPassword)
           /* this.success = true;

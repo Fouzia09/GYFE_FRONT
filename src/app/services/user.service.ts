@@ -54,6 +54,18 @@ export class UserService {
           }))
     );
   }
+
+  resetPassword(body: any, email: string): Observable<any> {
+    return (
+      this.http
+        .post<any>(`${API_ROUTE.USER.URI}/resetPassword/${email}`, body)
+        .pipe(map((res) => {
+            retry(3),
+            catchError(handleError);
+            return res;
+          }))
+    );
+  }
 }
 
 

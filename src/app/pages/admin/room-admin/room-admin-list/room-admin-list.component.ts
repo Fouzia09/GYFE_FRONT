@@ -1,7 +1,8 @@
+import { UserOUT } from './../../../../interfaces/user';
 import { RoomAdminEditComponent } from './../../dialog/room-admin-edit/room-admin-edit.component';
 import { RoomAdminDeleteComponent } from './../../dialog/room-admin-delete/room-admin-delete.component';
 import { RoomService } from './../../../../services/room.service';
-import { Room } from './../../../../interfaces/room';
+import { Room, RoomOUT } from './../../../../interfaces/room';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 
@@ -16,6 +17,7 @@ export class RoomAdminListComponent implements OnInit {
   isLoading: boolean = false;
   errorApi: boolean = false;
   success: boolean = false;
+  rooms!: RoomOUT[];
 
   
   constructor(
@@ -28,15 +30,22 @@ export class RoomAdminListComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  getRooms(){
+  getRooms(): void {
+    let userLoggedInfo: UserOUT | string;
+    userLoggedInfo = localStorage.getItem('userLoggedInfo') as string;
+    userLoggedInfo = JSON.parse(userLoggedInfo) as UserOUT;
+    this.rooms = userLoggedInfo.rooms as RoomOUT[];
+  }
+
+  /* getRooms(){
     this.roomService.getListRoom().subscribe(
       (      data: Room[])=>{
         this.listroom = data;
       }
     )
   }
-
-  onDeleteRoomDialogClick(room: Room){
+ */
+  onDeleteRoomDialogClick(room: RoomOUT){
     let dialogRoomRef = this.matDialog.open(RoomAdminDeleteComponent,
       {
         data: {
@@ -48,13 +57,13 @@ export class RoomAdminListComponent implements OnInit {
       })
   }
 
-  onOpenRoomDialogClick(room: Room){
+  onOpenRoomDialogClick(room: RoomOUT){
     let dialogRef = this.matDialog.open(RoomAdminEditComponent,
       {
         data: {
           id: room.id,
           name: room.name,
-          descriptif: room.descriptif,
+          descriptif: room.description,
           country: room.country,
           city: room.city,
           price: room.price,
@@ -65,7 +74,7 @@ export class RoomAdminListComponent implements OnInit {
           nbBed: room.nbBed,
           squarFeet: room.squarFeet,
           address: room.address,
-          zipcode: room.zipcode,
+          zipcode: room.zipCode,
         },
         width: "1000px",
         height: "800px",

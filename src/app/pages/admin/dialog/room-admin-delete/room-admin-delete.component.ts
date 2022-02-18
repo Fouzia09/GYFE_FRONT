@@ -1,3 +1,5 @@
+import { AuthenticationService } from 'src/app/services/authentication.service';
+import { UserService } from 'src/app/services/user.service';
 import { RoomService } from './../../../../services/room.service';
 import { Room } from 'src/app/interfaces/room';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
@@ -13,9 +15,11 @@ export class RoomAdminDeleteComponent implements OnInit {
   success: boolean = false;
 
   constructor(
-    @Inject(MAT_DIALOG_DATA) public data: Room,
+    @Inject(MAT_DIALOG_DATA) public data: any,
     private matDialogRef: MatDialogRef<RoomAdminDeleteComponent>,
     private roomService: RoomService,
+    private userService: UserService,
+    private authenticationService: AuthenticationService
   ) { }
 
   ngOnInit(): void {
@@ -31,10 +35,18 @@ export class RoomAdminDeleteComponent implements OnInit {
         this.success = true;
         setTimeout(()=>{
           this.success =false;
-          location.reload();
+          this.updateUserInfoInLocalStorage();
         }, 3000)
       }
     )
+  }
+
+  updateUserInfoInLocalStorage(): void {
+    this.userService.getUserByUsername(this.authenticationService.userLoggedUsername()).subscribe(
+      userLoggedInfo => {
+        this.authenticationService.setInLocalStorage('userLoggedInfo', JSON.stringify(userLoggedInfo));
+        location.reload();
+      });
   }
 
 }
