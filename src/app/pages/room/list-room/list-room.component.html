@@ -3,17 +3,18 @@
         <h3>Filtrez votre recherche</h3>
         <div class="filter">
           <form class="d-flex justify-content-center">
-            <input type="text" id="inputCity" [(ngModel)]="inputName" name="search"
+            <input type="text" id="nameSearch" [(ngModel)]="nameSearch" name="search"
               placeholder="Saisir le nom du restaurant" />
-            <input placeholder="Saisir le nom du pays" id="inputCountry" [(ngModel)]="inputCountry" name="search">
-            <input placeholder="Saisir le nom de la ville" id="inputCity" [(ngModel)]="inputCity" name="search">
-            <button class="btn btn-lg btn-primary" type="submit" (click)="searchRoom()">Chercher</button>
+            <input placeholder="Saisir le nom du pays" id="countrySearch" [(ngModel)]="countrySearch" name="search">
+            <input placeholder="Saisir le nom de la ville" id="citySearch" [(ngModel)]="citySearch" name="search">
+            <input placeholder="Saisir le prix" id="priceSearch" [(ngModel)]="priceSearch" name="search">
+            <!-- <button class="btn btn-lg btn-primary" type="submit" (click)="searchRoom()">Chercher</button> -->
           </form>
         </div>
       </div>
       <!-- Champs de recherche -->
       <div class="container">
-        <div class="card mb-3" *ngFor='let room of rooms ; let i = index;'
+        <div class="card mb-3" *ngFor='let room of rooms | Search: nameSearch:citySearch:countrySearch:priceSearch'
           style="max-width: 1140px; margin: auto; height: 300px;">
           <div class="row g-0">
             <div class="col-md-4">

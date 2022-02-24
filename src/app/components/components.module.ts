@@ -5,7 +5,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
 import { MatSliderModule } from '@angular/material/slider';
 
-
 import { ListCommentsComponent } from './comment/list-comments/list-comments.component';
 import { CommentComponent } from './comment/comment.component';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -34,6 +33,7 @@ import { AddFavoriteComponent } from './favorite/add-favorite/add-favorite.compo
     FavoriteComponent,
     AddCommentComponent,
     AddFavoriteComponent,
+
   ],
   imports: [
     CommonModule,
