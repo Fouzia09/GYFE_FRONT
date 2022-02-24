@@ -1,14 +1,5 @@
-<div class="container" style="position: relative;">
-  <figure *ngIf="(page !== 'room' && page !== 'restaurant')">
-    <figcaption>
-      <span>GYFE</span>
-      <P>On a qu'une vie, profitons-on !</P>
-    </figcaption>
-    <img src="../../../assets/img/vacances.jpeg" alt="vacances" width="100%" height="600px" />
-  </figure>
-  <div class="filter_bar">
-    <h3>Filtrez votre recherche</h3>
-    <div class="filter">
+<div class="container filter_bar">
+  <div class="d-flex justify-content-evenly">
       <!-- <select class="form-select" aria-label="Default select example">
         <option selected>Selectionner offre</option>
         <option value="1">Hotel</option>
@@ -58,9 +49,6 @@
         </mat-option>
       </mat-select>
     </mat-form-field>
-    <div class="button mt-4">
-      <button type="submit" class="btn btn-lg btn-primary" [routerLink]="['/room/list-room']">Valider</button>
-  </div>
+    <button type="submit" class="btn btn-primary" [routerLink]="['/room/list-room']">Valider</button>
   </div> 
-  </div>
 </div>

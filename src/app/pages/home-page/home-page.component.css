@@ -1,0 +1,26 @@
+h1 {
+    font-size: 100px;
+    font-weight: 600;
+}
+
+h3 {
+    margin-top: 45px;
+    font-size: 50px;
+    font-weight: 400;
+}
+
+.slogan-container {
+    background: url("../../../assets/img/vacances.jpeg") no-repeat;
+    background-size: 100%;
+    width: 100%;
+    height: 100vh;
+}
+
+.slogan-content {
+    padding-top: 15%;
+}
+
+.carousel-container {
+    padding-top: 3%;
+    padding-bottom: 3%;
+}

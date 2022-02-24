@@ -1,50 +1,91 @@
-<!-- <div class="container">
-    <div class="card" style="width: 18rem;">
-        <img src="../../../assets/img/vacances.jpeg" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <span class="price">500€</span>
+<h2>Les 6 offres les plus récentes</h2>
+<div class="slider">
+	<div class="slide-track">
+		<div class="slide" *ngFor="let restaurant of restaurants">
+      <div class="row w-100">
+        <div class="col-lg-12">
+          <img alt="" [src]="restaurant.image1" [routerLink]="['restaurant/detail/', restaurant.id]"
+            height="250" width="250">
         </div>
-    </div>
-    <div class="card" style="width: 18rem;">
-        <img src="../../../assets/img/vacances.jpeg" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <span class="price">500€</span>
+        <div class="col-lg-12">
+          <span class="mb-5">{{ restaurant.name }}</span>
+          <p class="m-0">{{ restaurant.description }}</p>
         </div>
-    </div>
-    <div class="card" style="width: 18rem;">
-        <img src="../../../assets/img/vacances.jpeg" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <span class="price">500€</span>
+        <div class="col-lg-12">
+          <p class="m-0">{{ restaurant.price }} €</p>
         </div>
+      </div>
     </div>
-    <div class="card" style="width: 18rem;">
-        <img src="../../../assets/img/vacances.jpeg" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <span class="price">500€</span>
+		<div class="slide" *ngFor="let room of rooms">
+      <div class="row w-100">
+        <div class="col-lg-12">
+          <img alt="" [src]="room.image1" [routerLink]="['room/detail/', room.id]"
+            height="250" width="250">
         </div>
-    </div>
-    <div class="card" style="width: 18rem;">
-        <img src="../../../assets/img/vacances.jpeg" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <span class="price">500€</span>
+        <div class="col-lg-12">
+          <span class="mb-5">{{ room.name }}</span>
+          <p class="m-0">{{ room.description }}</p>
         </div>
-    </div>
-    <div class="card" style="width: 18rem;">
-        <img src="../../../assets/img/vacances.jpeg" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <span class="price">500€</span>
+        <div class="col-lg-12">
+          <p class="m-0">{{ room.price }} €</p>
         </div>
+      </div>
     </div>
-</div> -->
+		<div class="slide">
+      <div class="row w-100">
+        <div class="col-lg-12">
+          <img alt="" src="../../../assets/img/vacances.jpeg" [routerLink]="['room/detail/', 1]" height="250" width="250">
+        </div>
+        <div class="col-lg-12">
+          <span class="mb-5">Nom restaurant/hôtel</span>
+          <p class="m-0">Libellé3333</p>
+        </div>
+        <div class="col-lg-12">
+          <p class="m-0">12,50 €</p>
+        </div>
+      </div>
+    </div>
+		<div class="slide">
+      <div class="row w-100">
+        <div class="col-lg-12">
+          <img alt="" src="../../../assets/img/vacances.jpeg" [routerLink]="['room/detail/', 1]" height="250" width="250">
+        </div>
+        <div class="col-lg-12">
+          <span class="mb-5">Nom restaurant/hôtel</span>
+          <p class="m-0">Libellé44444</p>
+        </div>
+        <div class="col-lg-12">
+          <p class="m-0">12,50 €</p>
+        </div>
+      </div>
+    </div>
+		<div class="slide">
+      <div class="row w-100">
+        <div class="col-lg-12">
+          <img alt="" src="../../../assets/img/vacances.jpeg" [routerLink]="['room/detail/', 1]" height="250" width="250">
+        </div>
+        <div class="col-lg-12">
+          <span class="mb-5">Nom restaurant/hôtel</span>
+          <p class="m-0">Libellé55555</p>
+        </div>
+        <div class="col-lg-12">
+          <p class="m-0">12,50 €</p>
+        </div>
+      </div>
+    </div>
+		<div class="slide">
+      <div class="row w-100">
+        <div class="col-lg-12">
+          <img alt="" src="../../../assets/img/vacances.jpeg" [routerLink]="['room/detail/', 1]" height="250" width="250">
+        </div>
+        <div class="col-lg-12">
+          <span class="mb-5">Nom restaurant/hôtel</span>
+          <p class="m-0">Libellé777777</p>
+        </div>
+        <div class="col-lg-12">
+          <p class="m-0">12,50 €</p>
+        </div>
+      </div>
+    </div>
+	</div>
+</div>

@@ -24,4 +24,6 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   padding-bottom: 150px;
 }
 
-
+.text-blue-logo {
+  color: #1367e3
+}
