@@ -1,0 +1,60 @@
+<div class="wrapper">
+    <div class="main">
+      <main class="content">
+        <div class="container-fluid p-0">
+          <div class="row mb-2 mb-xl-3 m-5">
+            <div class="col-md-12 mt-3">
+              <div class="col-auto d-none d-sm-block">
+                <h2 class="title-color text-success font-weight-bold">Création d'un Restaurant</h2>
+              </div>
+              <div class="card">
+                <div class="card-body">
+                  <form [formGroup]="userForm">
+                    <div class="row">
+                      <div class="mb-3 col-md-6">
+                        <div class="row">
+                          <div class="mb-3 col-md-12">
+                            <label class="form-label"></label>
+                            <input type="text" name="name" class="form-control"
+                              placeholder="Nom du Restaurant" [formControl]="name">
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="mb-3 col-md-6">
+                            <label class="form-label"></label>
+                            <input type="text" name="address" class="form-control" placeholder="username"
+                            [formControl]="username">
+                          </div>
+                          <div class="mb-3 col-md-6">
+                            <label class="form-label"></label>
+                            <input type="email" name="zipcode" class="form-control" placeholder="email"
+                            [formControl]="email">
+                          </div>
+                        </div>
+                        <div class="mb-3">
+                          <label class="form-label">Role</label>
+                          <!--<input type="text" name="roles" class="form-control" placeholder="Role" [formControl]="roles"> -->
+                          <select name="roles" class="form-control" placeholder="Role" [formControl]="roles">
+                            <!-- <option value="" disabled selected></option> -->
+                            <option value="ROLE_CHEF">Restaurateur</option>
+                            <option value="ROLE_HOTELIER">Hôtelier</option>
+                            <option value="ROLE_ADMIN">Admin</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                    <div style="text-align: center">
+                      <button type="submit" style="background-color: #1C283E; color: white;"
+                        class="text-left btn" (click)="editUserAdmin()">Modifier</button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+  
+  

@@ -1,3 +1,5 @@
+import { PasswordEditComponent } from './dialog/password-edit/password-edit.component';
+import { MatDialog } from '@angular/material/dialog';
 import { UserService } from './../../services/user.service';
 import { User, UserToken } from './../../interfaces/user';
 import { AuthenticationService } from './../../services/authentication.service';
@@ -23,6 +25,7 @@ export class ProfileComponent implements OnInit {
     private auth: AuthenticationService,
     private router: Router,
     private currentuserService: UserService,
+    private matDialog: MatDialog
   ) { }
 
   ngOnInit(): void {
@@ -50,6 +53,18 @@ export class ProfileComponent implements OnInit {
   //déconnexion
   logout(){
     this.auth.logout();
+  }
+
+  onOpenDialogEditPassword(currentuser: User) {
+    let dialogRef = this.matDialog.open(PasswordEditComponent,
+      {
+        data: {
+          id: currentuser.id,
+          plainPassword: currentuser.plainPassword,
+        },
+        width: "500px",
+        height: "450px",
+      })
   }
 
 }

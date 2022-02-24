@@ -4,7 +4,7 @@ img {
 }
 
 .container {
-    margin-top: 145px;
+    margin-top: 60px;
 }
 
 .card-body {
@@ -23,10 +23,6 @@ span {
     text-align: center;
 }
 
-button {
-    width: 100px;
-}
-
 .row {
     width: 100%;
     margin: auto;
@@ -38,4 +34,27 @@ button {
 a {
     color: white;
     text-decoration: none;
+}
+.filter_bar {
+    margin-left: 15px;
+    margin-right: 15px;
+    border-radius: 10px;
+}
+.filter_bar h3{
+    text-align: center;
+    font-size: 25px;
+    margin-top: 10px;
+}
+
+input {
+width: 300px;
+text-align: center;
+border: 0.84375em solid transparent;
+border-bottom: 1px solid gray;
+padding-bottom: 10px;
+
+}
+
+form {
+    justify-content: space-evenly !important;
 }

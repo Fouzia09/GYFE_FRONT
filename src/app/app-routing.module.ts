@@ -1,9 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { FilterComponent } from './components/filter/filter.component';
-import { ProfileModule } from './pages/profile/profile.module';
-import { DetailRoomComponent } from './pages/room/detail-room/detail-room.component';
-import { RoomModule } from './pages/room/room.module';
 
 const routes: Routes = [
   {
@@ -38,7 +34,7 @@ const routes: Routes = [
   {
     path:'admin',
     loadChildren: () => import('./pages/admin/admin.module').then(m => m.AdminModule)
-  },
+  }
 
 ];
 

@@ -52,6 +52,7 @@ export class LoginComponent implements OnInit {
         this.auth.seTtoken(data);
         this.setUserInLocalStorage();
         this.isLoading = false;
+        this.goPageProfil();
       },
       (error: any)=>{
         this.errorAuthentication = true;

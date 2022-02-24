@@ -18,5 +18,5 @@ export const API_ROUTE = {
   },
   CURRENT_USER: {
     URI: ROOT_URI+'/api/currentuser',
-  }
+  },
 };

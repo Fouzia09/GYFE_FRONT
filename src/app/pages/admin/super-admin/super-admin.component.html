@@ -1,0 +1,26 @@
+<div class="space-container">
+    <div class="container">
+        <div class="card mb-3" *ngFor='let user of users ; let i = index;' style="max-width: 1140px; margin: auto; height: 300px;">
+          <div class="row g-0">
+    
+            <div class="col-md-8" style="display: flex;">
+              <div class="card-body">
+                <h2 class="card-title">Nom: {{ user.name }}</h2>
+                <p class="card-text">Email: {{ user.email }}</p>
+                <p class="card-text">Role: {{ user.roles }}</p>
+              </div>
+              <div class="underline">
+              </div>
+              <div class="col-md-4" style="width: 40%; margin: auto;">
+                <div class="row">
+                  <span class="price">Username: {{ user.username}}</span>
+                </div>
+              </div>
+              <button type="button" class="btn btn-danger" (click)="onDeleteUserDialogClick(user)">Supprimer</button>
+              <button type="button" class="btn btn-primary" (click)="onOpenUserDialogClick(user)" style="margin-left: 15px;">Modifier</button>
+            </div>
+          </div>
+        </div>
+      </div>
+</div>
+

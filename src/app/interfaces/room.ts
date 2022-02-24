@@ -13,6 +13,7 @@ export interface Room {
     squarFeet: number;
     address: string;
     zipcode: number;
+    author:string;
 }
 
 export interface RoomOUT {

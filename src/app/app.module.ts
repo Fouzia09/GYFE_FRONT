@@ -18,7 +18,7 @@ export function tokenGetter(): string {
 @NgModule({
   declarations: [
     AppComponent,
-    LayoutComponent
+    LayoutComponent,
   ],
   imports: [
     BrowserModule,

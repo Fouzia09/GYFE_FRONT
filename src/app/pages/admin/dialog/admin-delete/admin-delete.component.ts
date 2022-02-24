@@ -1,3 +1,5 @@
+import { UserService } from './../../../../services/user.service';
+import { Restaurant } from './../../../../interfaces/restaurant';
 import { RestaurantService } from './../../../../services/restaurant.service';
 import { Room } from './../../../../interfaces/room';
 import { RoomService } from './../../../../services/room.service';
@@ -14,9 +16,10 @@ export class AdminDeleteComponent implements OnInit {
   success: boolean = false;
 
   constructor(
-    @Inject(MAT_DIALOG_DATA) public data: Room,
+    @Inject(MAT_DIALOG_DATA) public data: Restaurant,
     private matDialogRef: MatDialogRef<AdminDeleteComponent>,
     private restaurantService: RestaurantService,
+    private userService: UserService
   ) { }
 
   ngOnInit(): void {
@@ -26,9 +29,10 @@ export class AdminDeleteComponent implements OnInit {
     this.matDialogRef.close(this.data);
   }
 
-  deleteRestaurant(){
+
+  deleteUser(){
     //ts-ignore
-    this.restaurantService.deleteRestaurant(this.data.id).subscribe(
+    this.userService.deleteUser(this.data.id).subscribe(
       ()=>{
         this.success = true;
         setTimeout(()=>{
