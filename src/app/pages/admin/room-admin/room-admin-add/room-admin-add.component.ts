@@ -119,7 +119,8 @@ export class RoomAdminAddComponent implements OnInit {
       nbBed: this.adminForm.value.nbBed,
       squarFeet: this.adminForm.value.squarFeet,
       address: this.adminForm.value.address,
-      zipcode: this.adminForm.value.zipcode
+      zipcode: this.adminForm.value.zipcode,
+      author: ''
     }
     this.isLoading = true;
 

@@ -1,27 +1,41 @@
-<app-filter [page]="'room'" [data]="rooms"></app-filter>
-<div class="container">
-  <div class="card mb-3" *ngFor='let room of rooms ; let i = index;' style="max-width: 1140px; margin: auto; height: 300px;">
-    <div class="row g-0">
-      <div class="col-md-4">
-        <img [src]="room.image1" [alt]="" class="img-fluid rounded-start" alt="...">
-      </div>
-      <div class="col-md-8" style="display: flex;">
-        <div class="card-body">
-          <h2 class="card-title">{{ room.name }}</h2>
-          <p class="card-text">{{ room.descriptif }}</p>
-        </div>
-        <div class="underline">
-        </div>
-        <div class="col-md-4" style="width: 40%; margin: auto;">
-          <div class="row">
-            <span class="price">{{ room.price | currency: 'EUR'}}</span>
-          </div>
-          <div class="row">
-            <button class="btn btn-lg btn-primary" type="submit" [routerLink]="['/room/detail', room.id]">Detail</button>
-          </div>
+      <!-- Champs de recherche -->
+      <div class="filter_bar">
+        <h3>Filtrez votre recherche</h3>
+        <div class="filter">
+          <form class="d-flex justify-content-center">
+            <input type="text" id="inputCity" [(ngModel)]="inputName" name="search"
+              placeholder="Saisir le nom du restaurant" />
+            <input placeholder="Saisir le nom du pays" id="inputCountry" [(ngModel)]="inputCountry" name="search">
+            <input placeholder="Saisir le nom de la ville" id="inputCity" [(ngModel)]="inputCity" name="search">
+            <button class="btn btn-lg btn-primary" type="submit" (click)="searchRoom()">Chercher</button>
+          </form>
         </div>
       </div>
-    </div>
-  </div>
-</div>
-
+      <!-- Champs de recherche -->
+      <div class="container">
+        <div class="card mb-3" *ngFor='let room of rooms ; let i = index;'
+          style="max-width: 1140px; margin: auto; height: 300px;">
+          <div class="row g-0">
+            <div class="col-md-4">
+              <img [src]="room.image1" [alt]="" class="img-fluid rounded-start" alt="...">
+            </div>
+            <div class="col-md-8" style="display: flex;">
+              <div class="card-body">
+                <h2 class="card-title">{{ room.name }}</h2>
+                <p class="card-text">{{ room.descriptif }}</p>
+              </div>
+              <div class="underline">
+              </div>
+              <div class="col-md-4" style="width: 40%; margin: auto;">
+                <div class="row">
+                  <span class="price">{{ room.price | currency: 'EUR'}}</span>
+                </div>
+                <div class="row">
+                  <button class="btn btn-lg btn-primary" type="submit"
+                    [routerLink]="['/room/detail', room.id]">Detail</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>

@@ -11,7 +11,7 @@ import { RoomService } from '../../services/room.service';
 export class FilterComponent implements OnInit {
 
   rooms!: Room[];
-  term!: '';
+
 
  @Input() page!: string;
  //Cette variable va contenir les informations du restaurant ou de l'Hôtel
