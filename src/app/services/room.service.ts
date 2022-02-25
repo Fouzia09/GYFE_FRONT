@@ -7,7 +7,7 @@ import { map, catchError, retry } from 'rxjs/operators';
 import { BASE_API } from '../constants/base-api';
 import { handleError } from '../constants/handle-http-errors';
 import { Room, RoomOUT } from '../interfaces/room';
-import { API_ROUTE } from '../routes/api-routes';
+
 
 @Injectable({
   providedIn: 'root'
