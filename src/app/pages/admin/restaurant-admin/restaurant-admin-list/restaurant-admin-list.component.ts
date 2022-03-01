@@ -1,9 +1,11 @@
 import { RestaurantService } from './../../../../services/restaurant.service';
 import { RestaurantAdminDeleteComponent } from './../../dialog/restaurant-admin-delete/restaurant-admin-delete.component';
 import { RestaurantAdminEditComponent } from './../../dialog/restaurant-admin-edit/restaurant-admin-edit.component';
-import { Restaurant } from './../../../../interfaces/restaurant';
+import { Restaurant, RestaurantOUT } from './../../../../interfaces/restaurant';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { UserOUT } from 'src/app/interfaces/user';
+
 
 @Component({
   selector: 'app-restaurant-admin-list',
@@ -16,10 +18,11 @@ export class RestaurantAdminListComponent implements OnInit {
   isLoading: boolean = false;
   errorApi: boolean = false;
   success: boolean = false;
+  restaurants!: RestaurantOUT[];
 
-  
+
   constructor(
-    private restaurantService: RestaurantService, 
+    private restaurantService: RestaurantService,
     private matDialog: MatDialog
     ) {
     this.getRestaurants();
@@ -27,13 +30,20 @@ export class RestaurantAdminListComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  getRestaurants(){
+  getRestaurants(): void {
+    let userLoggedInfo: UserOUT | string;
+    userLoggedInfo = localStorage.getItem('userLoggedInfo') as string;
+    userLoggedInfo = JSON.parse(userLoggedInfo) as UserOUT;
+    this.restaurants = userLoggedInfo.rooms as RestaurantOUT[];
+  }
+ /* getRestaurants(){
     this.restaurantService.getRestaurants().subscribe(
       (      data: Restaurant[])=>{
         this.listrestaurant = data;
       }
     )
   }
+  */
 
   onDeleteRestaurantDialogClick(restaurant: Restaurant){
     let dialogRestaurantRef = this.matDialog.open(RestaurantAdminDeleteComponent,
