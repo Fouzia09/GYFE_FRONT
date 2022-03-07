@@ -34,7 +34,7 @@ export class RestaurantAdminListComponent implements OnInit {
     let userLoggedInfo: UserOUT | string;
     userLoggedInfo = localStorage.getItem('userLoggedInfo') as string;
     userLoggedInfo = JSON.parse(userLoggedInfo) as UserOUT;
-    this.restaurants = userLoggedInfo.rooms as RestaurantOUT[];
+    this.restaurants = userLoggedInfo.restaurants as RestaurantOUT[];
   }
  /* getRestaurants(){
     this.restaurantService.getRestaurants().subscribe(

@@ -13,15 +13,15 @@ import { AuthenticationService } from './../../../services/authentication.servic
   styleUrls: ['./forget-password.component.css']
 })
 export class ForgetPasswordComponent implements OnInit {
-  loading = false;
-  submitted = false;
+  isLoading: boolean = false;
   success: boolean = false;
+  errorAuthentication: boolean = false;
 
 
   //@ts-ignore
   email: FormControl;
   //@ts-ignore
-  resetPasswordForm: FormGroup;
+  forgotForm: FormGroup;
 
 
   constructor(
@@ -36,40 +36,40 @@ export class ForgetPasswordComponent implements OnInit {
 
   private createForm(): void{
     this.email = this.fb.control('', [Validators.required]);
-    this.resetPasswordForm = this.fb.group({
+    this.forgotForm = this.fb.group({
       email: this.email,
     });
   }
 
   resetPasswordUser(){
     const body = {
-      email: this.resetPasswordForm.value.email,
-      plainPassword: this.generatePassword(),
+      email: this.forgotForm.value.email,
     }
-    console.log(body.plainPassword)
 
       //@ts-ignore
-      this.userService.resetPassword(body, body.email).subscribe(
+      this.userService.reset(body, body.email).subscribe(
         ()=>{
-          console.log(body.plainPassword)
-          /* this.success = true;
+          this.success = true;
+          this.isLoading = false;
           setTimeout(()=>{
             this.success = false;
-            location.reload();
-          }, 5000) */
-          //this.resetForm();
+          }, 10000)
+          this.resetForm();
+        },
+        (error:any)=>{
+          this.errorAuthentication = true;
+          this.isLoading = false;
+          setTimeout(()=>{
+            this.errorAuthentication = false;
+          }, 10000)
         }
       )
   }
 
-  generatePassword() {
-    var length = 8,
-        charset = "aaabbbcccdddeeeafffggghhhiiijjj!%@&;$+=?kkklllmmmnnnooopppaqqqrrrssstttuuuvvvawww!%@&;$+=?xxxyyyzzz000111222333444555666777888999!%@&;$+=?AAAaBBBCCCDDDEEEFFFGGG!%@&;$+=?HHHIIIJJJKKKLLLMMMNNNOOOPPPQQQRRRSSST!%@&;$+=?TTUUUVVVWWWXXXYYYZZZ",
-        retVal = "";
-    for (var i = 0, n = charset.length; i < length; ++i) {
-        retVal += charset.charAt(Math.floor(Math.random() * n));
-    }
-    return retVal;
+  private resetForm(): void{
+    this.forgotForm.reset({
+      email: ''
+    });
   }
 
 }
