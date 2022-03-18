@@ -7,7 +7,7 @@
           <h2 class="card-title fw-bold text-primary">{{ data.name }}</h2>
           <p class="card-text"><span class="detail-color">Localisation:</span> {{ data.address}} - {{ data.city}}, {{ data.zipcode}} | {{data.country}}</p>
             <div class="row col-md-5">
-                <img [src]="data.image1" class="img-thumbnail" alt="Detail image" width="100%">
+                <img [src]="data.image2" class="img-thumbnail" alt="Detail image" width="100%">
             </div>
             <div class="col-md-7">
               <div class="card-body">
@@ -24,10 +24,7 @@
             </div>
             <div class="row col-md-4">
                 <div class="mt-3 col-md-5">
-                    <img [src]="data.image2" class="img-thumbnail" alt="Detail image" width="100%">
-                </div>
-                <div class="mt-3 col-md-5">
-                    <img [src]="data.image3" class="img-thumbnail" alt="Detail image" width="100%">
+                    <img [src]="data.image1" class="img-thumbnail" alt="Detail image" width="100%">
                 </div>
             </div>
           </div>
