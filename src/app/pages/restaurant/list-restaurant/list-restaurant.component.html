@@ -1,4 +1,4 @@
-<div class="list_bar">
+<!-- <div class="list_bar">
   <div class="card mb-3" *ngFor="let restaurant of listrestaurant" style="max-width: 1140px; margin: auto; height: 300px;">
     <div class="row g-0">
         <div class="col-md-4">
@@ -23,3 +23,47 @@
     </div>
   </div>
 </div>
+ -->
+
+       <!-- Champs de recherche -->
+       <div class="filter_bar">
+        <h3>Filtrez votre recherche</h3>
+        <div class="filter">
+          <form class="d-flex justify-content-center">
+            <input type="text" id="nameSearch" [(ngModel)]="nameSearch" name="search"
+              placeholder="Saisir le nom du restaurant" />
+            <input placeholder="Saisir le nom du pays" id="countrySearch" [(ngModel)]="countrySearch" name="search" >
+            <input placeholder="Saisir le nom de la ville" id="citySearch" [(ngModel)]="citySearch" name="search">
+            <input placeholder="Saisir le prix" id="priceSearch" [(ngModel)]="priceSearch" name="search">
+            <!-- <button class="btn btn-lg btn-primary" type="submit" (click)="searchRoom()">Chercher</button> -->
+          </form>
+        </div>
+      </div>
+      <!-- Champs de recherche -->
+      <div class="container">
+        <div class="card mb-3" *ngFor='let restaurant of restaurants | Search: nameSearch:citySearch:countrySearch:priceSearch'
+          style="max-width: 1140px; margin: auto; height: 300px;">
+          <div class="row g-0">
+            <div class="col-md-4">
+              <img [src]="restaurant.image1" [alt]="" class="img-fluid rounded-start" alt="...">
+            </div>
+            <div class="col-md-8" style="display: flex;">
+              <div class="card-body">
+                <h2 class="card-title">{{ restaurant.name }}</h2>
+                <p class="card-text">{{ restaurant.descriptif }}</p>
+              </div>
+              <div class="underline">
+              </div>
+              <div class="col-md-4" style="width: 40%; margin: auto;">
+                <div class="row">
+                  <span class="price">{{ restaurant.price | currency: 'EUR'}}</span>
+                </div>
+                <div class="row">
+                  <button class="btn btn-lg btn-primary" type="submit"
+                    [routerLink]="['/restaurant/detail', restaurant.id]">Detail</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>

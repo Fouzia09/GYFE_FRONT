@@ -19,6 +19,7 @@ import { AddCommentComponent } from './comment/add-comment/add-comment.component
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { MatSelectModule } from '@angular/material/select';
 import { AddFavoriteComponent } from './favorite/add-favorite/add-favorite.component';
+import { FilterRestaurantComponent } from './filter-restaurant/filter-restaurant.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { AddFavoriteComponent } from './favorite/add-favorite/add-favorite.compo
     FavoriteComponent,
     AddCommentComponent,
     AddFavoriteComponent,
+    FilterRestaurantComponent,
 
   ],
   imports: [

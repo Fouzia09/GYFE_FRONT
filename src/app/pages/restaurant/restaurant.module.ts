@@ -1,3 +1,5 @@
+import { SearchPipe } from './list-restaurant/search.pipe';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ComponentsModule } from './../../components/components.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -10,12 +12,15 @@ import { DetailRestaurantComponent } from './detail-restaurant/detail-restaurant
 @NgModule({
   declarations: [
     ListRestaurantComponent,
-    DetailRestaurantComponent
+    DetailRestaurantComponent,
+    SearchPipe
   ],
   imports: [
     CommonModule,
     RestaurantRoutingModule,
-    ComponentsModule
+    ComponentsModule,
+    FormsModule,
+    ReactiveFormsModule,
   ]
 })
 export class RestaurantModule { }

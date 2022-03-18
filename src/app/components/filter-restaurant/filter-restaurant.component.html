@@ -1,0 +1,38 @@
+<div class="container filter_bar">
+    <div class="d-flex justify-content-evenly">
+      <mat-form-field>
+        <mat-label>Selectionner pays</mat-label>
+        <mat-select>
+          <mat-option *ngFor="let item of restaurants" [value]="item.country">
+            {{item.country}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Selectionner ville</mat-label>
+        <mat-select>
+          <mat-option *ngFor="let item of restaurants" [value]="item.city">
+            {{ item.city }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <!-- <mat-form-field>
+        <mat-label>Selectionner nombre de lit</mat-label>
+        <mat-select>
+          <mat-option *ngFor="let item of restaurants" [value]="item.nbBed">
+            {{ item.nbBed }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field> -->
+      <mat-form-field>
+        <mat-label>Selectionner prix</mat-label>
+        <mat-select>
+          <mat-option *ngFor="let item of restaurants" [value]="item.price">
+            {{ item.price }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <button type="submit" class="btn btn-primary" [routerLink]="['/room/list-room']">Valider</button>
+    </div> 
+  </div>
+  
